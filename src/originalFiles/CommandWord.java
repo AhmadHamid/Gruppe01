@@ -6,7 +6,7 @@ package originalFiles;
  */
 public enum CommandWord
 {
-    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?");
+    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?"), PICK("pick"), USE("use"), DROP("drop"), INVENTORY("inventory");
     
     private String commandString;
     
