@@ -15,6 +15,7 @@ public class Item {
     private String itemName;
     private Room selectedRoom;
     private boolean collectability;
+    private Game game;
     
     public Item(String name, Room room) {
      itemName = name;
@@ -36,22 +37,5 @@ public class Item {
 
     public boolean isNotCollectable() {
         return collectability;
-    }
-    
-    
-    
-//    Opsamling af items
-    void pickItem() {
-        
-    }
-    
-//    Brug item på noget
-    void useItem() {
-        
-    }
-    
-//    smid item fra dig
-    void dropItem() {
-        
     }
 }

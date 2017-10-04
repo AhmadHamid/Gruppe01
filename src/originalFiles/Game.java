@@ -2,6 +2,7 @@ package originalFiles;
 
 import java.util.*;
 import sp2017g1.*;
+import language.*;
 
 /**
  * @author  Michael Kolling and David J. Barnes
@@ -76,12 +77,12 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println(WordList.WELCOME);
+        System.out.println(WordList.DESCRIPTION);
+        System.out.println(WordList.GET_HELP);
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
-        System.out.println("These items is in the room: ");
+        System.out.println(WordList.ITEMS_IN_ROOM);
         currentRoom.getRoomItemsList();
     }
 
@@ -92,7 +93,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println(WordList.DONT_KNOW_WHAT_YOU_MEAN);
             return false;
         }
 
@@ -122,17 +123,14 @@ public class Game
 
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
+        System.out.println(WordList.PRINT_HELP);
         parser.showCommands();
     }
 
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            System.out.println("Go where?");
+            System.out.println(WordList.GO_WHERE);
             return;
         }
 
