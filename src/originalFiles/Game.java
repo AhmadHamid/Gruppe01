@@ -15,7 +15,11 @@ public class Game
     private HashMap<String, Item> inventory;
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
-    Item handske, ske, sten, ble, flag, glas;
+    
+    Door door;
+    Door door2;
+    
+    Item handske, ske, sten, ble, flag, glas, flaske, flaske2;
         
     public Game() 
     {
@@ -39,18 +43,24 @@ public class Game
         oakTree = new Room("at a giant oak tree");
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
+        door = new Door("Door to house");
+        
         
         //Defines the exits of each room and where they lead.
         inside.setExit("north", outside);
 
         outside.setExit("east", east);
-        outside.setExit("south", inside);
+        outside.setDoorway("south", door);
         outside.setExit("west", west);
 
+        door.setExitDoor("south", inside, "key");
+        
         west.setExit("north", river);
         west.setExit("east", outside);
-        west.setExit("west", neighbour);
+        west.setDoorway("west", door2);
 
+        door2.setExitDoor("west", neighbour, "kølle");
+        
         river.setExit("north", waterfall);
         river.setExit("south", west);
 
@@ -79,6 +89,8 @@ public class Game
         ble = new Item("ble", outside);
         
         sten = new Item("sten", outside, true);
+        
+        flaske = new Item("flaske", outside);
     }
     
     private void createInventory() {
