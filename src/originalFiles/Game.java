@@ -76,7 +76,7 @@ public class Game
         handske = new Item("handske", outside);
         
         ble = new Item("ble", west);
-        
+
         sten = new Item("sten", east, true);
     }
     
@@ -194,7 +194,9 @@ public class Game
             System.out.println("Item is not collectable");
         }
         
-        if(currentRoom.getRoomItems().containsKey(inputItem)) {
+        if(currentRoom.getRoomItems().get(inputItem).isNotCollectable()) {
+            
+        } else if(currentRoom.getRoomItems().containsKey(inputItem)) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
             
@@ -229,7 +231,7 @@ public class Game
         if(!inventory.isEmpty()) {
             System.out.println("In your inventory is: ");
             for (String item : inventory.keySet()) {
-                System.out.printf("%s\t", inventory.get(item).getItemName());
+                System.out.printf("%s   ", inventory.get(item).getItemName());
             } System.out.println();
         } else {
             System.out.println("No items in the inventory");
