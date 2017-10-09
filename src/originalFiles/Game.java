@@ -14,8 +14,8 @@ public class Game
     private Room currentRoom;
     private HashMap<String, Item> inventory;
     
-    Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
-    Item handske, ske, sten, ble;
+    Room outside, theatre, pub, lab, office;
+    Item handske, ske, sten, ble, flag, glas;
         
     public Game() 
     {
@@ -25,59 +25,40 @@ public class Game
         parser = new Parser();
     }
 
-    private void createRooms() {
-        //Creates and defines the rooms used in the game.
+    private void createRooms()
+    {
+        outside = new Room("outside the main entrance of the university");
+        theatre = new Room("in a lecture theatre");
+        pub = new Room("in the campus pub");
+        lab = new Room("in a computing lab");
+        office = new Room("in the computing admin office");
         
-        //Each room has a unique name and description.
-        inside = new Room("inside a cottage");
-        outside = new Room("in the forest outside the cottage");
-        west = new Room("west of the cottage");
-        river = new Room("by the river");
-        waterfall = new Room("at the waterfall");
-        east = new Room("east of the cottage");
-        crossroad = new Room("at a crossroad with multiple paths");
-        oakTree = new Room("at a giant oak tree");
-        mountainside = new Room("at the side of a mountain");
-        neighbour = new Room("at your neighbours house");
-        
-        //Defines the exits of each room and where they lead.
-        inside.setExit("north", outside);
+        outside.setExit("east", theatre);
+        outside.setExit("south", lab);
+        outside.setExit("west", pub);
 
-        outside.setExit("east", east);
-        outside.setExit("south", inside);
-        outside.setExit("west", west);
+        theatre.setExit("west", outside);
 
-        west.setExit("north", river);
-        west.setExit("east", outside);
-        west.setExit("west", neighbour);
+        pub.setExit("east", outside);
 
-        river.setExit("north", waterfall);
-        river.setExit("south", west);
+        lab.setExit("north", outside);
+        lab.setExit("east", office);
 
-        waterfall.setExit("south", river);
+        office.setExit("west", lab);
 
-        east.setExit("north", crossroad);
-        east.setExit("west", outside);
-
-        crossroad.setExit("north", mountainside);
-        crossroad.setExit("east", oakTree);
-        crossroad.setExit("south", east);
-
-        mountainside.setExit("south", crossroad);
-
-        oakTree.setExit("west", crossroad);
-
-        neighbour.setExit("east", west);
         currentRoom = outside;
     }
     
     private void createItems() {
         ske = new Item("ske", outside);
         handske = new Item("handske", outside);
+        sten = new Item("sten", outside, true);
         
-        ble = new Item("ble", west);
-
-        sten = new Item("sten", east, true);
+        ble = new Item("ble", outside);
+        
+        flag = new Item("flag", outside);
+        
+        glas = new Item("glas", outside, true);
     }
     
     private void createInventory() {
