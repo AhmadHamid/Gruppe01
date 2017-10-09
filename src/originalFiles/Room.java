@@ -15,6 +15,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;
     private HashMap<String, Item> roomItems;
+    private HashMap<String, Door> doorways;
 
     public Room(String description) 
     {
@@ -58,12 +59,20 @@ public class Room
         for(String exit : keys) {
             returnString += " " + exit;
         }
+        Set<String> keys1 = doorways.keySet();
+        for(String exit : keys1) {
+            returnString += " " + exit;
+        }
         return returnString;
     }
 
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    public Door getExitDoor(String direction){
+        return doorways.get(direction);
     }
 }
 
