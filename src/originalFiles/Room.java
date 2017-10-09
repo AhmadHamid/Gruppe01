@@ -30,6 +30,11 @@ public class Room
         exits.put(direction, neighbor);
     }
     
+    public void setDoorway(String direction, Door doorway) 
+    {
+        this.doorways.put(direction, doorway);
+    }
+    
 //    Return HashMap with items in room
     public HashMap<String, Item> getRoomItems() {
         return roomItems;
