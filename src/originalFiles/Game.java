@@ -18,6 +18,8 @@ public class Game
 <<<<<<< HEAD
     Item handske, ske, sten, ble, flag, glas, flaske;
 =======
+    Door door;
+    Item handske, ske, sten, ble, flag, glas;
 >>>>>>> 5cc0e44361ee3ad69cc2693bd619631089ff12b4
         
     public Game() 
@@ -42,14 +44,18 @@ public class Game
         oakTree = new Room("at a giant oak tree");
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
+        door = new Door("Door to house");
+        
         
         //Defines the exits of each room and where they lead.
         inside.setExit("north", outside);
 
         outside.setExit("east", east);
-        outside.setExit("south", inside);
+        outside.setDoorway("south", door);
         outside.setExit("west", west);
 
+        door.setExitDoor("south", inside, "key");
+        
         west.setExit("north", river);
         west.setExit("east", outside);
         west.setExit("west", neighbour);
