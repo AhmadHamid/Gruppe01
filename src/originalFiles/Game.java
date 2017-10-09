@@ -57,8 +57,10 @@ public class Game
         
         west.setExit("north", river);
         west.setExit("east", outside);
-        west.setExit("west", neighbour);
+        west.setDoorway("west", door2);
 
+        door2.setExitDoor("west", neighbour, "kølle");
+        
         river.setExit("north", waterfall);
         river.setExit("south", west);
 
