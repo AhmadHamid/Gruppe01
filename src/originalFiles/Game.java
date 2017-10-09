@@ -230,7 +230,7 @@ public class Game
         if(!inventory.isEmpty()) {
             System.out.println("In your inventory is: ");
             for (String item : inventory.keySet()) {
-                System.out.printf("%s\t", inventory.get(item).getItemName());
+                System.out.printf("%s  ", inventory.get(item).getItemName());
             } System.out.println();
         } else {
             System.out.println("No items in the inventory");

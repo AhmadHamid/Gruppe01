@@ -24,7 +24,7 @@ public class Item {
     }
     
     public Item(String name, Room room, boolean collectability) {
-        name = itemName;
+        itemName = name;
         selectedRoom = room;
         this.collectability = collectability;
         selectedRoom.getRoomItems().put(itemName, Item.this);

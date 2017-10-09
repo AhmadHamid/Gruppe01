@@ -22,6 +22,7 @@ public class Room
         this.description = description;
         exits = new HashMap<String, Room>();
         this.roomItems = new HashMap<String, Item>();
+        doorways = new HashMap<String, Door>();
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -37,7 +38,7 @@ public class Room
 //    Return list of items in room
     public void getRoomItemsList() {
         for (String item : roomItems.keySet()) {
-            System.out.printf("%s\t", roomItems.get(item).getItemName());
+            System.out.printf("%s  ", roomItems.get(item).getItemName());
         }
         System.out.println();
     }
