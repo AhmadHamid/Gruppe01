@@ -81,7 +81,7 @@ public class Game
     }
     
     private void createItems() {
-        axe = new Item("axe", east);
+        axe = new Item("axe", inside);
         block = new Item("block", east, true);
         
         shovel = new Item("shovel", mountainside);
@@ -153,6 +153,8 @@ public class Game
         }
         else if (commandWord == CommandWord.INVENTORY) {
             printInventory(command);
+        } else if (commandWord == CommandWord.UNLOCK) {
+            unlockRoom(command);
         }
         return wantToQuit;
     }
@@ -185,10 +187,14 @@ public class Game
             currentRoom = nextRoom1.getExit(direction);
             System.out.println("Going through door");
             System.out.println(currentRoom.getLongDescription());
+            System.out.println("These items is in room: ");
+            currentRoom.getRoomItemsList();
         }
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            System.out.println("These items is in room: ");
+            currentRoom.getRoomItemsList();
         }
     }
     
