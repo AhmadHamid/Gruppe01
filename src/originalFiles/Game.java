@@ -15,12 +15,10 @@ public class Game
     private HashMap<String, Item> inventory;
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
-<<<<<<< HEAD
-    Item handske, ske, sten, ble, flag, glas, flaske;
-=======
+    
     Door door;
-    Item handske, ske, sten, ble, flag, glas;
->>>>>>> 5cc0e44361ee3ad69cc2693bd619631089ff12b4
+    
+    Item handske, ske, sten, ble, flag, glas, flaske;
         
     public Game() 
     {
