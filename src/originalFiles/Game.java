@@ -14,7 +14,7 @@ public class Game
     private Room currentRoom;
     private HashMap<String, Item> inventory;
     
-    Room outside, theatre, pub, lab, office;
+    Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     Item handske, ske, sten, ble, flag, glas;
         
     public Game() 
@@ -27,7 +27,6 @@ public class Game
 
     private void createRooms() {
         //Creates and defines the rooms used in the game.
-        Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
         
         //Each room has a unique name and description.
         inside = new Room("inside a cottage");
