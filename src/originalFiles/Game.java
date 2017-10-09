@@ -168,7 +168,7 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
             
-            System.out.print("These items is in the room: ");
+            System.out.print("These items are in the room: ");
             currentRoom.getRoomItemsList();
         }
     }
