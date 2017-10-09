@@ -18,7 +18,7 @@ public class Game
     
     Door door;
     
-    Item handske, ske, sten, ble, flag, glas, flaske;
+    Item handske, ske, sten, ble, flag, glas, flaske, flaske2;
         
     public Game() 
     {
