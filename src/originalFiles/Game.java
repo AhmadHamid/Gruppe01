@@ -54,17 +54,9 @@ public class Game
         handske = new Item("handske", outside);
         sten = new Item("sten", outside, true);
         
-<<<<<<< HEAD
         ble = new Item("ble", outside);
         
-        flag = new Item("flag", outside);
-        
-        glas = new Item("glas", outside, true);
-=======
-        ble = new Item("ble", west);
-        
-        sten = new Item("sten", east, true);
->>>>>>> parent of cab23ad... Merge origin/master
+        sten = new Item("sten", outside, true);
     }
     
     private void createInventory() {
