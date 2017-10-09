@@ -15,7 +15,7 @@ public class Game
     private HashMap<String, Item> inventory;
     
     Room outside, theatre, pub, lab, office;
-    Item handske, ske, sten, ble;
+    Item handske, ske, sten, ble, flag, glas;
         
     public Game() 
     {
@@ -52,10 +52,13 @@ public class Game
     private void createItems() {
         ske = new Item("ske", outside);
         handske = new Item("handske", outside);
+        sten = new Item("sten", outside, true);
         
-        ble = new Item("ble", theatre);
+        ble = new Item("ble", outside);
         
-        sten = new Item("sten", lab, true);
+        flag = new Item("flag", outside);
+        
+        glas = new Item("glas", outside, true);
     }
     
     private void createInventory() {
@@ -172,7 +175,9 @@ public class Game
             System.out.println("Item is not collectable");
         }
         
-        if(currentRoom.getRoomItems().containsKey(inputItem)) {
+        if(currentRoom.getRoomItems().get(inputItem).isNotCollectable()) {
+            
+        } else if(currentRoom.getRoomItems().containsKey(inputItem)) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
             
@@ -207,7 +212,7 @@ public class Game
         if(!inventory.isEmpty()) {
             System.out.println("In your inventory is: ");
             for (String item : inventory.keySet()) {
-                System.out.printf("%s\t", inventory.get(item).getItemName());
+                System.out.printf("%s   ", inventory.get(item).getItemName());
             } System.out.println();
         } else {
             System.out.println("No items in the inventory");
