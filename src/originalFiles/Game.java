@@ -89,6 +89,8 @@ public class Game
         sten = new Item("sten", outside, true);
         
         flaske = new Item("flaske", outside);
+        
+        flaske2 = new Item("flaske2", outside, true);
     }
     
     private void createInventory() {
