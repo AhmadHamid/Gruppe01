@@ -16,7 +16,7 @@ public class WordList {
     
 //    class CommandWord
     public static final String GO = "go";
-    public static final String QUIT = "guit";
+    public static final String QUIT = "quit";
     public static final String HELP = "help";
     public static final String UNKNOWN = "?";
     public static final String PICK = "pick";
