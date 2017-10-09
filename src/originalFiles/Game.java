@@ -15,7 +15,7 @@ public class Game
     private HashMap<String, Item> inventory;
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
-    Item handske, ske, sten, ble, flag, glas;
+    Item handske, ske, sten, ble, flag, glas, flaske;
         
     public Game() 
     {
@@ -79,6 +79,8 @@ public class Game
         ble = new Item("ble", outside);
         
         sten = new Item("sten", outside, true);
+        
+        flaske = new Item("flaske", outside);
     }
     
     private void createInventory() {
