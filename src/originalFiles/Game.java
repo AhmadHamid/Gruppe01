@@ -118,7 +118,11 @@ public class Game
         System.out.println(WordList.GET_HELP);
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
-        System.out.println(WordList.ITEMS_IN_ROOM);
+        if(!currentRoom.getRoomItems().isEmpty()) {
+            System.out.println(WordList.ITEMS_IN_ROOM);
+        } else {
+            
+        }
         currentRoom.getRoomItemsList();
     }
 
@@ -168,7 +172,7 @@ public class Game
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            System.out.println("Go where?");
+            System.out.println(WordList.GO_WHERE);
             return;
         }
 
@@ -187,13 +191,13 @@ public class Game
             currentRoom = nextRoom1.getExit(direction);
             System.out.println("Going through door");
             System.out.println(currentRoom.getLongDescription());
-            System.out.println("These items is in room: ");
+            System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         }
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-            System.out.println("These items is in room: ");
+            System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         }
     }
