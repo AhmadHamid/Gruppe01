@@ -166,23 +166,55 @@ public class Game
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            System.out.println(WordList.GO_WHERE);
+            System.out.println("Go where?");
             return;
         }
 
         String direction = command.getSecondWord();
 
         Room nextRoom = currentRoom.getExit(direction);
-
-        if (nextRoom == null) {
+        Door nextRoom1 = currentRoom.getExitDoor(direction);
+        
+        if (nextRoom == null && nextRoom1 == null) {
             System.out.println("There is no door!");
+        }
+        else if (nextRoom == null && nextRoom1.getLock() == true){
+            System.out.println("The door is locked");
+        }
+        else if (nextRoom == null && nextRoom1.getDoor() == true){
+            currentRoom = nextRoom1.getExit(direction);
+            System.out.println("Going through door");
+            System.out.println(currentRoom.getLongDescription());
         }
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-            
-            System.out.print("These items is in the room: ");
-            currentRoom.getRoomItemsList();
+        }
+    }
+    
+    private void unlockRoom(Command command){
+        if(!command.hasSecondWord()) {
+            System.out.println("Unlock what?");
+            return;
+        }
+        
+        String direction = command.getSecondWord();
+
+        Room nextRoom = currentRoom.getExit(direction);
+        Door nextRoom1 = currentRoom.getExitDoor(direction);
+        
+        if (nextRoom != null){
+            System.out.println("Room is not locked");
+        }
+        else if (nextRoom == null && nextRoom1 == null) {
+            System.out.println("There is no door!");
+        }
+        else if (nextRoom == null && nextRoom1.getLock() == false){
+            System.out.println("Room is not locked");
+        }
+        else {
+            nextRoom1.setLock(false);
+            System.out.println("Room is now unlocked");
         }
     }
 
