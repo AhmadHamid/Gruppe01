@@ -195,7 +195,9 @@ public class Game
             System.out.println("Item is not collectable");
         }
         
-        if(currentRoom.getRoomItems().containsKey(inputItem)) {
+        if(currentRoom.getRoomItems().get(inputItem).isNotCollectable()) {
+            
+        } else if(currentRoom.getRoomItems().containsKey(inputItem)) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
             
