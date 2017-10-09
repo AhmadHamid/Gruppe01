@@ -36,7 +36,7 @@ public class Room
 //    Return list of items in room
     public void getRoomItemsList() {
         for (String item : roomItems.keySet()) {
-            System.out.printf("%s   ", roomItems.get(item).getItemName());
+            System.out.printf("%s\t", roomItems.get(item).getItemName());
         }
         System.out.println();
     }

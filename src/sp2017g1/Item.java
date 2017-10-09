@@ -20,14 +20,14 @@ public class Item {
     public Item(String name, Room room) {
      itemName = name;
      selectedRoom = room;
-     selectedRoom.getRoomItems().put(itemName, Item.this);
+     selectedRoom.getRoomItems().put(itemName, this);
     }
     
     public Item(String name, Room room, boolean collectability) {
-        itemName = name;
+        name = itemName;
         selectedRoom = room;
         this.collectability = collectability;
-        selectedRoom.getRoomItems().put(itemName, Item.this);
+        selectedRoom.getRoomItems().put(itemName, this);
     }
     
 //    returnerer navnet af item
