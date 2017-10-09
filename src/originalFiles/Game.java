@@ -17,6 +17,7 @@ public class Game
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     
     Door door;
+    Door door2;
     
     Item handske, ske, sten, ble, flag, glas, flaske;
         
