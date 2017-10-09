@@ -42,6 +42,10 @@ public class Door
         return door;
     }
     
+    public String getKey(){
+        return lockItem;
+    }
+    
     public String getShortDescription()
     {
         return description;
