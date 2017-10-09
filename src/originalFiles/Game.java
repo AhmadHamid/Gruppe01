@@ -16,10 +16,9 @@ public class Game
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     
-    Door door;
-    Door door2;
+    Door door, door2;
     
-    Item handske, ske, sten, ble, flag, glas, flaske, flaske2;
+    Item key, hammer, nails, axe, shovel, lumber, block;
         
     public Game() 
     {
@@ -59,7 +58,7 @@ public class Game
         west.setExit("east", outside);
         west.setDoorway("west", door2);
 
-        door2.setExitDoor("west", neighbour, "kølle");
+//        door2.setExitDoor("west", neighbour, "ble");
         
         river.setExit("north", waterfall);
         river.setExit("south", west);
@@ -82,17 +81,17 @@ public class Game
     }
     
     private void createItems() {
-        ske = new Item("ske", outside);
-        handske = new Item("handske", outside);
-        sten = new Item("sten", outside, true);
+        axe = new Item("axe", east);
+        block = new Item("block", east, true);
         
-        ble = new Item("ble", outside);
+        shovel = new Item("shovel", mountainside);
         
-        sten = new Item("sten", outside, true);
+        nails = new Item("nails", west);
         
-        flaske = new Item("flaske", outside);
+        lumber = new Item("lumber", waterfall);
         
-        flaske2 = new Item("flaske2", outside, true);
+        key = new Item("key", neighbour, true);
+        hammer = new Item("hammer", neighbour);
     }
     
     private void createInventory() {
