@@ -12,7 +12,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private HashMap<String, Item> inventory;
+    private static HashMap<String, Item> inventory;
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     
@@ -22,9 +22,9 @@ public class Game
         
     public Game() 
     {
+        createInventory();
         createRooms();
         createItems();
-        createInventory();
         parser = new Parser();
     }
 
@@ -90,12 +90,16 @@ public class Game
         
         lumber = new Item("lumber", waterfall);
         
-        key = new Item("key", neighbour, true);
+        key = new Item("key", outside);
         hammer = new Item("hammer", neighbour);
     }
     
-    private void createInventory() {
+    private static void createInventory() {
         inventory = new HashMap<String, Item>();
+    }
+
+    public static HashMap<String, Item> getInventory() {
+        return inventory;
     }
 
     public void play() 
@@ -222,7 +226,9 @@ public class Game
         else if (nextRoom == null && nextRoom1.getLock() == false){
             System.out.println("Room is not locked");
         }
-        else {
+        else if(!inventory.containsKey(nextRoom1.getKey())) {
+            System.out.println("You don't have the key!");
+        } else {
             nextRoom1.setLock(false);
             System.out.println("Room is now unlocked");
         }
