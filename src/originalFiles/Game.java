@@ -43,6 +43,7 @@ public class Game
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
         door = new Door("Door to house");
+        door2 = new Door("Door to ?");
         
         
         //Defines the exits of each room and where they lead.
@@ -58,7 +59,7 @@ public class Game
         west.setExit("east", outside);
         west.setDoorway("west", door2);
 
-//        door2.setExitDoor("west", neighbour, "ble");
+        door2.setExitDoor("west", neighbour, "nails");
         
         river.setExit("north", waterfall);
         river.setExit("south", west);
@@ -90,7 +91,7 @@ public class Game
         
         lumber = new Item("lumber", waterfall);
         
-        key = new Item("key", outside);
+        key = new Item("key", neighbour);
         hammer = new Item("hammer", neighbour);
     }
     
@@ -197,12 +198,16 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
-        }
-        else {
+        } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
+        }
+        
+        if (currentRoom == inside) {
+            System.out.println("You win!");
+            System.exit(0);
         }
     }
     
