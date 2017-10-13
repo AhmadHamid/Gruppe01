@@ -27,7 +27,7 @@ public class WordList {
     
 //    class Game.
     public static final String WELCOME = "Welcome to the World of Zuul!";
-    public static final String DESCRIPTION = "World of Zuul is a new, incredibly boring adventure game.";
+     public static final String DESCRIPTION = "as you are cooking a delicous meal, in your cozy cottage, your trusty pet companion runs out of the door, and into the woods\nconfused by this weird behaviour of your pet, you decide to follow it.";
     public static final String GET_HELP = "Type '" + CommandWord.HELP + "' if you need help.";
     public static final String ITEMS_IN_ROOM = "These items is in the room: ";
     public static final String DONT_KNOW_WHAT_YOU_MEAN = "I don't know what you mean...";
