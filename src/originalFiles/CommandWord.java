@@ -8,7 +8,7 @@ import language.*;
  */
 public enum CommandWord
 {
-    GO(WordList.GO), QUIT(WordList.QUIT), HELP(WordList.HELP), UNKNOWN(WordList.UNKNOWN), PICK(WordList.PICK), USE(WordList.USE), DROP(WordList.DROP), INVENTORY(WordList.INVENTORY), UNLOCK("unlock"), COMBINE("combine");
+    GO(WordList.GO), QUIT(WordList.QUIT), HELP(WordList.HELP), UNKNOWN(WordList.UNKNOWN), PICK(WordList.PICK), USE(WordList.USE), DROP(WordList.DROP), INVENTORY(WordList.INVENTORY);
     
     private String commandString;
     
