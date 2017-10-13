@@ -162,7 +162,8 @@ public class Game
         }
         else if (commandWord == CommandWord.INVENTORY) {
             printInventory(command);
-        } else if (commandWord == CommandWord.UNLOCK) {
+        }
+        else if (commandWord == CommandWord.UNLOCK) {
             unlockRoom(command);
         }
         return wantToQuit;
