@@ -12,20 +12,19 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private HashMap<String, Item> inventory;
+    private static HashMap<String, Item> inventory;
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     
-    Door door;
-    Door door2;
+    Door door, door2;
     
-    Item handske, ske, sten, ble, flag, glas, flaske, flaske2;
+    Item key, hammer, nails, axe, shovel, lumber, block;
         
     public Game() 
     {
+        createInventory();
         createRooms();
         createItems();
-        createInventory();
         parser = new Parser();
     }
 
@@ -44,6 +43,7 @@ public class Game
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
         door = new Door("Door to house");
+        door2 = new Door("Door to ?");
         
         
         //Defines the exits of each room and where they lead.
@@ -59,7 +59,7 @@ public class Game
         west.setExit("east", outside);
         west.setDoorway("west", door2);
 
-        door2.setExitDoor("west", neighbour, "kølle");
+        door2.setExitDoor("west", neighbour, "nails"); //test-item
         
         river.setExit("north", waterfall);
         river.setExit("south", west);
@@ -82,21 +82,25 @@ public class Game
     }
     
     private void createItems() {
-        ske = new Item("ske", outside);
-        handske = new Item("handske", outside);
-        sten = new Item("sten", outside, true);
+        axe = new Item("axe", inside);
+        block = new Item("block", east, true);
         
-        ble = new Item("ble", outside);
+        shovel = new Item("shovel", mountainside);
         
-        sten = new Item("sten", outside, true);
+        nails = new Item("nails", west);
         
-        flaske = new Item("flaske", outside);
+        lumber = new Item("lumber", waterfall);
         
-        flaske2 = new Item("flaske2", outside, true);
+        key = new Item("key", neighbour);
+        hammer = new Item("hammer", neighbour);
     }
     
-    private void createInventory() {
+    private static void createInventory() {
         inventory = new HashMap<String, Item>();
+    }
+
+    public static HashMap<String, Item> getInventory() {
+        return inventory;
     }
 
     public void play() 
@@ -119,7 +123,11 @@ public class Game
         System.out.println(WordList.GET_HELP);
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
-        System.out.println(WordList.ITEMS_IN_ROOM);
+        if(!currentRoom.getRoomItems().isEmpty()) {
+            System.out.println(WordList.ITEMS_IN_ROOM);
+        } else {
+            
+        }
         currentRoom.getRoomItemsList();
     }
 
@@ -154,6 +162,8 @@ public class Game
         }
         else if (commandWord == CommandWord.INVENTORY) {
             printInventory(command);
+        } else if (commandWord == CommandWord.UNLOCK) {
+            unlockRoom(command);
         }
         return wantToQuit;
     }
@@ -174,16 +184,58 @@ public class Game
         String direction = command.getSecondWord();
 
         Room nextRoom = currentRoom.getExit(direction);
-
-        if (nextRoom == null) {
+        Door nextRoom1 = currentRoom.getExitDoor(direction);
+        
+        if (nextRoom == null && nextRoom1 == null) {
             System.out.println("There is no door!");
         }
-        else {
+        else if (nextRoom == null && nextRoom1.getLock() == true){
+            System.out.println("The door is locked");
+        }
+        else if (nextRoom == null && nextRoom1.getDoor() == true){
+            currentRoom = nextRoom1.getExit(direction);
+            System.out.println("Going through door");
+            System.out.println(currentRoom.getLongDescription());
+            System.out.println(WordList.ITEMS_IN_ROOM);
+            currentRoom.getRoomItemsList();
+        } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-            
-            System.out.print("These items are in the room: ");
+            System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
+        }
+        
+        if (currentRoom == inside) {
+            System.out.println("You win!");
+            System.exit(0);
+        }
+    }
+    
+    private void unlockRoom(Command command){
+        if(!command.hasSecondWord()) {
+            System.out.println("Unlock what?");
+            return;
+        }
+        
+        String direction = command.getSecondWord();
+
+        Room nextRoom = currentRoom.getExit(direction);
+        Door nextRoom1 = currentRoom.getExitDoor(direction);
+        
+        if (nextRoom != null){
+            System.out.println("Room is not locked");
+        }
+        else if (nextRoom == null && nextRoom1 == null) {
+            System.out.println("There is no door!");
+        }
+        else if (nextRoom == null && nextRoom1.getLock() == false){
+            System.out.println("Room is not locked");
+        }
+        else if(!inventory.containsKey(nextRoom1.getKey())) {
+            System.out.println("You don't have the key!");
+        } else {
+            nextRoom1.setLock(false);
+            System.out.println("Room is now unlocked");
         }
     }
 
