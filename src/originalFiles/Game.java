@@ -237,6 +237,7 @@ public class Game
         } else {
             nextRoom1.setLock(false);
             System.out.println("Room is now unlocked");
+            goRoom(command);
         }
     }
 
