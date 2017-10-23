@@ -14,20 +14,18 @@ public class Door
 {
     private String description;
     private HashMap<String, Room> exits;
-    private boolean lock = true;
-    private final boolean door = true;
+    private boolean lock;
+    private final boolean door;
     private String lockItem;
     
-    public Door(String description) 
+    public Door(String description, String direction, Room neighbor, String lockItem) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
-    }
-
-    public void setExitDoor(String direction, Room neighbor, String lockItem) 
-    {
         exits.put(direction, neighbor);
         this.lockItem = lockItem;
+        lock = true;
+        door = true;
     }
 
     public void setLock(boolean lock) {
