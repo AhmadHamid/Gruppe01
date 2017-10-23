@@ -43,7 +43,7 @@ public class Game
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
         
-        door = new Door("Door to house", "south", inside, "keys");
+        door = new Door("Door to house", "south", inside, "nails");
 
         
         
