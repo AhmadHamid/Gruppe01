@@ -42,6 +42,7 @@ public class Game
         oakTree = new Room("at a giant oak tree");
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
+        
         door = new Door("Door to house");
 
         
@@ -53,13 +54,13 @@ public class Game
         outside.setDoorway("south", door);
         outside.setExit("west", west);
 
-        door.setExitDoor("south", inside, "key");
+//        door.setExitDoor("south", inside, "key");
         
         west.setExit("north", river);
         west.setExit("east", outside);
-        west.setDoorway("west", door2);
+//        west.setDoorway("west", door2);
 
-        door2.setExitDoor("west", neighbour, "nails"); //test-item
+//        door2.setExitDoor("west", neighbour, "nails"); //test-item
         
         river.setExit("north", waterfall);
         river.setExit("south", west);
