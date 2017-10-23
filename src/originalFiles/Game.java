@@ -43,7 +43,7 @@ public class Game
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
         
-        door = new Door("Door to house", "south", inside, "key");
+        door = new Door("Door to house", "south", inside, "keys");
 
         
         
@@ -53,14 +53,9 @@ public class Game
         outside.setExit("east", east);
         outside.setDoorway("south", door);
         outside.setExit("west", west);
-
-//        door.setExitDoor("south", inside, "key");
         
         west.setExit("north", river);
         west.setExit("east", outside);
-//        west.setDoorway("west", door2);
-
-//        door2.setExitDoor("west", neighbour, "nails"); //test-item
         
         river.setExit("north", waterfall);
         river.setExit("south", west);
@@ -130,6 +125,8 @@ public class Game
             
         }
         currentRoom.getRoomItemsList();
+        System.out.println("TEST");
+        Item.enumAllItems();
     }
 
     private boolean processCommand(Command command) 
