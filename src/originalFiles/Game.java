@@ -33,17 +33,17 @@ public class Game
         
         //Each room has a unique name and description.
         inside = new Room("inside a cottage");
-        outside = new Room("in the forest outside the cottage");
-        west = new Room("west of the cottage");
-        river = new Room("by the river");
+        outside = new Room("in the forest just outside of your cottage");
+        west = new Room("on the path to the local river");
+        river = new Room("by the river with a great waterfall");
         waterfall = new Room("at the waterfall");
-        east = new Room("east of the cottage");
+        east = new Room("at your shed");
         crossroad = new Room("at a crossroad with multiple paths");
         oakTree = new Room("at a giant oak tree");
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
         door = new Door("Door to house");
-        door2 = new Door("Door to ?");
+
         
         
         //Defines the exits of each room and where they lead.
