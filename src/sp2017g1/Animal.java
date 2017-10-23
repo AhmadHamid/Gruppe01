@@ -9,7 +9,7 @@ package sp2017g1;
  *
  * @author Student
  */
-public class Animal {
+public class Animal implements NPC{
     private String name;
     private String species;
     private boolean flying;
