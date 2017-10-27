@@ -14,43 +14,34 @@ import originalFiles.*;
  */
 public class Item {
 
-    private String itemName;
+    private String/*ItemEnum*/ itemName;
     private Room selectedRoom;
-    private boolean collectability;
     private Game game;
-    private static HashMap<String, Item> allItems = new HashMap<>();
+    private static HashMap<String/*Enum*/, Item> allItems = new HashMap<>();
 
-    public Item(String name, Room room) {
+    public Item(String/*ItemEnum*/ name, Room room) {
         itemName = name;
         selectedRoom = room;
         selectedRoom.getRoomItems().put(itemName, this);
+        /*selectedRoom.getRoomItems().put(ItemEnum.test, this);*/
         allItems.put(itemName, this);
-    }
-
-//    Denne constructor skal slettes, når NPC implementeres.
-    public Item(String name, Room room, boolean collectability) {
-        this(name, room);
-        this.collectability = collectability;
-        selectedRoom.getRoomItems().put(itemName, this);
-        allItems.put(itemName, Item.this);
+        /*allItems.put(ItemEnum.test, this);*/
     }
 
 //    returnerer navnet af item
     public String getItemName() {
-        return itemName;
-    }
-
-    public boolean isNotCollectable() {
-        return collectability;
+        /*return itemName;*/
+        return itemName.toString();
     }
 
     public static void enumAllItems() {
-//        for (String itemName : allItems.keySet()) {
-//            System.out.println(allItems);
-//        }
-        Enumeration e = Collections.enumeration(allItems.keySet());
-        while (e.hasMoreElements()) {
-            System.out.println(e.nextElement());   
+        for (String/*Enum*/ itemName : allItems.keySet()) {
+            System.out.println(itemName);
         }
+//        Enumeration e = Collections.enumeration(allItems.keySet());
+//        while (e.hasMoreElements()) {
+//            System.out.println(e.nextElement());   
+//        }
+
     }
 }

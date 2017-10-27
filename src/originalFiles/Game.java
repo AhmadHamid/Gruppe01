@@ -13,12 +13,13 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private static HashMap<String, Item> inventory;
+    /*private static HashMap<ItemEnum, Item> inventory;*/
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     
     Door door, door2;
     
-    Item key, hammer, nails, axe, shovel, lumber, block;
+    Item key, hammer, nails, axe, shovel, lumber, block, test;
         
     public Game() 
     {
@@ -43,7 +44,7 @@ public class Game
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
         
-        door = new Door("Door to house", "south", inside, "nails");
+        door = new Door("Door to house", "south", inside, /*ItemEnum.test*/ "nails");
 
         
         
@@ -78,24 +79,27 @@ public class Game
     }
     
     private void createItems() {
-        axe = new Item("axe", inside);
-        block = new Item("block", east, true);
+        axe = new Item("axe"/*ItemEnum.axe*/, inside);
+        block = new Item("block"/*ItemEnum.block*/, east);
         
-        shovel = new Item("shovel", mountainside);
+        shovel = new Item("shovel"/*ItemEnum.shovel*/, mountainside);
         
-        nails = new Item("nails", west);
+        nails = new Item("nails"/*ItemEnum.nails*/, west);
         
-        lumber = new Item("lumber", waterfall);
+        lumber = new Item("lumber"/*ItemEnum.lumber*/, waterfall);
         
-        key = new Item("key", neighbour);
-        hammer = new Item("hammer", neighbour);
+        key = new Item("key"/*ItemEnum.key*/, neighbour);
+        hammer = new Item("hammer"/*ItemEnum.hammer*/, neighbour);
+        
+        test = new Item("test"/*ItemEnum.test*/, outside);
     }
     
     private static void createInventory() {
         inventory = new HashMap<String, Item>();
+        /*inventory = new HashMap<ItemEnum, Item>();*/
     }
 
-    public static HashMap<String, Item> getInventory() {
+    public static HashMap<String/*ItemEnum*/, Item> getInventory() {
         return inventory;
     }
 
@@ -256,19 +260,16 @@ public class Game
         
         if(!command.hasSecondWord()) {
             System.out.println("Pick what item?");
-        } else if (!currentRoom.getRoomItems().containsKey(inputItem)) {
+        } else if (!currentRoom.getRoomItems().containsKey(inputItem/*ItemEnum.valueOf(inputItem)*/)) {
             System.out.println("That is not an item!");
-        } else if (currentRoom.getRoomItems().get(inputItem).isNotCollectable()) {
-            System.out.println("Item is not collectable");
         }
         
-        if(currentRoom.getRoomItems().get(inputItem).isNotCollectable()) {
-            
-        } else if(currentRoom.getRoomItems().containsKey(inputItem)) {
-            inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
-            currentRoom.getRoomItems().remove(inputItem);
+        if(currentRoom.getRoomItems().containsKey(inputItem/*ItemEnum.valueOf(inputItem)*/)) {
+            inventory.put(inputItem/*ItemEnum.test*/, currentRoom.getRoomItems().get(inputItem));
+            currentRoom.getRoomItems().remove(inputItem/*ItemEnum.test*/);
             
             System.out.println(inventory.get(inputItem).getItemName() + " is added to the inventory");
+            //System.out.println(inventory.get(ItemEnum.valueOf(inputItem)).getItemName());
         }
     }
     
@@ -300,6 +301,8 @@ public class Game
             System.out.println("In your inventory is: ");
             for (String item : inventory.keySet()) {
                 System.out.printf("%s  ", inventory.get(item).getItemName());
+            /*for (ItemEnum item : inventory.keySet()) {
+                System.out.printf("%s  ", inventory.get(item).getItemName());*/
             } System.out.println();
         } else {
             System.out.println("No items in the inventory");

@@ -16,9 +16,9 @@ public class Door
     private HashMap<String, Room> exits;
     private boolean lock;
     private final boolean door;
-    private String lockItem;
+    private /*ItemEnum*/ String lockItem;
     
-    public Door(String description, String direction, Room neighbor, String lockItem) 
+    public Door(String description, String direction, Room neighbor, String lockItem /*ItemEnum lockItem*/) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
@@ -41,7 +41,8 @@ public class Door
     }
     
     public String getKey(){
-        return lockItem;
+        /*return lockItem;*/
+        return lockItem.toString();
     }
     
     public String getShortDescription()
