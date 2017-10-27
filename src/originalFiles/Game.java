@@ -14,7 +14,7 @@ public class Game
     private Room currentRoom;
     private static HashMap<String, Item> inventory;
     
-    Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
+    Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
     
     Door door, Ladderdoor;
     
@@ -32,62 +32,71 @@ public class Game
         //Creates and defines the rooms used in the game.
         
         //Each room has a unique name and description.
-        inside = new Room("inside a cottage");
-        outside = new Room("in the forest just outside of your cottage");
-        west = new Room("on the path to the local river");
+        home = new Room("inside a cottage");
+        garden = new Room("in your garden outside your home");
+        bridge   = new Room("on the bridge that crosses the local river");
         river = new Room("by the river with a great waterfall");
         waterfall = new Room("at the waterfall");
-        east = new Room("at your shed");
-        crossroad = new Room("at a crossroad with multiple paths");
-        oakTree = new Room("at a giant oak tree");
-        mountainside = new Room("at the side of a mountain");
+        shed = new Room("at your shed");
+        mountainside = new Room("at the side of the mountain");
+        forest = new Room("at a giant oak tree");
+        mountain = new Room("on a mountain cliff");
         neighbour = new Room("at your neighbours house");
         
+
         door = new Door("The door to your house", "nails");
         Ladderdoor = new Door("ladder to the top of the mountain", "lumber");
+
         
         
         //Defines the exits of each room and where they lead.
-        
 
-        outside.setExit("east", east);
-        outside.setExit("south", door);
-        outside.setExit("west", west);
+        garden.setExit("east", shed);
+        garden.setExit("south", door);
+        garden.setExit("west", bridge);
+
         
-        west.setExit("north", river);
-        west.setExit("east", outside);
+        bridge.setExit("north", river);
+        bridge.setExit("east", garden);
         
         river.setExit("north", waterfall);
-        river.setExit("south", west);
+        river.setExit("south", bridge);
 
         waterfall.setExit("south", river);
 
-        east.setExit("north", crossroad);
-        east.setExit("west", outside);
+        shed.setExit("north", mountainside);
+        shed.setExit("west", garden);
 
-        crossroad.setExit("north", Ladderdoor);
-        crossroad.setExit("east", oakTree);
-        crossroad.setExit("south", east);
 
-        mountainside.setExit("south", crossroad);
+        mountainside.setExit("north", Ladderdoor);
+        mountainside.setExit("east", forest);
+        mountainside.setExit("south", shed);
 
-        oakTree.setExit("west", crossroad);
 
-        neighbour.setExit("east", west);
+        mountain.setExit("south", mountainside);
+
+        forest.setExit("west", mountainside);
+
+
+        neighbour.setExit("east", bridge);
         
-        door.setExit("south", inside);
+        door.setExit("south", home);
         
-        Ladderdoor.setExit("north", mountainside);
-        currentRoom = outside;
+        Ladderdoor.setExit("north", mountain);
+        currentRoom = garden;
+
+        neighbour.setExit("east", bridge);
+        currentRoom = garden;
+
     }
     
     private void createItems() {
-        axe = new Item("axe", inside);
-        block = new Item("block", east, true);
+        axe = new Item("axe", home);
+        block = new Item("block", shed, true);
         
-        shovel = new Item("shovel", mountainside);
+        shovel = new Item("shovel", mountain);
         
-        nails = new Item("nails", west);
+        nails = new Item("nails", bridge);
         
         lumber = new Item("lumber", waterfall);
         
@@ -197,7 +206,7 @@ public class Game
         }
         else if (nextRoom == null && nextRoom1.getDoor() == true){
             currentRoom = nextRoom1.getExit(direction);
-            if (currentRoom == inside) {
+            if (currentRoom == home) {
                 System.out.println(WordList.END_DESCRIPTION);
                 System.exit(0);
             }
@@ -213,7 +222,12 @@ public class Game
             currentRoom.getRoomItemsList();
         }
         
-        
+
+        if (currentRoom == home) {
+            System.out.println("You win!");
+            System.exit(0);
+        }
+
     }
     
     private void unlockRoom(Command command){
