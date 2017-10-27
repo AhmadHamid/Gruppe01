@@ -14,16 +14,13 @@ public class Door
         extends Room
 {
     private String description;
+    
     private boolean lock;
     private final boolean door;
     private /*ItemEnum*/ String lockItem;
     
-    public Door(String description, String direction, Room neighbor, String lockItem /*ItemEnum lockItem*/) 
-    public  Door(String description, String lockItem) 
+    public  Door(String description, String/*ItemEnum*/ lockItem) 
     {
-        this.description = description;
-        exits = new HashMap<String, Room>();
-        exits.put(direction, neighbor);
         super(description);
         this.lockItem = lockItem;
         lock = true;
@@ -47,11 +44,6 @@ public class Door
         return lockItem.toString();
     }
     
-    public String getShortDescription()
-    {
-        return description;
-    }
-
    
 @Override
     public String getLongDescription()
@@ -59,10 +51,7 @@ public class Door
         return "You walk through " + description + ".\n";
     }
 
-    public Room getExit(String direction) 
-    {
-        return exits.get(direction);
-    }
+    
     
 }
 

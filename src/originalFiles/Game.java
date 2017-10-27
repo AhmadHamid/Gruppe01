@@ -15,13 +15,11 @@ public class Game
     private static HashMap<String, Item> inventory;
     /*private static HashMap<ItemEnum, Item> inventory;*/
     
-    Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
     
     Door door, Ladderdoor;
     
-    Item key, hammer, nails, axe, shovel, lumber, block, test;
-    Item key, hammer, nails, axe, shovel, lumber, block, ladder;
+    Item key, hammer, nails, axe, shovel, lumber, block, ladder, test;
         
     public Game() 
     {
@@ -35,55 +33,36 @@ public class Game
         //Creates and defines the rooms used in the game.
         
         //Each room has a unique name and description.
-        inside = new Room("inside a cottage");
-        outside = new Room("in the forest just outside of your cottage");
-        west = new Room("on the path to the local river");
         home = new Room("inside a cottage");
         garden = new Room("in your garden outside your home");
         bridge   = new Room("on the bridge that crosses the local river");
         river = new Room("by the river with a great waterfall");
         waterfall = new Room("at the waterfall");
-        east = new Room("at your shed");
-        crossroad = new Room("at a crossroad with multiple paths");
-        oakTree = new Room("at a giant oak tree");
-        mountainside = new Room("at the side of a mountain");
         shed = new Room("at your shed");
         mountainside = new Room("at the side of the mountain");
         forest = new Room("at a giant oak tree");
         mountain = new Room("on a mountain cliff");
         neighbour = new Room("at your neighbours house");
         
-        door = new Door("Door to house", "south", inside, /*ItemEnum.test*/ "nails");
-
-        door = new Door("The door to your house", "nails");
+        door = new Door("The door to your house", /*ItemEnum.test*/ "nails");
         Ladderdoor = new Door("ladder to the top of the mountain", "lumber");
-
-        
+   
         
         //Defines the exits of each room and where they lead.
-        inside.setExit("north", outside);
 
-        outside.setExit("east", east);
-        outside.setDoorway("south", door);
-        outside.setExit("west", west);
         garden.setExit("east", shed);
         garden.setExit("south", door);
         garden.setExit("west", bridge);
 
         
-        west.setExit("north", river);
-        west.setExit("east", outside);
         bridge.setExit("north", river);
         bridge.setExit("east", garden);
         
         river.setExit("north", waterfall);
-        river.setExit("south", west);
         river.setExit("south", bridge);
 
         waterfall.setExit("south", river);
 
-        east.setExit("north", crossroad);
-        east.setExit("west", outside);
         shed.setExit("north", mountainside);
         shed.setExit("west", garden);
 
@@ -95,13 +74,9 @@ public class Game
 
         mountain.setExit("south", mountainside);
 
-        crossroad.setExit("north", mountainside);
-        crossroad.setExit("east", oakTree);
-        crossroad.setExit("south", east);
         forest.setExit("west", mountainside);
 
 
-        oakTree.setExit("west", crossroad);
         neighbour.setExit("east", bridge);
         
         door.setExit("south", home);
@@ -112,19 +87,11 @@ public class Game
         neighbour.setExit("east", bridge);
         currentRoom = garden;
 
-        neighbour.setExit("east", west);
-        currentRoom = outside;
     }
     
     private void createItems() {
-        axe = new Item("axe"/*ItemEnum.axe*/, inside);
-        block = new Item("block"/*ItemEnum.block*/, east);
-        
-        shovel = new Item("shovel"/*ItemEnum.shovel*/, mountainside);
-        
-        nails = new Item("nails"/*ItemEnum.nails*/, west);
-        axe = new Item("axe", home);
-        block = new Item("block", shed, true);
+        axe = new Item("axe"/*ItemEnum.axe*/, home);
+        block = new Item("block", shed);
         
         shovel = new Item("shovel", mountain);
         
@@ -132,10 +99,8 @@ public class Game
         
         lumber = new Item("lumber"/*ItemEnum.lumber*/, waterfall);
         
-        key = new Item("key"/*ItemEnum.key*/, neighbour);
-        hammer = new Item("hammer"/*ItemEnum.hammer*/, neighbour);
-        
-        test = new Item("test"/*ItemEnum.test*/, outside);
+        test = new Item("test"/*ItemEnum.test*/, garden);
+
         key = new Item("key", neighbour);
         hammer = new Item("hammer", neighbour);
         
@@ -257,7 +222,6 @@ public class Game
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         } else {
-        } else  {
             currentRoom = nextRoom;
             
             System.out.println(currentRoom.getLongDescription());
@@ -265,7 +229,6 @@ public class Game
             currentRoom.getRoomItemsList();
         }
         
-        if (currentRoom == inside) {
 
         if (currentRoom == home) {
             System.out.println("You win!");
