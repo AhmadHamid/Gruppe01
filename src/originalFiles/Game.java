@@ -16,7 +16,7 @@ public class Game
     
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     
-    Door door, door2;
+    Door door, Ladderdoor;
     
     Item key, hammer, nails, axe, shovel, lumber, block;
         
@@ -43,15 +43,15 @@ public class Game
         mountainside = new Room("at the side of a mountain");
         neighbour = new Room("at your neighbours house");
         
-        door = new Door("Door to house", "south", inside, "nails");
-
+        door = new Door("The door to your house", "nails");
+        Ladderdoor = new Door("ladder to the top of the mountain", "ladder");
         
         
         //Defines the exits of each room and where they lead.
-        inside.setExit("north", outside);
+        
 
         outside.setExit("east", east);
-        outside.setDoorway("south", door);
+        outside.setExit("south", door);
         outside.setExit("west", west);
         
         west.setExit("north", river);
@@ -74,6 +74,10 @@ public class Game
         oakTree.setExit("west", crossroad);
 
         neighbour.setExit("east", west);
+        
+        door.setExit("south", inside);
+        
+        Ladderdoor.setExit("north", mountain);
         currentRoom = outside;
     }
     
@@ -193,21 +197,23 @@ public class Game
         }
         else if (nextRoom == null && nextRoom1.getDoor() == true){
             currentRoom = nextRoom1.getExit(direction);
+            if (currentRoom == inside) {
+                System.out.println(WordList.END_DESCRIPTION);
+                System.exit(0);
+            }
             System.out.println("Going through door");
             System.out.println(currentRoom.getLongDescription());
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
-        } else {
+        } else  {
             currentRoom = nextRoom;
+            
             System.out.println(currentRoom.getLongDescription());
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         }
         
-        if (currentRoom == inside) {
-            System.out.println("You win!");
-            System.exit(0);
-        }
+        
     }
     
     private void unlockRoom(Command command){
