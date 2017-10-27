@@ -44,7 +44,7 @@ public class Game
         neighbour = new Room("at your neighbours house");
         
         door = new Door("The door to your house", "nails");
-        Ladderdoor = new Door("ladder to the top of the mountain", "ladder");
+        Ladderdoor = new Door("ladder to the top of the mountain", "lumber");
         
         
         //Defines the exits of each room and where they lead.
@@ -65,7 +65,7 @@ public class Game
         east.setExit("north", crossroad);
         east.setExit("west", outside);
 
-        crossroad.setExit("north", mountainside);
+        crossroad.setExit("north", Ladderdoor);
         crossroad.setExit("east", oakTree);
         crossroad.setExit("south", east);
 
@@ -77,7 +77,7 @@ public class Game
         
         door.setExit("south", inside);
         
-        Ladderdoor.setExit("north", mountain);
+        Ladderdoor.setExit("north", mountainside);
         currentRoom = outside;
     }
     
