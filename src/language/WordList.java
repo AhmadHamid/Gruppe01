@@ -24,6 +24,7 @@ public class WordList {
     public static final String DROP = "drop";
     public static final String INVENTORY = "inventory";
     public static final String UNLOCK = "unlock";
+    public static final String COMBINE = "combine";
     
 //    class Game.
     public static final String WELCOME = "Welcome to the World of Zuul!";

@@ -18,7 +18,7 @@ public class Game
     
     Door door, Ladderdoor;
     
-    Item key, hammer, nails, axe, shovel, lumber, block;
+    Item key, hammer, nails, axe, shovel, lumber, block, ladder;
         
     public Game() 
     {
@@ -102,6 +102,8 @@ public class Game
         
         key = new Item("key", neighbour);
         hammer = new Item("hammer", neighbour);
+        
+        ladder = new Item("ladder");
     }
     
     private static void createInventory() {
@@ -176,6 +178,9 @@ public class Game
         }
         else if (commandWord == CommandWord.UNLOCK) {
             unlockRoom(command);
+        }
+        else if (commandWord == CommandWord.COMBINE) {
+            combineItems(command);
         }
         return wantToQuit;
     }
@@ -323,6 +328,17 @@ public class Game
             } System.out.println();
         } else {
             System.out.println("No items in the inventory");
+        }
+    }
+
+    private void combineItems(Command command) {
+        if(inventory.containsKey("nails")) {
+            inventory.put("ladder", ladder);
+            inventory.remove("nails");
+        }
+        
+        else {
+            System.out.println("None of the required items are in your inventory.");
         }
     }
 }

@@ -19,6 +19,10 @@ public class Item {
     private boolean collectability;
     private Game game;
     private static HashMap<String, Item> allItems = new HashMap<>();
+    
+    public Item(String name) {
+        itemName = name;
+    }
 
     public Item(String name, Room room) {
         itemName = name;
