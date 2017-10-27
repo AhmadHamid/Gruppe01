@@ -18,6 +18,11 @@ public class Item {
     private Room selectedRoom;
     private Game game;
     private static HashMap<String/*Enum*/, Item> allItems = new HashMap<>();
+    private static HashMap<String, Item> allItems = new HashMap<>();
+    
+    public Item(String name) {
+        itemName = name;
+    }
 
     public Item(String/*ItemEnum*/ name, Room room) {
         itemName = name;

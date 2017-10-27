@@ -32,7 +32,7 @@ public class Room
         exits.put(direction, neighbor);
     }
     
-    public void setDoorway(String direction, Door doorway) 
+    public void setExit(String direction, Door doorway) 
     {
         this.doorways.put(direction, doorway);
     }
