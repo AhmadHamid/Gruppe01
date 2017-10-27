@@ -18,10 +18,10 @@ public class Game
     Room inside, outside, west, river, waterfall, east, crossroad, oakTree, mountainside, neighbour;
     Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
     
-    Door door, door2;
     Door door, Ladderdoor;
     
     Item key, hammer, nails, axe, shovel, lumber, block, test;
+    Item key, hammer, nails, axe, shovel, lumber, block, ladder;
         
     public Game() 
     {

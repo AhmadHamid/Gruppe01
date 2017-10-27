@@ -24,6 +24,7 @@ public class Door
         this.description = description;
         exits = new HashMap<String, Room>();
         exits.put(direction, neighbor);
+        super(description);
         this.lockItem = lockItem;
         lock = true;
         door = true;
