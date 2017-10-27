@@ -11,18 +11,17 @@ import originalFiles.*;
  * @version 2006.03.30
  */
 public class Door 
+        extends Room
 {
     private String description;
-    private HashMap<String, Room> exits;
+    
     private boolean lock;
     private final boolean door;
     private String lockItem;
     
-    public Door(String description, String direction, Room neighbor, String lockItem) 
+    public  Door(String description, String lockItem) 
     {
-        this.description = description;
-        exits = new HashMap<String, Room>();
-        exits.put(direction, neighbor);
+        super(description);
         this.lockItem = lockItem;
         lock = true;
         door = true;
@@ -44,19 +43,14 @@ public class Door
         return lockItem;
     }
     
-    public String getShortDescription()
-    {
-        return description;
-    }
-
+   
+@Override
     public String getLongDescription()
     {
         return "You walk through " + description + ".\n";
     }
 
-    public Room getExit(String direction) 
-    {
-        return exits.get(direction);
-    }
+    
+    
 }
 
