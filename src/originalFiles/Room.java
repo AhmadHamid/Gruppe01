@@ -14,16 +14,14 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
-    private HashMap<String, Item> roomItems;
-    /*private HashMap<ItemEnum, Item> roomItems;*/
+    private HashMap<ItemEnum, Item> roomItems;
     private HashMap<String, Door> doorways;
 
     public Room(String description) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
-        this.roomItems = new HashMap<String, Item>();
-        /*this.roomItems = new HashMap<ItemEnum, Item>();*/
+        this.roomItems = new HashMap<ItemEnum, Item>();
         doorways = new HashMap<String, Door>();
     }
 
@@ -38,16 +36,14 @@ public class Room
     }
     
 //    Return HashMap with items in room
-    public HashMap<String/*ItemEnum*/, Item> getRoomItems() {
+    public HashMap<ItemEnum, Item> getRoomItems() {
         return roomItems;
     }
 
 //    Return list of items in room
     public void getRoomItemsList() {
-        for (String item : roomItems.keySet()) {
-            System.out.printf("%s  ", roomItems.get(item).getItemName());
-        /*for (ItemEnum item : roomItems.keySet()) {
-            System.out.printf("%s ", roomItems.get(item).getItemName());*/
+        for (ItemEnum item : roomItems.keySet()) {
+            System.out.printf("%s ", roomItems.get(item).getItemName());
         }
         System.out.println();
     }
