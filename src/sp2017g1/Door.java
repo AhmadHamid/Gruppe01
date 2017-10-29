@@ -17,9 +17,9 @@ public class Door
     
     private boolean lock;
     private final boolean door;
-    private ItemEnum lockItem;
+    private /*ItemEnum*/ String lockItem;
     
-    public  Door(String description, ItemEnum lockItem) 
+    public  Door(String description, String/*ItemEnum*/ lockItem) 
     {
         super(description);
         this.lockItem = lockItem;
@@ -40,6 +40,7 @@ public class Door
     }
     
     public String getKey(){
+        /*return lockItem;*/
         return lockItem.toString();
     }
     

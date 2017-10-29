@@ -10,16 +10,5 @@ package sp2017g1;
  * @author Student
  */
 public enum ItemEnum {
-    key("key"), hammer("hammer"), nails("nails"), axe("axe"), shovel("shovel"), lumber("lumber"), block("block"), ladder("ladder"), test("test"), unknown("unknown");
-    
-    private String itemString;
-
-    private ItemEnum(String itemString) {
-        this.itemString = itemString;
-    }
-    
-    public String toString() {
-        return itemString;
-    }
-    
+    key, hammer, nails, axe, shovel, lumber, block, test;
 }
