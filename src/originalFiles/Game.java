@@ -43,8 +43,8 @@ public class Game
         mountain = new Room("on a mountain cliff");
         neighbour = new Room("at your neighbours house");
         
-        door = new Door("The door to your house", ItemEnum.test);
-        Ladderdoor = new Door("ladder to the top of the mountain", ItemEnum.lumber);
+        door = new Door("The door to your house", ItemEnum.key);
+        Ladderdoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
    
         
         //Defines the exits of each room and where they lead.
@@ -331,13 +331,14 @@ public class Game
     }
 
     private void combineItems(Command command) {
-//        if(inventory.containsKey("nails")) {
-//            inventory.put("ladder", ladder);
-//            inventory.remove("nails");
-//        }
-//        
-//        else {
-//            System.out.println("None of the required items are in your inventory.");
-//        }
+        if(inventory.containsKey(ItemEnum.nails)) {
+            inventory.put(ItemEnum.ladder, ladder);
+            inventory.remove(ItemEnum.nails);
+            System.out.println(nails.getItemName() + " and x " + "has been combined to " + ladder.getItemName());
+        }
+        
+        else {
+            System.out.println("None of the required items are in your inventory.");
+        }
     }
 }
