@@ -12,7 +12,8 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private static HashMap<ItemEnum, Item> inventory;
+    private static HashMap<String, Item> inventory;
+    /*private static HashMap<ItemEnum, Item> inventory;*/
     
     Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
     
@@ -43,8 +44,13 @@ public class Game
         mountain = new Room("on a mountain cliff");
         neighbour = new Room("at your neighbours house");
         
+<<<<<<< HEAD
         door = new Door("The door to your house", ItemEnum.key);
         Ladderdoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
+=======
+        door = new Door("The door to your house", /*ItemEnum.test*/ "nails");
+        Ladderdoor = new Door("ladder to the top of the mountain", "lumber");
+>>>>>>> 36ccf5d792c7ed293d7a4ac4403e4efba9c43f3f
    
         
         //Defines the exits of each room and where they lead.
@@ -89,28 +95,29 @@ public class Game
     }
     
     private void createItems() {
-        axe = new Item(ItemEnum.axe, home);
-        block = new Item(ItemEnum.block, shed);
+        axe = new Item("axe"/*ItemEnum.axe*/, home);
+        block = new Item("block", shed);
         
-        shovel = new Item(ItemEnum.shovel, mountain);
+        shovel = new Item("shovel", mountain);
         
-        nails = new Item(ItemEnum.nails, bridge);
+        nails = new Item("nails", bridge);
         
-        lumber = new Item(ItemEnum.lumber, waterfall);
+        lumber = new Item("lumber"/*ItemEnum.lumber*/, waterfall);
         
-        test = new Item(ItemEnum.test, garden);
+        test = new Item("test"/*ItemEnum.test*/, garden);
 
-        key = new Item(ItemEnum.key, neighbour);
-        hammer = new Item(ItemEnum.hammer, neighbour);
+        key = new Item("key", neighbour);
+        hammer = new Item("hammer", neighbour);
         
-        ladder = new Item(ItemEnum.ladder);
+        ladder = new Item("ladder");
     }
     
     private static void createInventory() {
-        inventory = new HashMap<ItemEnum, Item>();
+        inventory = new HashMap<String, Item>();
+        /*inventory = new HashMap<ItemEnum, Item>();*/
     }
 
-    public static HashMap<ItemEnum, Item> getInventory() {
+    public static HashMap<String/*ItemEnum*/, Item> getInventory() {
         return inventory;
     }
 
@@ -255,13 +262,12 @@ public class Game
         else if (nextRoom == null && nextRoom1.getLock() == false){
             System.out.println("Room is not locked");
         }
-        else if(!inventory.containsKey(ItemEnum.valueOf(nextRoom1.getKey()))) {
+        else if(!inventory.containsKey(nextRoom1.getKey())) {
             System.out.println("You don't have the key!");
         } else {
             nextRoom1.setLock(false);
             System.out.println("Room is now unlocked");
-            //inventory.remove(nextRoom1.getKey());
-            inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
+            inventory.remove(nextRoom1.getKey());
             goRoom(command);
         }
     }
@@ -278,20 +284,20 @@ public class Game
     }
     
     private void pickItem(Command command) {
-        /*String inputItem = command.getSecondWord().toLowerCase();*/
-        ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
+        String inputItem = command.getSecondWord().toLowerCase();
         
         if(!command.hasSecondWord()) {
             System.out.println("Pick what item?");
-        } else if (!currentRoom.getRoomItems().containsKey(inputItem)) {
+        } else if (!currentRoom.getRoomItems().containsKey(inputItem/*ItemEnum.valueOf(inputItem)*/)) {
             System.out.println("That is not an item!");
         }
         
-        if(currentRoom.getRoomItems().containsKey(inputItem)) {
-            inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
-            currentRoom.getRoomItems().remove(inputItem);
+        if(currentRoom.getRoomItems().containsKey(inputItem/*ItemEnum.valueOf(inputItem)*/)) {
+            inventory.put(inputItem/*ItemEnum.test*/, currentRoom.getRoomItems().get(inputItem));
+            currentRoom.getRoomItems().remove(inputItem/*ItemEnum.test*/);
             
-            System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
+            System.out.println(inventory.get(inputItem).getItemName() + " is added to the inventory");
+            //System.out.println(inventory.get(ItemEnum.valueOf(inputItem)).getItemName());
         }
     }
     
@@ -302,8 +308,7 @@ public class Game
     }
     
     private void dropItem(Command command) {
-        /*String inputItem = command.getSecondWord().toLowerCase();*/
-        ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
+        String inputItem = command.getSecondWord().toLowerCase();
         
         if(!command.hasSecondWord()) {
             System.out.println("Drop what item?");
@@ -322,8 +327,10 @@ public class Game
     private void printInventory(Command command) {
         if(!inventory.isEmpty()) {
             System.out.println("In your inventory is: ");
-            for (ItemEnum item : inventory.keySet()) {
+            for (String item : inventory.keySet()) {
                 System.out.printf("%s  ", inventory.get(item).getItemName());
+            /*for (ItemEnum item : inventory.keySet()) {
+                System.out.printf("%s  ", inventory.get(item).getItemName());*/
             } System.out.println();
         } else {
             System.out.println("No items in the inventory");
@@ -331,10 +338,16 @@ public class Game
     }
 
     private void combineItems(Command command) {
+<<<<<<< HEAD
         if(inventory.containsKey(ItemEnum.nails)) {
             inventory.put(ItemEnum.ladder, ladder);
             inventory.remove(ItemEnum.nails);
             System.out.println(nails.getItemName() + " and x " + "has been combined to " + ladder.getItemName());
+=======
+        if(inventory.containsKey("nails")) {
+            inventory.put("ladder", ladder);
+            inventory.remove("nails");
+>>>>>>> 36ccf5d792c7ed293d7a4ac4403e4efba9c43f3f
         }
         
         else {

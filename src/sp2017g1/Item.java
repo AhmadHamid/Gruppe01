@@ -14,36 +14,38 @@ import originalFiles.*;
  */
 public class Item {
 
-    private ItemEnum itemName;
+    private String/*ItemEnum*/ itemName;
     private Room selectedRoom;
     private Game game;
-    private static HashMap<ItemEnum, Item> allItems = new HashMap<>();
+    private static HashMap<String/*Enum*/, Item> allItems = new HashMap<>();
     
-    public Item(ItemEnum itemname) {
-        this.itemName = itemname;
+    public Item(String name) {
+        itemName = name;
     }
 
-    public Item(ItemEnum itemName, Room room) {
-        this.itemName = itemName;
+    public Item(String/*ItemEnum*/ name, Room room) {
+        itemName = name;
         selectedRoom = room;
-        selectedRoom.getRoomItems().put(this.itemName, this);
+        selectedRoom.getRoomItems().put(itemName, this);
+        /*selectedRoom.getRoomItems().put(ItemEnum.test, this);*/
         allItems.put(itemName, this);
         /*allItems.put(ItemEnum.test, this);*/
     }
 
 //    returnerer navnet af item
     public String getItemName() {
+        /*return itemName;*/
         return itemName.toString();
-    }
-    
-    public boolean isUnknown() {
-        return (itemName == ItemEnum.unknown);
     }
 
     public static void enumAllItems() {
-        for (ItemEnum itemName : allItems.keySet()) {
-            System.out.println(itemName.toString());
+        for (String/*Enum*/ itemName : allItems.keySet()) {
+            System.out.println(itemName);
         }
+//        Enumeration e = Collections.enumeration(allItems.keySet());
+//        while (e.hasMoreElements()) {
+//            System.out.println(e.nextElement());   
+//        }
 
     }
 }

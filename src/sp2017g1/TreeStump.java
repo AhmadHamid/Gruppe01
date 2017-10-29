@@ -7,8 +7,10 @@ package sp2017g1;
 
 /**
  *
- * @author Student
+ * @author nikol
  */
-public enum ItemEnum {
-    key, hammer, nails, axe, shovel, lumber, block, test;
+public class TreeStump implements NPC {
+    public TreeStump(String name) {
+        
+    }
 }
