@@ -143,6 +143,11 @@ public class Game
         currentRoom.getRoomItemsList();
         /*System.out.println("TEST");
         Item.enumAllItems();*/
+        Animal a = new Animal(Species.CAT);
+        a.interact();
+        
+        Person p = new Person();
+        p.interact();
     }
 
     private boolean processCommand(Command command) 

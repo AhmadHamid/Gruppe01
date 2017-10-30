@@ -36,5 +36,12 @@ public class Person extends NPC {
     public Item getItem(String item){
         return this.items.get(item);
     }
+
+    @Override
+    public void interact() {
+        System.out.println("Not interatcting...");
+    }
+    
+    
     
 }

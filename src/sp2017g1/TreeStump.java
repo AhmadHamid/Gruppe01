@@ -9,21 +9,10 @@ package sp2017g1;
  *
  * @author Student
  */
-public class NPC {
-    protected String name;
-    protected Species species;
-    
-    
-    public String getName() {
-        return name;
-    }
-    
-    public Species getSpecies(){
-        return species;
-    }
-    
+public class TreeStump extends NPC {
+
+    @Override
     public void interact() {
-        
+        System.out.println("Treestump interact.");
     }
-    
 }

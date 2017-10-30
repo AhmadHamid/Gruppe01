@@ -61,6 +61,10 @@ public class Animal extends NPC{
     public boolean isPredator() {
         return predator;
     }
-    
+
+    @Override
+    public void interact() {
+        super.interact(); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
