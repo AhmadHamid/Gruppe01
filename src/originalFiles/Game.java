@@ -56,6 +56,7 @@ public class Game
         
         bridge.setExit("north", river);
         bridge.setExit("east", garden);
+        bridge.setExit("west", neighbour);
         
         river.setExit("north", waterfall);
         river.setExit("south", bridge);
@@ -89,7 +90,7 @@ public class Game
     }
     
     private void createItems() {
-        axe = new Item(ItemEnum.axe, home);
+        axe = new Item(ItemEnum.axe, shed);
         block = new Item(ItemEnum.block, shed);
         
         shovel = new Item(ItemEnum.shovel, mountain);
@@ -140,8 +141,8 @@ public class Game
             
         }
         currentRoom.getRoomItemsList();
-        System.out.println("TEST");
-        Item.enumAllItems();
+        /*System.out.println("TEST");
+        Item.enumAllItems();*/
     }
 
     private boolean processCommand(Command command) 
@@ -278,20 +279,19 @@ public class Game
     }
     
     private void pickItem(Command command) {
-        /*String inputItem = command.getSecondWord().toLowerCase();*/
-        ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
-        
-        if(!command.hasSecondWord()) {
-            System.out.println("Pick what item?");
-        } else if (!currentRoom.getRoomItems().containsKey(inputItem)) {
-            System.out.println("That is not an item!");
-        }
-        
+        try {
+            ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
+      
         if(currentRoom.getRoomItems().containsKey(inputItem)) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
             
             System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
+        }
+        } catch (NullPointerException e) {
+            System.out.println("Pick what item?");
+        } catch (IllegalArgumentException e) {
+            System.out.println("That is not an item!");
         }
     }
     
@@ -302,20 +302,19 @@ public class Game
     }
     
     private void dropItem(Command command) {
-        /*String inputItem = command.getSecondWord().toLowerCase();*/
-        ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
-        
-        if(!command.hasSecondWord()) {
-            System.out.println("Drop what item?");
-        } else if (!inventory.containsKey(inputItem)) {
-            System.out.println("That is not an item");
-        }
+        try {
+            ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
         
         if(inventory.containsKey(inputItem)) {
             currentRoom.getRoomItems().put(inputItem, inventory.get(inputItem));
             inventory.remove(inputItem);
             
             System.out.println(currentRoom.getRoomItems().get(inputItem).getItemName() + " is removed from the inventory");
+        }
+        } catch (NullPointerException e) {
+            System.out.println("Drop what item?");
+        } catch (IllegalArgumentException e) {
+            System.out.println("That is not an item");
         }
     }
     

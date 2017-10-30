@@ -2,6 +2,7 @@ package originalFiles;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import sp2017g1.*;
 
 /**
  * @author  Michael Kolling and David J. Barnes
