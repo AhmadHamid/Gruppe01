@@ -13,6 +13,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private static HashMap<ItemEnum, Item> inventory;
+    private int progress;
     
     Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
     
@@ -26,13 +27,14 @@ public class Game
         createRooms();
         createItems();
         parser = new Parser();
+        progress = 0;
     }
 
     private void createRooms() {
         //Creates and defines the rooms used in the game.
         
         //Each room has a unique name and description.
-        home = new Room("inside a cottage");
+        home = new Room("home");
         garden = new Room("in your garden outside your home");
         bridge   = new Room("on the bridge that crosses the local river");
         river = new Room("by the river with a great waterfall");
@@ -123,6 +125,7 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
+            progress();
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -214,6 +217,13 @@ public class Game
         }
         else if (nextRoom == null && nextRoom1.getLock() == true){
             System.out.println("The door is locked");
+            if (nextRoom1.getExit(direction).getShortDescription() == "home"){
+                if(progress == 0){
+                    System.out.println("I should get my pet before going home");
+                } else if (progress < 2){
+                    progress = 2;
+                }
+            }
         }
         else if (nextRoom == null && nextRoom1.getDoor() == true){
             currentRoom = nextRoom1.getExit(direction);
@@ -290,7 +300,11 @@ public class Game
         if(currentRoom.getRoomItems().containsKey(inputItem)) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
-            
+            if(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() == "shovel"){
+                if(progress < 6){
+                    progress = 6;
+                }
+            }
             System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
         }
         } catch (NullPointerException e) {
@@ -344,5 +358,9 @@ public class Game
         else {
             System.out.println("None of the required items are in your inventory.");
         }
+    }
+    
+    private void progress(){
+        
     }
 }

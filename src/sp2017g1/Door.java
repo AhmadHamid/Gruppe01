@@ -42,7 +42,6 @@ public class Door
     public String getKey(){
         return lockItem.toString();
     }
-    
    
 @Override
     public String getLongDescription()
