@@ -9,6 +9,19 @@ package sp2017g1;
  *
  * @author Student
  */
-public interface NPC {
+
+public class NPC {
+    protected String name;
+    protected Species species;
+    protected String type;
+    
+    
+    public String getName() {
+        return name;
+    }
+    
+    public String getType(){
+        return type;
+    }
     
 }
