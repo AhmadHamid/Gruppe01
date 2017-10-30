@@ -9,19 +9,17 @@ package sp2017g1;
  *
  * @author Student
  */
-
 public class NPC {
     protected String name;
     protected Species species;
-    protected String type;
     
     
     public String getName() {
         return name;
     }
     
-    public String getType(){
-        return type;
+    public Species getSpecies(){
+        return species;
     }
     
 }

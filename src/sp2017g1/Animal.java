@@ -14,11 +14,15 @@ public class Animal extends NPC{
     private boolean swimming;
     private boolean predator;
     
-    public Animal(){
-        this.type = "dog";
+    public Animal(Species species){
+        this.species = species;
         this.swimming = true;
         this.flying = false;
         this.predator = false;
+    }
+    
+    public String speciesToString() {
+        return species.toString();
     }
     /*
     public Animal(String name, String species, boolean predator) {
@@ -42,9 +46,9 @@ public class Animal extends NPC{
     }
     */
 
-    public String getSpecies() {
-        return species;
-    }
+//    public String getSpecies() {
+//        return species;
+//    }
 
     public boolean isFlying() {
         return flying;

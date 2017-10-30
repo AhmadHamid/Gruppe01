@@ -15,7 +15,7 @@ public class Person extends NPC {
     private HashMap<String, String> unlockItem = new HashMap<>();
     
     public Person(){
-        this.type = "human";
+        this.species = Species.HUMAN;
     }
     
     public void addItem(String name, Item item){

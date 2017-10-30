@@ -5,10 +5,22 @@
  */
 package sp2017g1;
 
+import sp2017g1.*;
+
 /**
  *
  * @author Kasper
  */
 public enum Species {
-    HUMAN, DOG
+    HUMAN("human"), DOG("dog"), CAT("cat");
+    
+    private String speciesString;
+    
+    private Species(String speciesString) {
+        this.speciesString = speciesString;
+    }
+
+    public String toString() {
+        return speciesString;
+    }
 }
