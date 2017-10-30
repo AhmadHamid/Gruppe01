@@ -5,43 +5,58 @@
  */
 package sp2017g1;
 import java.util.*;
+import originalFiles.*;
 /**
  *
  * @author Student
  */
 public class Person extends NPC {
-    private HashMap<String, Item> items = new HashMap<>();
-    private HashMap<String, Boolean> itemsLock = new HashMap<>();
-    private HashMap<String, String> unlockItem = new HashMap<>();
+    int interactCount = 0;
     
-    public Person(){
+    public Person(Room room){
+        this.currentRoom = room;
         this.species = Species.HUMAN;
-    }
-    
-    public void addItem(String name, Item item){
-        this.items.put(name, item);
-        this.itemsLock.put(name, Boolean.FALSE);
-    }
-    
-    public  void addItem(String name, Item item, Boolean lock, String lockItem){
-        this.items.put(name, item);
-        this.itemsLock.put(name, lock);
-        this.unlockItem.put(name, lockItem);
-    }
-    
-    private void unlock(String item){
-        this.itemsLock.replace(item, Boolean.FALSE);
-    }
-    
-    public Item getItem(String item){
-        return this.items.get(item);
     }
 
     @Override
     public void interact() {
-        System.out.println("Not interatcting...");
+//        Forslag 1
+//        if (interactCount == 0) {
+//            System.out.println("Me: FIRST TIME TALKING.");
+//            System.out.println("N: Bla bla bla");
+//            interactCount++;
+//        } else if (interactCount == 1) {
+//            System.out.println("N: Key or Hammer?");
+//            Scanner input = new Scanner(System.in);
+//            String option = input.next().toLowerCase();
+//            if (option.equals(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
+//                System.out.println("Hammer to inventory...");
+//            } else if (option.equals(ItemEnum.hammer.toString()) && Game.getInventory().containsKey(ItemEnum.hammer)) {
+//                System.out.println("Hammer is already in inventory...");
+//            } else {
+//                interactCount++;
+//            }
+//        } else if (interactCount == 2) {
+//            System.out.println("Key to inventory...");
+//        }
+
+//        Forslag 1.1
+        if (true) {
+            
+        }
+        
+//        Forslag 2
+//        switch (interactCount) {
+//            case 0: {
+//                System.out.println("CASE 0");
+//                interactCount++;
+//            }
+//            case 1: {
+//                System.out.println("CASE 1");
+//            }
+//            default: {
+//                System.out.println("DEFAULT");
+//            }
+//        }
     }
-    
-    
-    
 }

@@ -14,11 +14,11 @@ public class Game
     private Room currentRoom;
     private static HashMap<ItemEnum, Item> inventory;
     
-    Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
+    public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
     
     Door door, Ladderdoor;
     
-    Item key, hammer, nails, axe, shovel, lumber, block, ladder, test;
+    public Item key, hammer, nails, axe, shovel, lumber, block, ladder, test;
         
     public Game() 
     {
@@ -143,10 +143,7 @@ public class Game
         currentRoom.getRoomItemsList();
         /*System.out.println("TEST");
         Item.enumAllItems();*/
-        Animal a = new Animal(Species.CAT);
-        a.interact();
-        
-        Person p = new Person();
+        Person p = new Person(garden);
         p.interact();
     }
 

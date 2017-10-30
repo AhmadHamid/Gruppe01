@@ -5,6 +5,9 @@
  */
 package sp2017g1;
 
+import java.awt.Robot;
+import originalFiles.Room;
+
 /**
  *
  * @author Student
@@ -14,11 +17,12 @@ public class Animal extends NPC{
     private boolean swimming;
     private boolean predator;
     
-    public Animal(Species species){
+    public Animal(Species species, Room room){
         this.species = species;
         this.swimming = true;
         this.flying = false;
         this.predator = false;
+        this.currentRoom = room;
     }
     
     public String speciesToString() {
@@ -64,7 +68,7 @@ public class Animal extends NPC{
 
     @Override
     public void interact() {
-        super.interact(); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Animal interact.");
     }
     
 }
