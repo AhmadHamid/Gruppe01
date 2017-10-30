@@ -41,22 +41,26 @@ public class Person extends NPC {
 //        }
 
 //        Forslag 1.1
-        if (true) {
-            
+        if (interactCount == 0) {
+            System.out.println("1. First time.");
+            interactCount++;
+        } else if (interactCount == 1) {
+            System.out.println("2. Key or Hammer?");
+            Scanner input = new Scanner(System.in);
+            String option = input.next();
+            if (option.equalsIgnoreCase(ItemEnum.key.toString())) {
+                System.out.println("Tell about key.");
+            } else if(option.equalsIgnoreCase(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
+                System.out.println("Give hammer...");
+                interactCount++;
+            }
+        } else if (interactCount == 2) {
+            if (!Game.getInventory().containsKey(ItemEnum.shovel)) {
+                System.out.println("You have the hammer.");
+                System.out.println("Go find the shovel!");
+            } else {
+                System.out.println("Here is the key!");
+            }
         }
-        
-//        Forslag 2
-//        switch (interactCount) {
-//            case 0: {
-//                System.out.println("CASE 0");
-//                interactCount++;
-//            }
-//            case 1: {
-//                System.out.println("CASE 1");
-//            }
-//            default: {
-//                System.out.println("DEFAULT");
-//            }
-//        }
     }
 }
