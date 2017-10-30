@@ -5,9 +5,9 @@
  */
 package sp2017g1;
 
+import language.*;
 import java.awt.Robot;
 import originalFiles.Room;
-
 /**
  *
  * @author Student
@@ -71,4 +71,32 @@ public class Animal extends NPC{
         System.out.println("Animal interact.");
     }
     
+    public void interact(int progress) {
+        switch(progress){
+            case 0:
+                System.out.println(WordList.NO_PET);
+                break;
+            case 1:
+                System.out.println(WordList.AFTER_PET);
+                break;
+            case 2:
+                System.out.println(WordList.ASK_NEIGHBOR);
+                break;
+            case 3:
+                System.out.println(WordList.FIND_SHOVEL);
+                break;
+            case 4:
+                System.out.println(WordList.CRAFT_LADDER);
+                break;
+            case 5:
+                System.out.println(WordList.GET_SHOVEL);
+                break;
+            case 6:
+                System.out.println(WordList.GET_KEY);
+                break;
+            case 7:
+                System.out.println(WordList.GO_HOME);
+                break;
+        }   
+    }
 }

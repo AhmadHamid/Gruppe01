@@ -28,7 +28,7 @@ public class WordList {
     
 //    class Game.
     public static final String WELCOME = "Welcome to the World of Zuul!";
-         public static final String DESCRIPTION = "As you are cooking a delicous meal, in your cozy cottage, your trusty pet companion runs out of the door, and into the woods\nconfused by this weird behaviour of your pet, you decide to follow it.";
+    public static final String DESCRIPTION = "As you are cooking a delicous meal, in your cozy cottage, your trusty pet companion runs out of the door, and into the woods\nconfused by this weird behaviour of your pet, you decide to follow it.";
     public static final String GET_HELP = "Type '" + CommandWord.HELP + "' if you need help.";
     public static final String ITEMS_IN_ROOM = "These items is in the room: ";
     public static final String DONT_KNOW_WHAT_YOU_MEAN = "I don't know what you mean...";
@@ -38,4 +38,15 @@ public class WordList {
                                              + "Your command words are:";
     public static final String GO_WHERE = "Go where?";
     public static final String END_DESCRIPTION = "you win";
+    
+    
+//    progress message.
+    public static final String NO_PET = "I should find my pet";
+    public static final String AFTER_PET = "Go home";
+    public static final String ASK_NEIGHBOR = "Ask neighbor";
+    public static final String FIND_SHOVEL = "Find the shovel";
+    public static final String CRAFT_LADDER = "Craft ladder";
+    public static final String GET_SHOVEL = "Use ladder to get shovel";
+    public static final String GET_KEY = "Get the key from your neighbor";
+    public static final String GO_HOME = "Go home";
 }
