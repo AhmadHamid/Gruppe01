@@ -9,36 +9,38 @@ package sp2017g1;
  *
  * @author Student
  */
-public class Animal implements NPC{
-    private String name;
-    private String species;
+public class Animal extends NPC{
     private boolean flying;
     private boolean swimming;
-    private boolean rovdyr;
+    private boolean predator;
     
-    public Animal(String name, String species, boolean rovdyr) {
+    public Animal(){
+        this.type = "dog";
+        this.swimming = true;
+        this.flying = false;
+        this.predator = false;
+    }
+    /*
+    public Animal(String name, String species, boolean predator) {
         this.name = name;
         this.species = species;
-        this.rovdyr = rovdyr;
+        this.predator = predator;
     }
     
-    public Animal(String name, String species, boolean rovdyr, boolean canFly) {
+    public Animal(String name, String species, boolean predator, boolean canFly) {
         this.name = name;
         this.species = species;
-        this.rovdyr = rovdyr;
+        this.predator = predator;
         this.flying = canFly;
     }
     
-    public Animal(String name, String species, boolean rovdyr, boolean canSwim, int i) {
+    public Animal(String name, String species, boolean predator, boolean canSwim, int i) {
         this.name = name;
         this.species = species;
-        this.rovdyr = rovdyr;
+        this.predator = predator;
         this.swimming = canSwim;
     }
-
-    public String getName() {
-        return name;
-    }
+    */
 
     public String getSpecies() {
         return species;
@@ -52,8 +54,8 @@ public class Animal implements NPC{
         return swimming;
     }
 
-    public boolean isRovdyr() {
-        return rovdyr;
+    public boolean isPredator() {
+        return predator;
     }
     
     
