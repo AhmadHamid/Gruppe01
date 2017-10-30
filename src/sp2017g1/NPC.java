@@ -5,25 +5,20 @@
  */
 package sp2017g1;
 
+import originalFiles.Room;
+
 /**
  *
  * @author Student
  */
-public class NPC {
-    protected String name;
+public abstract class NPC {
     protected Species species;
-    
-    
-    public String getName() {
-        return name;
-    }
+    protected Room currentRoom;
     
     public Species getSpecies(){
         return species;
     }
     
-    public void interact() {
-        
-    }
+    abstract void interact();
     
 }
