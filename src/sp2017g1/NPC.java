@@ -5,7 +5,7 @@
  */
 package sp2017g1;
 
-import originalFiles.Room;
+import originalFiles.*;
 
 /**
  *
@@ -19,6 +19,10 @@ public abstract class NPC {
         return species;
     }
     
-    abstract void interact();
+    public abstract void interact(Command command);
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
     
 }

@@ -19,7 +19,11 @@ public class Person extends NPC {
     }
 
     @Override
-    public void interact() {
+    public void interact(Command command) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void interactExtended(Command command, Item k, Item h, HashMap<ItemEnum, Item> inv) {
 //        Forslag 1
 //        if (interactCount == 0) {
 //            System.out.println("Me: FIRST TIME TALKING.");
@@ -52,6 +56,7 @@ public class Person extends NPC {
                 System.out.println("Tell about key.");
             } else if(option.equalsIgnoreCase(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
                 System.out.println("Give hammer...");
+                getItemH(h, inv);
                 interactCount++;
             }
         } else if (interactCount == 2) {
@@ -60,7 +65,17 @@ public class Person extends NPC {
                 System.out.println("Go find the shovel!");
             } else {
                 System.out.println("Here is the key!");
+                getItemK(k, inv);
+                Game.getInventory().remove(ItemEnum.shovel);
             }
         }
+    }
+    
+    public void getItemH(Item item, HashMap<ItemEnum, Item> inv) {
+        inv.put(ItemEnum.hammer, item);
+    }
+    
+    public void getItemK(Item item, HashMap<ItemEnum, Item> inv) {
+        inv.put(ItemEnum.key, item);
     }
 }

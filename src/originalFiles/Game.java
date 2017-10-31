@@ -15,17 +15,20 @@ public class Game
     private static HashMap<ItemEnum, Item> inventory;
     private int progress;
     
-    public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbour;
+    public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbourHouse;
     
     Door door, Ladderdoor;
     
     public Item key, hammer, nails, axe, shovel, lumber, block, ladder, test;
+    
+    Person neighbour;
         
     public Game() 
     {
         createInventory();
         createRooms();
         createItems();
+        createNPC();
         parser = new Parser();
         progress = 0;
     }
@@ -43,7 +46,7 @@ public class Game
         mountainside = new Room("at the side of the mountain");
         forest = new Room("at a giant oak tree");
         mountain = new Room("on a mountain cliff");
-        neighbour = new Room("at your neighbours house");
+        neighbourHouse = new Room("at your neighbours house");
         
         door = new Door("The door to your house", ItemEnum.key);
         Ladderdoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
@@ -58,7 +61,7 @@ public class Game
         
         bridge.setExit("north", river);
         bridge.setExit("east", garden);
-        bridge.setExit("west", neighbour);
+        bridge.setExit("west", neighbourHouse);
         
         river.setExit("north", waterfall);
         river.setExit("south", bridge);
@@ -79,16 +82,12 @@ public class Game
         forest.setExit("west", mountainside);
 
 
-        neighbour.setExit("east", bridge);
+        neighbourHouse.setExit("east", bridge);
         
         door.setExit("south", home);
         
         Ladderdoor.setExit("north", mountain);
         currentRoom = garden;
-
-        neighbour.setExit("east", bridge);
-        currentRoom = garden;
-
     }
     
     private void createItems() {
@@ -103,8 +102,8 @@ public class Game
         
         test = new Item(ItemEnum.test, garden);
 
-        key = new Item(ItemEnum.key, neighbour);
-        hammer = new Item(ItemEnum.hammer, neighbour);
+        key = new Item(ItemEnum.key);
+        hammer = new Item(ItemEnum.hammer);
         
         ladder = new Item(ItemEnum.ladder);
     }
@@ -115,6 +114,10 @@ public class Game
 
     public static HashMap<ItemEnum, Item> getInventory() {
         return inventory;
+    }
+    
+    private void createNPC() {
+        neighbour = new Person(neighbourHouse);
     }
 
     public void play() 
@@ -185,6 +188,8 @@ public class Game
         }
         else if (commandWord == CommandWord.COMBINE) {
             combineItems(command);
+        } else if (commandWord == CommandWord.INTERACT) {
+            interact(command);
         }
         return wantToQuit;
     }
@@ -234,6 +239,9 @@ public class Game
             currentRoom = nextRoom;
             
             System.out.println(currentRoom.getLongDescription());
+            if (currentRoom == neighbour.getCurrentRoom()) {
+                System.out.println("You see your neighbour in the room.");
+            }
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         }
@@ -357,5 +365,24 @@ public class Game
     
     private void progress(){
         
+    }
+    
+    private void interact(Command command) {
+        try {
+            String inputCommand = command.getSecondWord().toLowerCase();
+            
+            if (command.getSecondWord().isEmpty()) {
+                System.out.println("SecondWord!");
+            }
+            
+            if (currentRoom == neighbour.getCurrentRoom()) {
+                neighbour.interactExtended(command, key, hammer, inventory);
+            } else {
+                System.out.println("No NPC in this room.");
+            }
+                    
+        } catch (NullPointerException e) {
+            System.out.println("What interaction?");
+        }
     }
 }

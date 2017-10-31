@@ -5,6 +5,8 @@
  */
 package sp2017g1;
 
+import originalFiles.*;
+
 /**
  *
  * @author Student
@@ -12,7 +14,7 @@ package sp2017g1;
 public class TreeStump extends NPC {
 
     @Override
-    public void interact() {
+    public void interact(Command command) {
         System.out.println("Treestump interact.");
     }
 }

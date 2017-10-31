@@ -7,7 +7,7 @@ package sp2017g1;
 
 import language.*;
 import java.awt.Robot;
-import originalFiles.Room;
+import originalFiles.*;
 /**
  *
  * @author Student
@@ -67,7 +67,7 @@ public class Animal extends NPC{
     }
 
     @Override
-    public void interact() {
+    public void interact(Command command) {
         System.out.println("Animal interact.");
     }
     
