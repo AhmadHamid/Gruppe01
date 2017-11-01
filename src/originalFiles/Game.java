@@ -19,9 +19,11 @@ public class Game
     
     Door door, Ladderdoor;
     
-    public Item key, hammer, nails, axe, shovel, lumber, block, ladder, test;
+    // Changed the access modifier of the Item variable to static so the hashmap key (not the actual item called key) can be accessed in TreeStump.java. No idea why it cannot be accessed from TreeStump.java without it.
+    public static Item key, hammer, nails, axe, shovel, lumber, block, ladder, test, wood;
     
     Person neighbour;
+    TreeStump treeStump;
         
     public Game() 
     {
@@ -93,18 +95,14 @@ public class Game
     private void createItems() {
         axe = new Item(ItemEnum.axe, shed);
         block = new Item(ItemEnum.block, shed);
-        
         shovel = new Item(ItemEnum.shovel, mountain);
-        
         nails = new Item(ItemEnum.nails, bridge);
-        
-        lumber = new Item(ItemEnum.lumber, waterfall);
-        
+        wood = new Item(ItemEnum.wood, waterfall);
         test = new Item(ItemEnum.test, garden);
 
         key = new Item(ItemEnum.key);
         hammer = new Item(ItemEnum.hammer);
-        
+        lumber = new Item(ItemEnum.lumber);
         ladder = new Item(ItemEnum.ladder);
     }
     
@@ -118,6 +116,7 @@ public class Game
     
     private void createNPC() {
         neighbour = new Person(neighbourHouse);
+        treeStump = new TreeStump(shed);
     }
 
     public void play() 
@@ -186,9 +185,11 @@ public class Game
         else if (commandWord == CommandWord.UNLOCK) {
             unlockRoom(command);
         }
+        /* The combine command has been replaced by the Tree Stump interaction.
         else if (commandWord == CommandWord.COMBINE) {
-            combineItems(command);
-        } else if (commandWord == CommandWord.INTERACT) {
+        combineItems(command);
+        }*/
+        else if (commandWord == CommandWord.INTERACT) {
             interact(command);
         }
         return wantToQuit;
@@ -351,17 +352,18 @@ public class Game
         }
     }
 
-    private void combineItems(Command command) {
-        if(inventory.containsKey(ItemEnum.nails)) {
-            inventory.put(ItemEnum.ladder, ladder);
-            inventory.remove(ItemEnum.nails);
-            System.out.println(nails.getItemName() + " and x " + "has been combined to " + ladder.getItemName());
-        }
-        
-        else {
-            System.out.println("None of the required items are in your inventory.");
-        }
+    // Move this method to TreeStump.java.
+    /*    private void combineItems(Command command) {
+    if(inventory.containsKey(ItemEnum.nails)) {
+    inventory.put(ItemEnum.ladder, ladder);
+    inventory.remove(ItemEnum.nails);
+    System.out.println(nails.getItemName() + " and x " + "has been combined to " + ladder.getItemName());
     }
+    
+    else {
+    System.out.println("None of the required items are in your inventory.");
+    }
+    }*/
     
     private void progress(){
         
@@ -378,7 +380,13 @@ public class Game
             if (currentRoom == neighbour.getCurrentRoom()) {
                 neighbour.interactExtended(command, key, hammer, inventory);
             } else {
-                System.out.println("No NPC in this room.");
+                System.out.println("No NPC in this room."); // The interact command outputs this in all rooms where the neighbour isn't.
+            }
+            
+            if (currentRoom == treeStump.getCurrentRoom()) {
+                treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
+            } else {
+            System.out.println("There is no Tree Stump in this room.");
             }
                     
         } catch (NullPointerException e) {
@@ -386,3 +394,4 @@ public class Game
         }
     }
 }
+
