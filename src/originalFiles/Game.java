@@ -94,11 +94,11 @@ public class Game
     
     private void createItems() {
         axe = new Item(ItemEnum.axe, shed);
-        block = new Item(ItemEnum.block, shed);
+//        block = new Item(ItemEnum.block, shed);
         shovel = new Item(ItemEnum.shovel, mountain);
         nails = new Item(ItemEnum.nails, bridge);
         wood = new Item(ItemEnum.wood, waterfall);
-        test = new Item(ItemEnum.test, garden);
+//        test = new Item(ItemEnum.test, garden);
 
         key = new Item(ItemEnum.key);
         hammer = new Item(ItemEnum.hammer);
@@ -379,15 +379,17 @@ public class Game
             
             if (currentRoom == neighbour.getCurrentRoom()) {
                 neighbour.interactExtended(command, key, hammer, inventory);
+            } else if (currentRoom == treeStump.getCurrentRoom()) {
+                treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
             } else {
                 System.out.println("No NPC in this room."); // The interact command outputs this in all rooms where the neighbour isn't.
             }
             
-            if (currentRoom == treeStump.getCurrentRoom()) {
+            /*if (currentRoom == treeStump.getCurrentRoom()) {
                 treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
             } else {
             System.out.println("There is no Tree Stump in this room.");
-            }
+            }*/
                     
         } catch (NullPointerException e) {
             System.out.println("What interaction?");
