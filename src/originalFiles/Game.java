@@ -242,6 +242,10 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
             if (currentRoom == neighbour.getCurrentRoom()) {
                 System.out.println("You see your neighbour in the room.");
+                interact(command);
+            } else if(currentRoom == treeStump.getCurrentRoom()) {
+                System.out.println("You see a treestump in the room.");
+                interact(command);
             }
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();

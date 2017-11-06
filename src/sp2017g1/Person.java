@@ -24,27 +24,6 @@ public class Person extends NPC {
     }
 
     public void interactExtended(Command command, Item k, Item h, HashMap<ItemEnum, Item> inv) {
-//        Forslag 1
-//        if (interactCount == 0) {
-//            System.out.println("Me: FIRST TIME TALKING.");
-//            System.out.println("N: Bla bla bla");
-//            interactCount++;
-//        } else if (interactCount == 1) {
-//            System.out.println("N: Key or Hammer?");
-//            Scanner input = new Scanner(System.in);
-//            String option = input.next().toLowerCase();
-//            if (option.equals(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
-//                System.out.println("Hammer to inventory...");
-//            } else if (option.equals(ItemEnum.hammer.toString()) && Game.getInventory().containsKey(ItemEnum.hammer)) {
-//                System.out.println("Hammer is already in inventory...");
-//            } else {
-//                interactCount++;
-//            }
-//        } else if (interactCount == 2) {
-//            System.out.println("Key to inventory...");
-//        }
-
-//        Forslag 1.1
         if (interactCount == 0) {
             System.out.println("1. First time.");
             interactCount++;
