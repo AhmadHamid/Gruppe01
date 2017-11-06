@@ -36,7 +36,7 @@ public class Person extends NPC {
             if (option.equalsIgnoreCase(ItemEnum.key.toString())) {
                 System.out.println("Tell about key.");
             } else if(option.equalsIgnoreCase(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
-                System.out.println("Give hammer...");
+                System.out.println(ItemEnum.hammer.toString() + " is added to the inventory");
                 getItemH(h, inv);
                 interactCount++;
             }
@@ -46,6 +46,7 @@ public class Person extends NPC {
                 System.out.println("Go find the shovel!");
             } else {
                 System.out.println("Here is the key!");
+                System.out.println(ItemEnum.key.toString() +  " is added to the inventory");
                 getItemK(k, inv);
                 Game.getInventory().remove(ItemEnum.shovel);
             }
@@ -58,5 +59,10 @@ public class Person extends NPC {
     
     public void getItemK(Item item, HashMap<ItemEnum, Item> inv) {
         inv.put(ItemEnum.key, item);
+    }
+
+    @Override
+    public String introMessage(String string) {
+        return super.introMessage(string); //To change body of generated methods, choose Tools | Templates.
     }
 }

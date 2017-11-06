@@ -250,8 +250,12 @@ public class Game
                 System.out.println("You see a treestump in the room.");
                 interact(command);
             }
-            System.out.println(WordList.ITEMS_IN_ROOM);
-            currentRoom.getRoomItemsList();
+            if (!currentRoom.getRoomItems().isEmpty()) {
+                System.out.println(WordList.ITEMS_IN_ROOM);
+                currentRoom.getRoomItemsList();   
+            } else {
+                System.out.println("No items in room.");
+            }
         }
         
 
@@ -388,15 +392,9 @@ public class Game
                 neighbour.interactExtended(command, key, hammer, inventory);
             } else if (currentRoom == treeStump.getCurrentRoom()) {
                 treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
-            } else {
-                System.out.println("No NPC in this room."); // The interact command outputs this in all rooms where the neighbour isn't.
+            } else if(false) {
+                //Animal
             }
-            
-            /*if (currentRoom == treeStump.getCurrentRoom()) {
-                treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
-            } else {
-            System.out.println("There is no Tree Stump in this room.");
-            }*/
                     
         } catch (NullPointerException e) {
             System.out.println("What interaction?");
