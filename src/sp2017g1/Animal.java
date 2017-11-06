@@ -69,6 +69,12 @@ public class Animal extends NPC{
         return predator;
     }
 
+    public boolean isFollow() {
+        return follow;
+    }
+    
+
+
     @Override
     public void interact(Command command) {
         System.out.println("Animal interact.");

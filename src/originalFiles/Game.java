@@ -257,7 +257,7 @@ public class Game
                 interact(command);
             } else if(currentRoom == treeStump.getCurrentRoom()) {
                 System.out.println("You see a treestump in the room.");
-            } else if (currentRoom == pet.getCurrentRoom()) {
+            } else if (currentRoom == pet.getCurrentRoom() && !pet.isFollow()) {
                 System.out.println("You see a pet. It will now follow you.");
                 command.setSecondWord("pet");
                 interact(command);
