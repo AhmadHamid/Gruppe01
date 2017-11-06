@@ -5,6 +5,7 @@
  */
 package sp2017g1;
 
+import java.io.*;
 import originalFiles.*;
 
 /**
@@ -19,6 +20,15 @@ public class SP2017G1 {
     public static void main(String[] args) {
         Game game = new Game();
         game.play();
+        
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(".//saves/file.txt"));
+            
+            writer.write("HEJ MED DIG");
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }

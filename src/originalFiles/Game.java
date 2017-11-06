@@ -249,6 +249,8 @@ public class Game
             } else if(currentRoom == treeStump.getCurrentRoom()) {
                 System.out.println("You see a treestump in the room.");
                 interact(command);
+            } else if (false) {
+                //Besked når du kommer ind til animal
             }
             if (!currentRoom.getRoomItems().isEmpty()) {
                 System.out.println(WordList.ITEMS_IN_ROOM);
@@ -392,8 +394,6 @@ public class Game
                 neighbour.interactExtended(command, key, hammer, inventory);
             } else if (currentRoom == treeStump.getCurrentRoom()) {
                 treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
-            } else if(false) {
-                //Animal
             }
                     
         } catch (NullPointerException e) {
