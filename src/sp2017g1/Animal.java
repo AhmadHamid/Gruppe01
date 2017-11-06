@@ -16,6 +16,8 @@ public class Animal extends NPC{
     private boolean flying;
     private boolean swimming;
     private boolean predator;
+    private int progress;
+    private boolean follow;
     
     public Animal(Species species, Room room){
         this.species = species;
@@ -23,6 +25,7 @@ public class Animal extends NPC{
         this.flying = false;
         this.predator = false;
         this.currentRoom = room;
+        this.follow = false;
     }
     
     public String speciesToString() {
@@ -74,7 +77,7 @@ public class Animal extends NPC{
     public void interact(int progress) {
         switch(progress){
             case 0:
-                System.out.println(WordList.NO_PET);
+                follow = true;
                 break;
             case 1:
                 System.out.println(WordList.AFTER_PET);
@@ -98,5 +101,23 @@ public class Animal extends NPC{
                 System.out.println(WordList.GO_HOME);
                 break;
         }   
+    }
+    
+    public boolean setProgress(int i){
+        if(progress < i){
+            progress = i;
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
+    public boolean goPet(Room room){
+        if (follow){
+            currentRoom = room;
+            return true;
+        } else{
+            return false;
+        }
     }
 }

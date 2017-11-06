@@ -48,6 +48,8 @@ public class Person extends NPC {
         if (interactCount == 0) {
             System.out.println("1. First time.");
             interactCount++;
+            Game.setProgress(3);
+            
         } else if (interactCount == 1) {
             System.out.println("2. Key or Hammer?");
             Scanner input = new Scanner(System.in);

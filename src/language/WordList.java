@@ -42,7 +42,7 @@ public class WordList {
     
     
 //    progress message.
-    public static final String NO_PET = "I should find my pet";
+    public static final String NO_PET = "No pet";
     public static final String AFTER_PET = "Go home";
     public static final String ASK_NEIGHBOR = "Ask neighbor";
     public static final String FIND_SHOVEL = "Find the shovel";
@@ -50,4 +50,7 @@ public class WordList {
     public static final String GET_SHOVEL = "Use ladder to get shovel";
     public static final String GET_KEY = "Get the key from your neighbor";
     public static final String GO_HOME = "Go home";
+    
+//    interact message.
+    public static final String WRONG_INTERACT = "Can't interact";
 }

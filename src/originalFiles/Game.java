@@ -13,7 +13,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private static HashMap<ItemEnum, Item> inventory;
-    private int progress;
+    private static int progress;
     
     public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbourHouse;
     
@@ -24,7 +24,13 @@ public class Game
     
     Person neighbour;
     TreeStump treeStump;
-        
+    public Animal pet;
+
+    public static void setProgress(int i){
+        if(progress < i)
+            progress = i;
+    }
+    
     public Game() 
     {
         createInventory();
@@ -34,7 +40,7 @@ public class Game
         parser = new Parser();
         progress = 0;
     }
-
+    
     private void createRooms() {
         //Creates and defines the rooms used in the game.
         
@@ -117,6 +123,7 @@ public class Game
     private void createNPC() {
         neighbour = new Person(neighbourHouse);
         treeStump = new TreeStump(shed);
+        pet = new Animal(Species.DOG, forest);
     }
 
     public void play() 
@@ -127,7 +134,6 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-            progress();
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -200,7 +206,7 @@ public class Game
         System.out.println(WordList.PRINT_HELP);
         parser.showCommands();
     }
-
+    
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
@@ -221,13 +227,14 @@ public class Game
             if (nextRoom1.getExit(direction).getShortDescription() == "home"){
                 if(progress == 0){
                     System.out.println("I should get my pet before going home");
-                } else if (progress < 2){
-                    progress = 2;
+                } else{
+                    setProgress(2);
                 }
             }
         }
         else if (nextRoom == null && nextRoom1.getDoor() == true){
             currentRoom = nextRoom1.getExit(direction);
+            pet.goPet(nextRoom1.getExit(direction));
             if (currentRoom == home) {
                 System.out.println(WordList.END_DESCRIPTION);
                 System.exit(0);
@@ -238,6 +245,7 @@ public class Game
             currentRoom.getRoomItemsList();
         } else {
             currentRoom = nextRoom;
+            pet.goPet(nextRoom);
             
             System.out.println(currentRoom.getLongDescription());
             if (currentRoom == neighbour.getCurrentRoom()) {
@@ -305,9 +313,7 @@ public class Game
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
             if(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() == "shovel"){
-                if(progress < 6){
-                    progress = 6;
-                }
+                setProgress(6);
             }
             System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
         }
@@ -365,10 +371,6 @@ public class Game
     }
     }*/
     
-    private void progress(){
-        
-    }
-    
     private void interact(Command command) {
         try {
             String inputCommand = command.getSecondWord().toLowerCase();
@@ -377,6 +379,26 @@ public class Game
                 System.out.println("SecondWord!");
             }
             
+            if (inputCommand.equals("pet")){
+                if (pet.getCurrentRoom() == currentRoom){
+                    pet.interact(progress);
+                    setProgress(1);
+                } else {
+                System.out.println(WordList.NO_PET);
+                }
+            } else if (inputCommand.equals("neighbor")){
+                if (currentRoom == neighbour.getCurrentRoom()) {
+                neighbour.interactExtended(command, key, hammer, inventory);
+                }
+            } else if (inputCommand.equals("stump")){
+                if (currentRoom == treeStump.getCurrentRoom()) {
+                treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
+                }
+            } else {
+                System.out.println(WordList.WRONG_INTERACT);
+            }
+                
+            /*
             if (currentRoom == neighbour.getCurrentRoom()) {
                 neighbour.interactExtended(command, key, hammer, inventory);
             } else if (currentRoom == treeStump.getCurrentRoom()) {
@@ -384,7 +406,7 @@ public class Game
             } else {
                 System.out.println("No NPC in this room."); // The interact command outputs this in all rooms where the neighbour isn't.
             }
-            
+            */
             /*if (currentRoom == treeStump.getCurrentRoom()) {
                 treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
             } else {
