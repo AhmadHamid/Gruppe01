@@ -6,13 +6,14 @@
 package language;
 
 import originalFiles.*;
+import sp2017g1.*;
 
 /**
  *
  * @author Student
  */
 public class WordList {
-    Game game = new Game();
+//    Game game = new Game();
     
 //    class CommandWord
     public static final String GO = "go";
