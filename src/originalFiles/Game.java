@@ -241,9 +241,9 @@ public class Game
             }
             System.out.println("Going through door");
             System.out.println(currentRoom.getLongDescription());
-            if (neighbour.getCurrentRoom() == currentRoom) {
+            /*if (neighbour.getCurrentRoom() == currentRoom) {
                 neighbour.interact(command);
-            }
+            }*/
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         } else {
@@ -253,12 +253,14 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
             if (currentRoom == neighbour.getCurrentRoom()) {
                 System.out.println("You see your neighbour in the room.");
+                command.setSecondWord("neighbour");
                 interact(command);
             } else if(currentRoom == treeStump.getCurrentRoom()) {
                 System.out.println("You see a treestump in the room.");
+            } else if (currentRoom == pet.getCurrentRoom()) {
+                System.out.println("You see a pet. It will now follow you.");
+                command.setSecondWord("pet");
                 interact(command);
-            } else if (false) {
-                //Besked når du kommer ind til animal
             }
             if (!currentRoom.getRoomItems().isEmpty()) {
                 System.out.println(WordList.ITEMS_IN_ROOM);
@@ -399,7 +401,7 @@ public class Game
                 } else {
                 System.out.println(WordList.NO_PET);
                 }
-            } else if (inputCommand.equals("neighbor")){
+            } else if (inputCommand.equals("neighbour")){
                 if (currentRoom == neighbour.getCurrentRoom()) {
                 neighbour.interactExtended(command, key, hammer, inventory);
                 }
