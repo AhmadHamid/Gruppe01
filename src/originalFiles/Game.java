@@ -20,7 +20,7 @@ public class Game
     Door door, Ladderdoor;
     
     // Changed the access modifier of the Item variable to static so the hashmap key (not the actual item called key) can be accessed in TreeStump.java. No idea why it cannot be accessed from TreeStump.java without it.
-    public static Item key, hammer, nails, axe, shovel, lumber, block, ladder, test, wood;
+    public static Item key, hammer, nails, axe, shovel, lumber, block, ladder, test, test1, test2, test3, test4, wood;
     
     Person neighbour;
     TreeStump treeStump;
@@ -104,7 +104,11 @@ public class Game
         shovel = new Item(ItemEnum.shovel, mountain);
         nails = new Item(ItemEnum.nails, bridge);
         wood = new Item(ItemEnum.wood, waterfall);
-//        test = new Item(ItemEnum.test, garden);
+        test = new Item(ItemEnum.test, garden);
+        test1 = new Item(ItemEnum.test1, garden);
+        test2 = new Item(ItemEnum.test2, garden);
+        test3 = new Item(ItemEnum.test3, garden);
+        test4 = new Item(ItemEnum.test4, garden);
 
         key = new Item(ItemEnum.key);
         hammer = new Item(ItemEnum.hammer);
@@ -323,13 +327,17 @@ public class Game
         try {
             ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
       
-        if(currentRoom.getRoomItems().containsKey(inputItem)) {
+        if(currentRoom.getRoomItems().containsKey(inputItem) && inventory.size() < 3) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
             if(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() == "shovel"){
                 setProgress(5);
             }
             System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
+        } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
+            System.out.println("That item is not in the room!");
+        } else {
+            System.out.println("Inventory is full");
         }
         } catch (NullPointerException e) {
             System.out.println("Pick what item?");
