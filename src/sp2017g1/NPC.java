@@ -20,9 +20,17 @@ public abstract class NPC {
     }
     
     public abstract void interact(Command command);
+    
+    public String introMessage(String string) {
+        return string;
+    }
 
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    private void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
     
 }

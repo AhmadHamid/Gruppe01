@@ -24,28 +24,9 @@ public class Person extends NPC {
     }
 
     public void interactExtended(Command command, Item k, Item h, HashMap<ItemEnum, Item> inv) {
-//        Forslag 1
-//        if (interactCount == 0) {
-//            System.out.println("Me: FIRST TIME TALKING.");
-//            System.out.println("N: Bla bla bla");
-//            interactCount++;
-//        } else if (interactCount == 1) {
-//            System.out.println("N: Key or Hammer?");
-//            Scanner input = new Scanner(System.in);
-//            String option = input.next().toLowerCase();
-//            if (option.equals(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
-//                System.out.println("Hammer to inventory...");
-//            } else if (option.equals(ItemEnum.hammer.toString()) && Game.getInventory().containsKey(ItemEnum.hammer)) {
-//                System.out.println("Hammer is already in inventory...");
-//            } else {
-//                interactCount++;
-//            }
-//        } else if (interactCount == 2) {
-//            System.out.println("Key to inventory...");
-//        }
-
-//        Forslag 1.1
         if (interactCount == 0) {
+            System.out.println("WELCOME!");
+            
             System.out.println("1. First time.");
             interactCount++;
             Game.setProgress(3);
@@ -57,7 +38,7 @@ public class Person extends NPC {
             if (option.equalsIgnoreCase(ItemEnum.key.toString())) {
                 System.out.println("Tell about key.");
             } else if(option.equalsIgnoreCase(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
-                System.out.println("Give hammer...");
+                System.out.println(ItemEnum.hammer.toString() + " is added to the inventory");
                 getItemH(h, inv);
                 interactCount++;
             }
@@ -67,6 +48,7 @@ public class Person extends NPC {
                 System.out.println("Go find the shovel!");
             } else {
                 System.out.println("Here is the key!");
+                System.out.println(ItemEnum.key.toString() +  " is added to the inventory");
                 getItemK(k, inv);
                 Game.getInventory().remove(ItemEnum.shovel);
             }
@@ -79,5 +61,10 @@ public class Person extends NPC {
     
     public void getItemK(Item item, HashMap<ItemEnum, Item> inv) {
         inv.put(ItemEnum.key, item);
+    }
+
+    @Override
+    public String introMessage(String string) {
+        return super.introMessage(string); //To change body of generated methods, choose Tools | Templates.
     }
 }

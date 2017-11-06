@@ -3,30 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/Person.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/Animal.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/Item.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/Door.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/originalFiles/Room.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/NPC.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/language/WordList.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/originalFiles/CommandWord.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/ItemEnum.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/originalFiles/Command.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/originalFiles/Game.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/TreeStump.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/Timer.java</file>
-            <file>file:/C:/Users/nikol/Documents/GitHub/SP2017G1/src/sp2017g1/SP2017G1.java</file>
-=======
-            <file>file:/E:/Users/Kasper/documents/GitHub/SP2017G1/src/sp2017g1/Person.java</file>
-            <file>file:/E:/Users/Kasper/documents/GitHub/SP2017G1/src/originalFiles/Game.java</file>
-            <file>file:/E:/Users/Kasper/documents/GitHub/SP2017G1/src/originalFiles/CommandWord.java</file>
-            <file>file:/E:/Users/Kasper/documents/GitHub/SP2017G1/src/sp2017g1/NPC.java</file>
-            <file>file:/E:/Users/Kasper/documents/GitHub/SP2017G1/src/sp2017g1/Item.java</file>
-            <file>file:/E:/Users/Kasper/documents/GitHub/SP2017G1/src/sp2017g1/Species.java</file>
-            <file>file:/E:/Users/Kasper/documents/GitHub/SP2017G1/src/sp2017g1/Animal.java</file>
->>>>>>> e3086b078dd5d1ef63e4b9dbc7a4e2642c4a5f0a
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/SP2017G1.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/ItemEnum.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/Person.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/NPC.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/Animal.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/NPCEnum.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/originalFiles/Game.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/TreeStump.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/Timer.java</file>
+            <file>file:/C:/Users/Student/Desktop/Code/GitHub/SP2017G1/src/sp2017g1/Save.java</file>
         </group>
     </open-files>
 </project-private>
