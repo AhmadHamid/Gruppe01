@@ -73,7 +73,9 @@ public class Animal extends NPC{
         return follow;
     }
     
-
+    public void startFollow(){
+        follow = true;
+    }
 
     @Override
     public void interact(Command command) {
@@ -82,9 +84,6 @@ public class Animal extends NPC{
     
     public void interact(int progress) {
         switch(progress){
-            case 0:
-                follow = true;
-                break;
             case 1:
                 System.out.println(WordList.AFTER_PET);
                 break;
@@ -92,18 +91,15 @@ public class Animal extends NPC{
                 System.out.println(WordList.ASK_NEIGHBOR);
                 break;
             case 3:
-                System.out.println(WordList.FIND_SHOVEL);
-                break;
-            case 4:
                 System.out.println(WordList.CRAFT_LADDER);
                 break;
-            case 5:
+            case 4:
                 System.out.println(WordList.GET_SHOVEL);
                 break;
-            case 6:
+            case 5:
                 System.out.println(WordList.GET_KEY);
                 break;
-            case 7:
+            case 6:
                 System.out.println(WordList.GO_HOME);
                 break;
         }   

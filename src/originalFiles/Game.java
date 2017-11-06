@@ -259,8 +259,7 @@ public class Game
                 System.out.println("You see a treestump in the room.");
             } else if (currentRoom == pet.getCurrentRoom() && !pet.isFollow()) {
                 System.out.println("You see a pet. It will now follow you.");
-                command.setSecondWord("pet");
-                interact(command);
+                pet.startFollow();
             }
             if (!currentRoom.getRoomItems().isEmpty()) {
                 System.out.println(WordList.ITEMS_IN_ROOM);
@@ -328,7 +327,7 @@ public class Game
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
             if(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() == "shovel"){
-                setProgress(6);
+                setProgress(5);
             }
             System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
         }
@@ -404,10 +403,19 @@ public class Game
             } else if (inputCommand.equals("neighbour")){
                 if (currentRoom == neighbour.getCurrentRoom()) {
                 neighbour.interactExtended(command, key, hammer, inventory);
+                setProgress(3);
+                if(inventory.containsKey(ItemEnum.hammer)){
+                    //setProgress();
+                  } else if(inventory.containsKey(ItemEnum.key)){
+                  setProgress(6);
+                  }
                 }
             } else if (inputCommand.equals("stump")){
                 if (currentRoom == treeStump.getCurrentRoom()) {
                 treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
+                    if(inventory.containsKey(ItemEnum.ladder)){
+                    setProgress(4);
+                    }
                 }
             } else {
                 System.out.println(WordList.WRONG_INTERACT);
