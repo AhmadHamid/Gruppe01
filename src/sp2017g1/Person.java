@@ -25,6 +25,8 @@ public class Person extends NPC {
 
     public void interactExtended(Command command, Item k, Item h, HashMap<ItemEnum, Item> inv) {
         if (interactCount == 0) {
+            System.out.println("WELCOME!");
+            
             System.out.println("1. First time.");
             interactCount++;
         } else if (interactCount == 1) {

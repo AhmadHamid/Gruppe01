@@ -234,6 +234,9 @@ public class Game
             }
             System.out.println("Going through door");
             System.out.println(currentRoom.getLongDescription());
+            if (neighbour.getCurrentRoom() == currentRoom) {
+                neighbour.interact(command);
+            }
             System.out.println(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         } else {
