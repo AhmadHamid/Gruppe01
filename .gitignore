@@ -2,3 +2,8 @@
 /dist/
 nbproject/private/private.xml
 nbproject/private/private.xml
+*.properties
+*.xml
+nbproject/private/private.xml
+/F2/dist/
+/F2/build/
