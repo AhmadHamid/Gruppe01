@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 /**
  *
@@ -19,17 +20,28 @@ import javafx.scene.control.Label;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Label label;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private TextArea storyField;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void northButtonAction(ActionEvent event) {
+        storyField.setText("North");
+    }
+
+    @FXML
+    private void eastButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void southButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void westButtonAction(ActionEvent event) {
+    }
     
 }
