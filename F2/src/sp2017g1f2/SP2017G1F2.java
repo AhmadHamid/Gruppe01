@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import originalFiles.*;
 
 /**
  *
@@ -32,6 +33,8 @@ public class SP2017G1F2 extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        Game game = new Game();
+        game.play();
     }
     
 }
