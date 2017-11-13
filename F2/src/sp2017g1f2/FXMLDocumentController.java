@@ -29,19 +29,22 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void northButtonAction(ActionEvent event) {
-        storyField.setText("North");
+        storyField.appendText("North\n");
     }
 
     @FXML
     private void eastButtonAction(ActionEvent event) {
+        storyField.appendText("East\n");
     }
 
     @FXML
     private void southButtonAction(ActionEvent event) {
+        storyField.appendText("South");
     }
 
     @FXML
     private void westButtonAction(ActionEvent event) {
+        storyField.appendText("West");
     }
     
 }

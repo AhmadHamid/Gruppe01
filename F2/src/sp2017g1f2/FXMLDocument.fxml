@@ -10,6 +10,6 @@
       <Button layoutX="340.0" layoutY="280.0" mnemonicParsing="false" onAction="#eastButtonAction" prefWidth="48.0" text="East" textAlignment="CENTER" />
       <Button layoutX="275.0" layoutY="328.0" mnemonicParsing="false" onAction="#southButtonAction" text="South" textAlignment="CENTER" />
       <Button layoutX="210.0" layoutY="280.0" mnemonicParsing="false" onAction="#westButtonAction" prefWidth="48.0" text="West" textAlignment="CENTER" />
-      <TextArea fx:id="storyField" editable="false" layoutX="199.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="storyField" editable="false" focusTraversable="false" layoutX="151.0" layoutY="14.0" prefHeight="200.0" prefWidth="296.0" wrapText="true" />
    </children>
 </AnchorPane>
