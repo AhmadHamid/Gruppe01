@@ -8,11 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< HEAD
-    <jar href="SP2017G1F2.jar" size="2646" download="eager" />
-=======
-    <jar href="SP2017G1F2.jar" size="2692" download="eager" />
->>>>>>> e72a9f8a8cbf26af644968ccf8ea781ec2fa6d49
+    <jar href="SP2017G1F2.jar" size="2805" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SP2017G1F2" >
     <param name="requiredFXVersion" value="8.0+"/>
