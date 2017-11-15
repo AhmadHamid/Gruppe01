@@ -14,6 +14,10 @@ public class Points {
     public int totalItemPoints = 0;
     public int totalTimePoints = 0;
     public int totalEfficiencyPoints = 0;
+    public int highScorePlacement;
+    public int highScore1;
+    public int highScore2;
+    public int highScore3;
     public final int ITEM_TIER1_POINT = 15;
     public final int ITEM_TIER2_POINT = 25;
     public final int ITEM_TIER3_POINT = 40;
@@ -24,16 +28,15 @@ public class Points {
     
     public Points(int totalPoints) {
         // Logic for calculating the end score based on the total points gained from the three types (item, time, and efficiency) of points.
-        /*
+        
         totalPoints = totalItemPoints + totalTimePoints + totalEfficiencyPoints;
-        */
     }
     
     public int ItemPoints() {
         // Logic for points given from obtained items.
         
         /* This solution, written in pseudo-code, requires all items to have a flag that can be set the first time it is in the player inventory.
-           It may not count any one item more than once.
+           It may not count any one item more than once. */
         
         if(itemPicked == itemTier1) {
             totalItemPoints = totalItemPoints + ITEM_TIER1_POINT;
@@ -46,7 +49,6 @@ public class Points {
         else if(itemPicked == itemTier3) {
             totalItemPoints = totalItemPoints + ITEM_TIER3_POINT;
         }
-        */
         
         return totalItemPoints;
     }
@@ -61,5 +63,23 @@ public class Points {
         // Logic for points given from efficiency (shortest route from start to finish) in finishing the game.
         
         return totalEfficiencyPoints;
+    }
+    
+    public int HighScore() {
+        // Logic for top 10 best scores.
+        
+        if(totalPoints > highScore1) {
+            highScorePlacement = highScore1;
+        }
+        
+        else if(totalPoints > highScore2) {
+            highScorePlacement = highScore2;
+        }
+        
+        else if(totalPoints > highScore3) {
+            highScorePlacement = highScore3;
+        }
+        
+        return totalPoints;
     }
 }
