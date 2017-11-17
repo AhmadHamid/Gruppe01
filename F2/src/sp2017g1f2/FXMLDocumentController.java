@@ -56,7 +56,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
     
     public void toStoryField(String string) {
-        storyField.appendText(string);
+        storyField.appendText(string + "\n");
     }
 
     @FXML
