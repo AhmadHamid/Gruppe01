@@ -29,8 +29,37 @@ public abstract class NPC {
         return currentRoom;
     }
 
-    private void setCurrentRoom(Room currentRoom) {
+    public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
     
+    public void move(){
+        double i = Math.random() * 10;
+        if (i > 0 && i < 2.6){
+            if (currentRoom.getExit("north") == null){
+                
+            } else {
+            currentRoom = currentRoom.getExit("north");
+            }
+        } else if (i > 2.5 && i < 5.1){
+            if (currentRoom.getExit("east") == null){
+                
+            } else {
+            currentRoom = currentRoom.getExit("east");
+            }
+        } else if (i > 5 && i < 7.6){
+            if (currentRoom.getExit("west") == null){
+                
+            } else {
+            currentRoom = currentRoom.getExit("west");
+            }
+        } else {
+            if (currentRoom.getExit("south") == null){
+                
+            } else {
+            currentRoom = currentRoom.getExit("south");
+            }
+        }
+        
+    }
 }

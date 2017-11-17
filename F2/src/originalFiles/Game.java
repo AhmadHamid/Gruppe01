@@ -25,7 +25,9 @@ public class Game
     Person neighbour;
     TreeStump treeStump;
     public Animal pet;
-
+    
+    Person testNPC;
+    
     public static void setProgress(int i){
         if(progress < i)
             progress = i;
@@ -128,6 +130,8 @@ public class Game
         neighbour = new Person(neighbourHouse);
         treeStump = new TreeStump(shed);
         pet = new Animal(Species.DOG, forest);
+        
+        testNPC = new Person(garden);
     }
 
     public void play() 
@@ -141,7 +145,7 @@ public class Game
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
-
+    
     private void printWelcome()
     {
         System.out.println();
@@ -217,11 +221,15 @@ public class Game
             System.out.println(WordList.GO_WHERE);
             return;
         }
-
+        
         String direction = command.getSecondWord();
 
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
+        
+        if (!pet.isFollow()){
+            pet.move();
+        }
         
         if (nextRoom == null && nextRoom1 == null) {
             System.out.println("There is no door!");
@@ -264,7 +272,12 @@ public class Game
             } else if (currentRoom == pet.getCurrentRoom() && !pet.isFollow()) {
                 System.out.println("You see a pet. It will now follow you.");
                 pet.startFollow();
+                setProgress(1);
             }
+            if (currentRoom == testNPC.getCurrentRoom()){
+                System.out.println("TestNPC is in the room");
+            }
+            
             if (!currentRoom.getRoomItems().isEmpty()) {
                 System.out.println(WordList.ITEMS_IN_ROOM);
                 currentRoom.getRoomItemsList();   

@@ -34,8 +34,8 @@ public class WordList {
     public static final String GET_HELP = "Type '" + CommandWord.HELP + "' if you need help.";
     public static final String ITEMS_IN_ROOM = "These items is in the room: ";
     public static final String DONT_KNOW_WHAT_YOU_MEAN = "I don't know what you mean...";
-    public static final String PRINT_HELP = "You are lost. You are alone. You wander\n"
-                                            + "around at the university. \n"
+    public static final String PRINT_HELP = "Get the house key to go home before your dinner is burned\n"
+                                            + "For hints interact with your pet \n"
                                             + "\n"
                                              + "Your command words are:";
     public static final String GO_WHERE = "Go where?";
