@@ -3,6 +3,7 @@ package originalFiles;
 import java.util.*;
 import sp2017g1.*;
 import language.*;
+import sp2017g1f2.*;
 
 /**
  * @author  Michael Kolling and David J. Barnes
@@ -10,6 +11,7 @@ import language.*;
  */
 public class Game 
 {
+    private WriteToStory c;// = new FXMLDocumentController();
     private Parser parser;
     private Room currentRoom;
     private static HashMap<ItemEnum, Item> inventory;
@@ -31,7 +33,7 @@ public class Game
             progress = i;
     }
     
-    public Game() 
+    public Game(WriteToStory _c) 
     {
         createInventory();
         createRooms();
@@ -39,6 +41,7 @@ public class Game
         createNPC();
         parser = new Parser();
         progress = 0;
+        c = _c;
     }
     
     private void createRooms() {
@@ -139,25 +142,31 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        c.toStoryField("Thank you for playing.  Good bye.");
+//        System.out.println("Thank you for playing.  Good bye.");
     }
 
     private void printWelcome()
     {
-        System.out.println();
+        /*System.out.println();
         System.out.println(WordList.WELCOME);
         System.out.println(WordList.DESCRIPTION);
         System.out.println(WordList.GET_HELP);
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(currentRoom.getLongDescription());*/
+        c.toStoryField("");
+        c.toStoryField(WordList.WELCOME);
+        c.toStoryField(WordList.DESCRIPTION);
+        c.toStoryField(WordList.GET_HELP);
+        c.toStoryField("");
+        c.toStoryField(currentRoom.getLongDescription());
         if(!currentRoom.getRoomItems().isEmpty()) {
-            System.out.println(WordList.ITEMS_IN_ROOM);
+//            System.out.println(WordList.ITEMS_IN_ROOM);
+            c.toStoryField(WordList.ITEMS_IN_ROOM);
         } else {
             
         }
         currentRoom.getRoomItemsList();
-        /*System.out.println("TEST");
-        Item.enumAllItems();*/
     }
 
     private boolean processCommand(Command command) 
@@ -167,7 +176,8 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println(WordList.DONT_KNOW_WHAT_YOU_MEAN);
+//            System.out.println(WordList.DONT_KNOW_WHAT_YOU_MEAN);
+            c.toStoryField(WordList.DONT_KNOW_WHAT_YOU_MEAN);
             return false;
         }
 
@@ -207,14 +217,16 @@ public class Game
 
     private void printHelp() 
     {
-        System.out.println(WordList.PRINT_HELP);
+//        System.out.println(WordList.PRINT_HELP);
+        c.toStoryField(WordList.PRINT_HELP);
         parser.showCommands();
     }
     
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            System.out.println(WordList.GO_WHERE);
+//            System.out.println(WordList.GO_WHERE);
+            c.toStoryField(WordList.GO_WHERE);
             return;
         }
 
@@ -224,13 +236,16 @@ public class Game
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
         if (nextRoom == null && nextRoom1 == null) {
-            System.out.println("There is no door!");
+//            System.out.println("There is no door!");
+            c.toStoryField("There is no door!");
         }
         else if (nextRoom == null && nextRoom1.getLock() == true){
-            System.out.println("The door is locked");
+//            System.out.println("The door is locked");
+            c.toStoryField("The door is locked");
             if (nextRoom1.getExit(direction).getShortDescription() == "home"){
                 if(progress == 0){
-                    System.out.println("I should get my pet before going home");
+//                    System.out.println("I should get my pet before going home");
+                    c.toStoryField("I should get my pet before going home");
                 } else{
                     setProgress(2);
                 }
@@ -240,42 +255,53 @@ public class Game
             currentRoom = nextRoom1.getExit(direction);
             pet.goPet(nextRoom1.getExit(direction));
             if (currentRoom == home) {
-                System.out.println(WordList.END_DESCRIPTION);
+//                System.out.println(WordList.END_DESCRIPTION);
+                c.toStoryField(WordList.END_DESCRIPTION);
                 System.exit(0);
             }
-            System.out.println("Going through door");
-            System.out.println(currentRoom.getLongDescription());
+            /*System.out.println("Going through door");
+            System.out.println(currentRoom.getLongDescription());*/
+            c.toStoryField("going through door");
+            c.toStoryField(currentRoom.getLongDescription());
             /*if (neighbour.getCurrentRoom() == currentRoom) {
                 neighbour.interact(command);
             }*/
-            System.out.println(WordList.ITEMS_IN_ROOM);
+//            System.out.println(WordList.ITEMS_IN_ROOM);
+            c.toStoryField(WordList.ITEMS_IN_ROOM);
             currentRoom.getRoomItemsList();
         } else {
             currentRoom = nextRoom;
             pet.goPet(nextRoom);
             
-            System.out.println(currentRoom.getLongDescription());
+//            System.out.println(currentRoom.getLongDescription());
+            c.toStoryField(currentRoom.getLongDescription());
             if (currentRoom == neighbour.getCurrentRoom()) {
-                System.out.println("You see your neighbour in the room.");
+//                System.out.println("You see your neighbour in the room.");
+                c.toStoryField("You see your neightbour in the room.");
                 command.setSecondWord("neighbour");
                 interact(command);
             } else if(currentRoom == treeStump.getCurrentRoom()) {
-                System.out.println("You see a treestump in the room.");
+//                System.out.println("You see a treestump in the room.");
+                c.toStoryField("you see a treestump in the room.");
             } else if (currentRoom == pet.getCurrentRoom() && !pet.isFollow()) {
-                System.out.println("You see a pet. It will now follow you.");
+//                System.out.println("You see a pet. It will now follow you.");
+                c.toStoryField("You see a pet. It will now follow you.");
                 pet.startFollow();
             }
             if (!currentRoom.getRoomItems().isEmpty()) {
-                System.out.println(WordList.ITEMS_IN_ROOM);
+//                System.out.println(WordList.ITEMS_IN_ROOM);
+                c.toStoryField(WordList.ITEMS_IN_ROOM);
                 currentRoom.getRoomItemsList();   
             } else {
-                System.out.println("No items in room.");
+//                System.out.println("No items in room.");
+                c.toStoryField("No items in room.");
             }
         }
         
 
         if (currentRoom == home) {
-            System.out.println("You win!");
+//            System.out.println("You win!");
+            c.toStoryField("You win!");
             System.exit(0);
         }
 
@@ -283,7 +309,8 @@ public class Game
     
     private void unlockRoom(Command command){
         if(!command.hasSecondWord()) {
-            System.out.println("Unlock what?");
+//            System.out.println("Unlock what?");
+            c.toStoryField("unlock what?");
             return;
         }
         
@@ -293,20 +320,24 @@ public class Game
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
         if (nextRoom != null){
-            System.out.println("Room is not locked");
+//            System.out.println("Room is not locked");
+            c.toStoryField("Room is not locked");
         }
         else if (nextRoom == null && nextRoom1 == null) {
-            System.out.println("There is no door!");
+            /*System.out.println("There is no door!");*/
+            c.toStoryField("There is no door!");
         }
         else if (nextRoom == null && nextRoom1.getLock() == false){
-            System.out.println("Room is not locked");
+            /*System.out.println("Room is not locked");*/
+            c.toStoryField("Room is not locked");
         }
         else if(!inventory.containsKey(ItemEnum.valueOf(nextRoom1.getKey()))) {
-            System.out.println("You don't have the key!");
+            /*System.out.println("You don't have the key!");*/
+            c.toStoryField("You don't have the key!");
         } else {
             nextRoom1.setLock(false);
-            System.out.println("Room is now unlocked");
-            //inventory.remove(nextRoom1.getKey());
+            /*System.out.println("Room is now unlocked");*/
+            c.toStoryField("Room is now unlocked");
             inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
             goRoom(command);
         }
@@ -315,7 +346,8 @@ public class Game
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
-            System.out.println("Quit what?");
+            /*System.out.println("Quit what?");*/
+            c.toStoryField("Quit what?");
             return false;
         }
         else {
@@ -333,22 +365,28 @@ public class Game
             if(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() == "shovel"){
                 setProgress(5);
             }
-            System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
+            /*System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");*/
+            c.toStoryField(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
         } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
-            System.out.println("That item is not in the room!");
+            /*System.out.println("That item is not in the room!");*/
+            c.toStoryField("That item is not in the room!");
         } else {
-            System.out.println("Inventory is full");
+            /*System.out.println("Inventory is full");*/
+            c.toStoryField("Inventory is full");
         }
         } catch (NullPointerException e) {
-            System.out.println("Pick what item?");
+            /*System.out.println("Pick what item?");*/
+            c.toStoryField("Pick what item?");
         } catch (IllegalArgumentException e) {
-            System.out.println("That is not an item!");
+            /*System.out.println("That is not an item!");*/
+            c.toStoryField("That is not an item!");
         }
     }
     
     private void useItem(Command command) {
         if(!command.hasSecondWord()) {
             System.out.println("Use what item?");
+            // Denne kan slettes. Bruges slet ikke.
         }
     }
     
@@ -360,12 +398,15 @@ public class Game
             currentRoom.getRoomItems().put(inputItem, inventory.get(inputItem));
             inventory.remove(inputItem);
             
-            System.out.println(currentRoom.getRoomItems().get(inputItem).getItemName() + " is removed from the inventory");
+            /*System.out.println(currentRoom.getRoomItems().get(inputItem).getItemName() + " is removed from the inventory");*/
+            c.toStoryField(currentRoom.getRoomItems().get(inputItem).getItemName() + " is removed from the inventory");
         }
         } catch (NullPointerException e) {
-            System.out.println("Drop what item?");
+            /*System.out.println("Drop what item?");*/
+            c.toStoryField("Drop what item?");
         } catch (IllegalArgumentException e) {
-            System.out.println("That is not an item");
+            /*System.out.println("That is not an item");*/
+            c.toStoryField("That is not an item");
         }
     }
     

@@ -10,21 +10,29 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import originalFiles.*;
+import sp2017g1.WriteToStory;
 
 /**
  *
  * @author Student
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLDocumentController implements Initializable, WriteToStory {
+    
+    private Game game;
     
     @FXML
     private TextArea storyField;
+    @FXML
+    private Button gameStart;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        game = new Game(this);
+        storyField.appendText("Nu kører vi!\n");
     }    
 
     @FXML
@@ -39,12 +47,22 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void southButtonAction(ActionEvent event) {
-        storyField.appendText("South");
+        storyField.appendText("South\n");
     }
 
     @FXML
     private void westButtonAction(ActionEvent event) {
-        storyField.appendText("West");
+        storyField.appendText("West\n");
+    }
+    
+    public void toStoryField(String string) {
+        storyField.appendText(string);
+    }
+
+    @FXML
+    private void gameButtonAction(ActionEvent event) {
+        gameStart.setDisable(true);
+        game.play();
     }
     
 }
