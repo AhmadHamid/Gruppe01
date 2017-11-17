@@ -11,7 +11,10 @@ public class Timer extends Thread {
     private long startTime = System.currentTimeMillis();
     private long elapsedTime;
 
-
+    public int getTime() {
+        return 1;
+    }
+    
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
         Timer te = new Timer();

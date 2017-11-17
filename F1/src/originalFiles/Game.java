@@ -1,6 +1,14 @@
 package originalFiles;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sp2017g1.*;
 import language.*;
 
@@ -25,6 +33,9 @@ public class Game
     Person neighbour;
     TreeStump treeStump;
     public Animal pet;
+    Person evilNPC;
+    
+    sp2017g1.Timer timer;
 
     public static void setProgress(int i){
         if(progress < i)
@@ -41,20 +52,88 @@ public class Game
         progress = 0;
     }
     
+    private void save() {
+        /*
+        * Der skal laves en fil (som overwriter), der skal gemmes i.
+        * 
+        * Hent data (Strings): CurrentRoom Player/NPC/EvilNPC, Inventory.KeySet 
+        * Items + Item Location, AnimalFollow, Progress, Timer
+        * 
+        * Skriv data til fil (hver string har sin egen linje)
+        * 
+        * (Return true)
+        * 
+        * 
+        * inventoryString = Inventory.keyset();
+        * Gem item lokationer
+        * 
+        */ 
+        
+        String timerString = Integer.toString(timer.getTime());
+
+        String currentRoomPlayer = currentRoom.getName();
+        String currentRoomPet = pet.getCurrentRoom().getName();
+        String currentRoomEvilNPC = evilNPC.getCurrentRoom().getName();
+        String progressString = Integer.toString(progress);
+        String petFollowString = Boolean.toString(pet.isFollow());
+        String inventoryString = inventory.keySet().toString();
+        
+        
+        
+        
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("savefile.txt"));
+
+            writer.write(
+                    currentRoomPlayer + ";" 
+                    + currentRoomPet + ";" 
+                    + currentRoomEvilNPC + ";"
+                    + progressString + ";" 
+                    + inventoryString + ";" 
+                    + petFollowString + ";"
+                    + timerString);
+            
+            writer.close();
+            
+        } catch (IOException e) {
+        }
+        System.out.println("Game Saved");
+        
+    }
+    
+    private void load() {
+        try {
+            BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
+            StringBuilder builder = new StringBuilder();
+            
+            String loadData = reader.readLine();
+            builder.append(loadData);
+            
+            System.out.println(loadData);
+            
+            reader.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    
     private void createRooms() {
         //Creates and defines the rooms used in the game.
         
         //Each room has a unique name and description.
-        home = new Room("home");
-        garden = new Room("in your garden outside your home");
-        bridge   = new Room("on the bridge that crosses the local river");
-        river = new Room("by the river with a great waterfall");
-        waterfall = new Room("at the waterfall");
-        shed = new Room("at your shed");
-        mountainside = new Room("at the side of the mountain");
-        forest = new Room("at a giant oak tree");
-        mountain = new Room("on a mountain cliff");
-        neighbourHouse = new Room("at your neighbours house");
+        home = new Room("home", "home");
+        garden = new Room("in your garden outside your home","garden");
+        bridge   = new Room("on the bridge that crosses the local river", "bridge");
+        river = new Room("by the river with a great waterfall", "river");
+        waterfall = new Room("at the waterfall", "waterfall");
+        shed = new Room("at your shed", "shed");
+        mountainside = new Room("at the side of the mountain", "mountainside");
+        forest = new Room("at a giant oak tree", "forest");
+        mountain = new Room("on a mountain cliff", "mountain");
+        neighbourHouse = new Room("at your neighbours house", "neighbourHouse");
         
         door = new Door("The door to your house", ItemEnum.key);
         Ladderdoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
@@ -128,16 +207,21 @@ public class Game
         neighbour = new Person(neighbourHouse);
         treeStump = new TreeStump(shed);
         pet = new Animal(Species.DOG, forest);
+        evilNPC = new Person(waterfall);
     }
 
-    public void play() 
+    public void play()
     {            
         printWelcome();
 
         boolean finished = false;
         while (! finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
+            try {
+                Command command = parser.getCommand();
+                finished = processCommand(command);
+            } catch (IOException ex) {
+                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -160,7 +244,7 @@ public class Game
         Item.enumAllItems();*/
     }
 
-    private boolean processCommand(Command command) 
+    private boolean processCommand(Command command) throws IOException 
     {
         boolean wantToQuit = false;
 
@@ -202,6 +286,13 @@ public class Game
         else if (commandWord == CommandWord.INTERACT) {
             interact(command);
         }
+        else if (commandWord == CommandWord.SAVE){
+            save();
+        }
+        else if (commandWord == CommandWord.LOAD){
+            load();
+        }
+                
         return wantToQuit;
     }
 
