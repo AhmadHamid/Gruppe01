@@ -13,8 +13,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import originalFiles.*;
+import javafx.scene.control.TextField;
 import sp2017g1.WriteToStory;
+//import originalFiles.Game;
+import originalFiles.*;
+
 
 /**
  *
@@ -28,6 +31,14 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private TextArea storyField;
     @FXML
     private Button gameStart;
+    @FXML
+    private Button pickButton;
+    @FXML
+    private Button dropButton;
+    @FXML
+    private Button unlockButton;
+    @FXML
+    private TextField itemField;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -38,21 +49,25 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void northButtonAction(ActionEvent event) {
         storyField.appendText("North\n");
+        game.goRoom("north");
     }
 
     @FXML
     private void eastButtonAction(ActionEvent event) {
         storyField.appendText("East\n");
+        game.goRoom("east");
     }
 
     @FXML
     private void southButtonAction(ActionEvent event) {
         storyField.appendText("South\n");
+        game.goRoom("south");
     }
 
     @FXML
     private void westButtonAction(ActionEvent event) {
         storyField.appendText("West\n");
+        game.goRoom("west");
     }
     
     public void toStoryField(String string) {
@@ -63,6 +78,21 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void gameButtonAction(ActionEvent event) {
         gameStart.setDisable(true);
         game.play();
+    }
+
+    @FXML
+    private void pickButtonAction(ActionEvent event) {
+        game.pickItem(itemField.getText());
+    }
+
+    @FXML
+    private void dropButtonAction(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void unlockButtonAction(ActionEvent event) {
+        
     }
     
 }
