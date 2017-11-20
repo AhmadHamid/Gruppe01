@@ -12,4 +12,6 @@ package sp2017g1;
 public interface WriteToStory {
     
     public void toStoryField(String s);
+    
+    public void toStoryFieldnln(String s);
 }
