@@ -145,9 +145,7 @@ public class Game
         /*while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-        }
-        c.toStoryField("Thank you for playing.  Good bye.");*/
-//        System.out.println("Thank you for playing.  Good bye.");
+        }*/
     }
     
     
@@ -370,6 +368,12 @@ public class Game
         }
     }
 
+    public void quit() {
+        CommandWord commandWord = CommandWord.QUIT;
+        Command command = new Command(commandWord, null);
+        quit(command);
+    }
+    
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
@@ -378,6 +382,9 @@ public class Game
             return false;
         }
         else {
+        c.toStoryField("Thank you for playing.  Good bye.");
+//        System.out.println("Thank you for playing.  Good bye.");
+        System.exit(0);
             return true;
         }
     }

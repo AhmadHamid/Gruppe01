@@ -136,4 +136,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.play();
     }
     
+    @FXML
+    private void quitButtonAction(ActionEvent event) {
+        game.quit();
+    }
+    
 }
