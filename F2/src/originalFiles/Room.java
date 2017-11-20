@@ -1,8 +1,6 @@
 package originalFiles;
 
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 import sp2017g1.*;
 //import sp2017g1f2.*;
 
@@ -46,12 +44,11 @@ public class Room
         return roomItems;
     }
 
-//    Return list of items in room
+//    Return list of items in room - HER ER POBLEMER. VISER KUN DET FØRSTE. 
     public void getRoomItemsList() {
-        for (ItemEnum item : roomItems.keySet()) {
+      for (ItemEnum item : roomItems.keySet()) {
             System.out.printf("%s ", roomItems.get(item).getItemName());
         }
-        System.out.println();
     }
     
     public String getRoomName()

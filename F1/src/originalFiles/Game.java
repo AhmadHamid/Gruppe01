@@ -304,6 +304,12 @@ public class Game
         parser.showCommands();
     }
     
+    public void goRoom(String direction){
+        CommandWord commandWord = CommandWord.GO;
+        Command command = new Command(commandWord, direction);
+        goRoom(command);
+    }
+    
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
@@ -414,6 +420,12 @@ public class Game
         else {
             return true;
         }
+    }
+    
+    public void pickItem(String item){
+        CommandWord commandWord = CommandWord.GO;
+        Command command = new Command(commandWord, item);
+        pickItem(command);
     }
     
     private void pickItem(Command command) {
