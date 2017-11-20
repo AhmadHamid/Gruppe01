@@ -546,7 +546,7 @@ public class Game
         }
     }
     
-    private void save() {
+    public void save() {
         /*
         * Der skal laves en fil (som overwriter), der skal gemmes i.
         * 
@@ -599,7 +599,7 @@ public class Game
        
     }
     
-    private void load() {
+    public void load() {
         try {
             BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
             //StringBuilder builder = new StringBuilder();
