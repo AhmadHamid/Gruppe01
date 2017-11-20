@@ -15,9 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import sp2017g1.WriteToStory;
-//import originalFiles.Game;
-import originalFiles.*;
+import originalFiles.Game;
+
 
 
 /**
@@ -26,26 +29,12 @@ import originalFiles.*;
  */
 public class FXMLDocumentController implements Initializable, WriteToStory {
     
-    private Game game;
+    private static Game game;
     
     @FXML
     private TextArea storyField;
     @FXML
-    private Button gameStart;
-    @FXML
-    private Button pickButton;
-    @FXML
-    private Button dropButton;
-    @FXML
-    private Button unlockButton;
-    @FXML
-    private Button northButton;
-    @FXML
-    private Button eastButton;
-    @FXML
-    private Button southButton;
-    @FXML
-    private Button westButton;
+    private Button gameStart, pickButton, dropButton, unlockButton, northButton, eastButton, southButton, westButton;
     @FXML
     private Button playButton;
     @FXML
@@ -115,16 +104,24 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void pickButtonAction(ActionEvent event) {
-        //game.pickItem(itemField.getText());
+        //game.pickItem(itemList.getText());
+    }
+
+    @FXML
+    private void quitButtonAction(ActionEvent event) {
+        game.quit();
     }
 
     @FXML
     private void dropButtonAction(ActionEvent event) {
-        
     }
 
     @FXML
     private void unlockButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void newScreenButtonAction(ActionEvent event) {
         
     }
 
@@ -148,8 +145,31 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
     
     @FXML
-    private void quitButtonAction(ActionEvent event) {
-        game.quit();
+    private void northKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.UP)) {
+            game.goRoom("north");
+        }
+    }
+
+    @FXML
+    private void eastKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.RIGHT)) {
+            game.goRoom("east");
+        }
+    }
+
+    @FXML
+    private void southKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.DOWN)) {
+            game.goRoom("south");
+        }
+    }
+
+    @FXML
+    private void westKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.LEFT)) {
+            game.goRoom("west");
+        }
     }
 
     @FXML

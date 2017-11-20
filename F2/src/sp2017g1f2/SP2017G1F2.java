@@ -6,9 +6,13 @@
 package sp2017g1f2;
 
 import javafx.application.Application;
+import javafx.event.EventType;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +30,7 @@ public class SP2017G1F2 extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+    
     /**
      * @param args the command line arguments
      */
