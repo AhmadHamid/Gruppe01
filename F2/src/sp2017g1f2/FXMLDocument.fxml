@@ -7,7 +7,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="374.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp2017g1f2.FXMLDocumentController">
    <children>
-<<<<<<< HEAD
       <Button fx:id="northButton" layoutX="275.0" layoutY="232.0" mnemonicParsing="false" onAction="#northButtonAction" onKeyReleased="#northKeyAction" text="North" textAlignment="CENTER" />
       <Button fx:id="eastButton" layoutX="340.0" layoutY="280.0" mnemonicParsing="false" onAction="#eastButtonAction" onKeyReleased="#eastKeyAction" prefWidth="48.0" text="East" textAlignment="CENTER" />
       <Button fx:id="southButton" layoutX="275.0" layoutY="328.0" mnemonicParsing="false" onAction="#southButtonAction" onKeyReleased="#southKeyAction" text="South" textAlignment="CENTER" />
@@ -20,19 +19,8 @@
       <TextField fx:id="itemField" focusTraversable="false" layoutX="34.0" layoutY="79.0" prefHeight="25.0" prefWidth="64.0" />
       <Button focusTraversable="false" layoutX="534.0" layoutY="316.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
       <Button focusTraversable="false" layoutX="85.0" layoutY="305.0" mnemonicParsing="false" onAction="#newScreenButtonAction" text="New screen" />
-=======
-      <Button fx:id="northButton" layoutX="275.0" layoutY="232.0" mnemonicParsing="false" onAction="#northButtonAction" text="North" textAlignment="CENTER" />
-      <Button fx:id="eastButton" layoutX="340.0" layoutY="280.0" mnemonicParsing="false" onAction="#eastButtonAction" prefWidth="48.0" text="East" textAlignment="CENTER" />
-      <Button fx:id="southButton" layoutX="275.0" layoutY="328.0" mnemonicParsing="false" onAction="#southButtonAction" text="South" textAlignment="CENTER" />
-      <Button fx:id="westButton" layoutX="210.0" layoutY="280.0" mnemonicParsing="false" onAction="#westButtonAction" prefWidth="48.0" text="West" textAlignment="CENTER" />
-      <TextArea fx:id="storyField" editable="false" focusTraversable="false" layoutX="151.0" layoutY="14.0" prefHeight="200.0" prefWidth="296.0" wrapText="true" />
-      <Button fx:id="gameStart" layoutX="471.0" layoutY="232.0" mnemonicParsing="false" onAction="#gameButtonAction" opacity="0.0" text="Start" />
-      <Button fx:id="pickButton" layoutX="47.0" layoutY="54.0" mnemonicParsing="false" onAction="#pickButtonAction" text="Pick" />
-      <Button fx:id="dropButton" layoutX="47.0" layoutY="114.0" mnemonicParsing="false" onAction="#dropButtonAction" text="Drop" />
-      <Button fx:id="unlockButton" layoutX="47.0" layoutY="175.0" mnemonicParsing="false" onAction="#unlockButtonAction" text="Unlock" />
-      <TextField fx:id="itemField" layoutX="34.0" layoutY="79.0" prefHeight="25.0" prefWidth="64.0" />
+
       <Button fx:id="playButton" layoutX="48.0" layoutY="257.0" mnemonicParsing="false" onAction="#playButtonAction" text="Play" />
       <Button layoutX="471.0" layoutY="79.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
->>>>>>> 13bd33f581cd57fcc416ccb2c20979461c6c0adf
    </children>
 </AnchorPane>

@@ -37,40 +37,16 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private TextField itemField;
     @FXML
-    private Button northButton;
-    @FXML
-    private Button eastButton;
-    @FXML
-    private Button southButton;
-    @FXML
-    private Button westButton;
-    @FXML
     private Button playButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
         storyField.appendText("Nu kører vi!\n");
-<<<<<<< HEAD
         game.play();
         
-    }
-    
-=======
-        storyField.setVisible(false);
-        gameStart.setVisible(false);
-        pickButton.setVisible(false);
-        dropButton.setVisible(false);
-        unlockButton.setVisible(false);
-        itemField.setVisible(false);
-        northButton.setVisible(false);
-        eastButton.setVisible(false);
-        southButton.setVisible(false);
-        westButton.setVisible(false);
-        //game.play();
     }    
 
->>>>>>> 13bd33f581cd57fcc416ccb2c20979461c6c0adf
     @FXML
     private void northButtonAction(ActionEvent event) {
         storyField.appendText("North\n");
@@ -134,7 +110,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
 
     @FXML
-<<<<<<< HEAD
     private void northKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.UP)) {
             game.goRoom("north");
@@ -160,7 +135,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         if(event.getCode().equals(KeyCode.LEFT)) {
             game.goRoom("west");
         }
-=======
+    }
+    
+    @FXML
     private void playButtonAction(ActionEvent event) {
         playButton.setVisible(false);
         storyField.setVisible(true);
@@ -174,12 +151,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         southButton.setVisible(true);
         westButton.setVisible(true);
         game.play();
-    }
-    
-    @FXML
-    private void quitButtonAction(ActionEvent event) {
-        game.quit();
->>>>>>> 13bd33f581cd57fcc416ccb2c20979461c6c0adf
     }
     
 }
