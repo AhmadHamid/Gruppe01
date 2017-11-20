@@ -17,5 +17,6 @@
       <Button fx:id="dropButton" layoutX="47.0" layoutY="114.0" mnemonicParsing="false" onAction="#dropButtonAction" text="Drop" />
       <Button fx:id="unlockButton" layoutX="47.0" layoutY="175.0" mnemonicParsing="false" onAction="#unlockButtonAction" text="Unlock" />
       <TextField fx:id="itemField" layoutX="34.0" layoutY="79.0" prefHeight="25.0" prefWidth="64.0" />
+      <Button layoutX="471.0" layoutY="79.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
    </children>
 </AnchorPane>
