@@ -14,6 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import sp2017g1.WriteToStory;
 //import originalFiles.Game;
 import originalFiles.*;
@@ -25,28 +28,49 @@ import originalFiles.*;
  */
 public class FXMLDocumentController implements Initializable, WriteToStory {
     
-    private Game game;
+    private static Game game;
     
     @FXML
     private TextArea storyField;
     @FXML
-    private Button gameStart;
-    @FXML
-    private Button pickButton;
-    @FXML
-    private Button dropButton;
-    @FXML
-    private Button unlockButton;
+    private Button gameStart, pickButton, dropButton, unlockButton, northButton, eastButton, southButton, westButton;
     @FXML
     private TextField itemField;
+    @FXML
+    private Button northButton;
+    @FXML
+    private Button eastButton;
+    @FXML
+    private Button southButton;
+    @FXML
+    private Button westButton;
+    @FXML
+    private Button playButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
         storyField.appendText("Nu kører vi!\n");
+<<<<<<< HEAD
         game.play();
+        
+    }
+    
+=======
+        storyField.setVisible(false);
+        gameStart.setVisible(false);
+        pickButton.setVisible(false);
+        dropButton.setVisible(false);
+        unlockButton.setVisible(false);
+        itemField.setVisible(false);
+        northButton.setVisible(false);
+        eastButton.setVisible(false);
+        southButton.setVisible(false);
+        westButton.setVisible(false);
+        //game.play();
     }    
 
+>>>>>>> 13bd33f581cd57fcc416ccb2c20979461c6c0adf
     @FXML
     private void northButtonAction(ActionEvent event) {
         storyField.appendText("North\n");
@@ -90,19 +114,72 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.pickItem(itemField.getText());
     }
 
-    @FXML
-    private void dropButtonAction(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void unlockButtonAction(ActionEvent event) {
-        
-    }
 
     @FXML
     private void quitButtonAction(ActionEvent event) {
         game.quit();
+    }
+
+    @FXML
+    private void dropButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void unlockButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void newScreenButtonAction(ActionEvent event) {
+        
+    }
+
+    @FXML
+<<<<<<< HEAD
+    private void northKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.UP)) {
+            game.goRoom("north");
+        }
+    }
+
+    @FXML
+    private void eastKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.RIGHT)) {
+            game.goRoom("east");
+        }
+    }
+
+    @FXML
+    private void southKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.DOWN)) {
+            game.goRoom("south");
+        }
+    }
+
+    @FXML
+    private void westKeyAction(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.LEFT)) {
+            game.goRoom("west");
+        }
+=======
+    private void playButtonAction(ActionEvent event) {
+        playButton.setVisible(false);
+        storyField.setVisible(true);
+        gameStart.setVisible(true);
+        pickButton.setVisible(true);
+        dropButton.setVisible(true);
+        unlockButton.setVisible(true);
+        itemField.setVisible(true);
+        northButton.setVisible(true);
+        eastButton.setVisible(true);
+        southButton.setVisible(true);
+        westButton.setVisible(true);
+        game.play();
+    }
+    
+    @FXML
+    private void quitButtonAction(ActionEvent event) {
+        game.quit();
+>>>>>>> 13bd33f581cd57fcc416ccb2c20979461c6c0adf
     }
     
 }
