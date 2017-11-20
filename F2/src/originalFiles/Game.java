@@ -170,7 +170,9 @@ public class Game
         } else {
             
         }
-        currentRoom.getRoomItemsList();
+//        currentRoom.getRoomItemsList();
+//        c.toStoryField(currentRoom.getRoomItemsList());
+        getRoomItemList(currentRoom);
     }
 
     private boolean processCommand(Command command) 
@@ -282,7 +284,9 @@ public class Game
             }*/
 //            System.out.println(WordList.ITEMS_IN_ROOM);
             c.toStoryField(WordList.ITEMS_IN_ROOM);
-            currentRoom.getRoomItemsList();
+//            currentRoom.getRoomItemsList();
+//            c.toStoryField(currentRoom.getRoomItemsList());
+            getRoomItemList(currentRoom);
         } else {
             currentRoom = nextRoom;
             pet.goPet(nextRoom);
@@ -310,7 +314,9 @@ public class Game
             if (!currentRoom.getRoomItems().isEmpty()) {
 //                System.out.println(WordList.ITEMS_IN_ROOM);
                 c.toStoryField(WordList.ITEMS_IN_ROOM);
-                currentRoom.getRoomItemsList();   
+//                currentRoom.getRoomItemsList();
+//                c.toStoryField(currentRoom.getRoomItemsList());
+                getRoomItemList(currentRoom);
             } else {
 //                System.out.println("No items in room.");
                 c.toStoryField("No items in room.");
@@ -513,5 +519,12 @@ public class Game
             System.out.println("What interaction?");
         }
     }
+    
+    private void getRoomItemList (Room room) {
+         for (ItemEnum item : room.getRoomItems().keySet()) {
+            //System.out.printf("%s ", room.getRoomItems().get(item).getItemName());
+            c.toStoryFieldnln(room.getRoomItems().get(item).getItemName() + " ");
+        }
+         c.toStoryField(" ");
+    }
 }
-
