@@ -33,6 +33,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
         storyField.appendText("Nu kører vi!\n");
+        game.play();
     }    
 
     @FXML
