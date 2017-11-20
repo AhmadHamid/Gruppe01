@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import sp2017g1.WriteToStory;
@@ -38,8 +39,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private Button unlockButton;
     @FXML
-    private TextField itemField;
-    @FXML
     private Button northButton;
     @FXML
     private Button eastButton;
@@ -49,6 +48,14 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private Button westButton;
     @FXML
     private Button playButton;
+    @FXML
+    private Button quitButton;
+    @FXML
+    private Button loadButton;
+    @FXML
+    private ListView<?> inventoryList;
+    @FXML
+    private ListView<?> itemList;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,7 +66,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         pickButton.setVisible(false);
         dropButton.setVisible(false);
         unlockButton.setVisible(false);
-        itemField.setVisible(false);
+        itemList.setVisible(false);
+        inventoryList.setVisible(false);
         northButton.setVisible(false);
         eastButton.setVisible(false);
         southButton.setVisible(false);
@@ -107,7 +115,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void pickButtonAction(ActionEvent event) {
-        game.pickItem(itemField.getText());
+        //game.pickItem(itemField.getText());
     }
 
     @FXML
@@ -123,12 +131,15 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void playButtonAction(ActionEvent event) {
         playButton.setVisible(false);
+        loadButton.setVisible(false);
+        quitButton.setVisible(false);
         storyField.setVisible(true);
         gameStart.setVisible(true);
         pickButton.setVisible(true);
         dropButton.setVisible(true);
         unlockButton.setVisible(true);
-        itemField.setVisible(true);
+        itemList.setVisible(true);
+        inventoryList.setVisible(true);
         northButton.setVisible(true);
         eastButton.setVisible(true);
         southButton.setVisible(true);
@@ -139,6 +150,10 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void quitButtonAction(ActionEvent event) {
         game.quit();
+    }
+
+    @FXML
+    private void loadButtonAction(ActionEvent event) {
     }
     
 }
