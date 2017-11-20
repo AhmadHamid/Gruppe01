@@ -46,4 +46,7 @@ public class Item {
         }
 
     }
+    public String getAllItemLocations() {
+        return "items";
+    }
 }

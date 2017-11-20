@@ -46,4 +46,11 @@ public class Item {
         }
 
     }
+    public String getAllItemLocations() {
+        return "items";
+    }
+    
+    public static Item getItem(ItemEnum itemName){
+        return allItems.get(itemName);
+    }
 }

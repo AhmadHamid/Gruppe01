@@ -1,9 +1,17 @@
 package originalFiles;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sp2017g1.*;
 import language.*;
-import sp2017g1f2.*;
+//import sp2017g1f2.*;
 
 /**
  * @author  Michael Kolling and David J. Barnes
@@ -27,6 +35,8 @@ public class Game
     Person neighbour;
     TreeStump treeStump;
     public Animal pet;
+    Person evilNPC;
+    sp2017g1.Timer time = new sp2017g1.Timer();
     
     Person testNPC;
     
@@ -50,16 +60,16 @@ public class Game
         //Creates and defines the rooms used in the game.
         
         //Each room has a unique name and description.
-        home = new Room("home");
-        garden = new Room("in your garden outside your home");
-        bridge   = new Room("on the bridge that crosses the local river");
-        river = new Room("by the river with a great waterfall");
-        waterfall = new Room("at the waterfall");
-        shed = new Room("at your shed");
-        mountainside = new Room("at the side of the mountain");
-        forest = new Room("at a giant oak tree");
-        mountain = new Room("on a mountain cliff");
-        neighbourHouse = new Room("at your neighbours house");
+        home = new Room("home", "home");
+        garden = new Room("in your garden outside your home","garden");
+        bridge   = new Room("on the bridge that crosses the local river", "bridge");
+        river = new Room("by the river with a great waterfall", "river");
+        waterfall = new Room("at the waterfall", "waterfall");
+        shed = new Room("at your shed", "shed");
+        mountainside = new Room("at the side of the mountain", "mountainside");
+        forest = new Room("at a giant oak tree", "forest");
+        mountain = new Room("on a mountain cliff", "mountain");
+        neighbourHouse = new Room("at your neighbours house", "neighbourHouse");
         
         door = new Door("The door to your house", ItemEnum.key);
         Ladderdoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
@@ -133,6 +143,7 @@ public class Game
         neighbour = new Person(neighbourHouse);
         treeStump = new TreeStump(shed);
         pet = new Animal(Species.DOG, forest);
+        evilNPC = new Person(waterfall);
         
         testNPC = new Person(garden);
     }
@@ -140,7 +151,7 @@ public class Game
     public void play() 
     {            
         printWelcome();
-
+        time.start();
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -215,6 +226,12 @@ public class Game
         }*/
         else if (commandWord == CommandWord.INTERACT) {
             interact(command);
+        }
+        else if (commandWord == CommandWord.SAVE){
+            save();
+        }
+        else if (commandWord == CommandWord.LOAD){
+            load();
         }
         return wantToQuit;
     }
@@ -499,6 +516,99 @@ public class Game
                     
         } catch (NullPointerException e) {
             System.out.println("What interaction?");
+        }
+    }
+    private void save() {
+        /*
+        * Der skal laves en fil (som overwriter), der skal gemmes i.
+        * 
+        * Hent data (Strings): CurrentRoom Player/NPC/EvilNPC, Inventory.KeySet 
+        * Items + Item Location, AnimalFollow, Progress, Timer
+        * 
+        * Skriv data til fil (hver string har sin egen linje)
+        * 
+        * (Return true)
+        * 
+        * 
+        * inventoryString = Inventory.keyset();
+        * Gem item lokationer
+        * 
+        */ 
+        
+        String timerString = Long.toString(time.getTime());
+        //String timerString = Long.toString(sp2017g1.Timer.getTimeSeconds());
+        String currentRoomPlayer = currentRoom.getRoomName();
+        String currentRoomPet = pet.getCurrentRoom().getRoomName();
+        String currentRoomEvilNPC = evilNPC.getCurrentRoom().getRoomName();
+        String progressString = Integer.toString(progress);
+        //String petFollowString = Boolean.toString(pet.isFollow());
+        String inventoryString = inventory.keySet().toString();
+        
+        
+        
+        
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("savefile.txt"));
+
+            writer.write(
+                    currentRoomPlayer + ";" 
+                    + currentRoomPet + ";" 
+                    + currentRoomEvilNPC + ";"
+                    + progressString + ";" 
+                    + timerString + ";" 
+                    //+ petFollowString + ";"
+                    + inventoryString);
+            
+            writer.close();
+            
+        } catch (NullPointerException e) {
+            System.out.println("What interaction?");
+        } catch (IOException e) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+    
+       
+    }
+    
+    private void load() {
+        try {
+            BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
+            //StringBuilder builder = new StringBuilder();
+            
+            String loadData = reader.readLine();
+            //builder.append(loadData);
+            String[] loadArray = loadData.split(";");
+            
+            System.out.println(loadArray[0] + " " + loadArray[1] + " " + loadArray[2] + " " + loadArray[4]);
+            currentRoom = Room.getRoom(loadArray[0]);
+            pet.setCurrentRoom(Room.getRoom(loadArray[1]));
+            evilNPC.setCurrentRoom(Room.getRoom(loadArray[2]));
+            pet.setProgress(Integer.parseInt(loadArray[3]));
+            time.setTime(Integer.parseInt(loadArray[4]));
+            
+            if (pet.getCurrentRoom() == currentRoom) {
+                pet.startFollow();
+            }
+            
+            loadArray[5] = loadArray[5].replace("[", "");
+            loadArray[5] = loadArray[5].replace("]", "");
+            
+            String[] loadInventory = loadArray[5].split(", ");
+            
+            for (String item : loadInventory) {
+                inventory.put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                
+            }
+            
+            
+            System.out.println(loadInventory[0] + " " + loadInventory[1]);
+            
+            reader.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -96,7 +96,8 @@ public class Game
             writer.close();
             
         } catch (IOException e) {
-        }
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, e);
+}
         System.out.println("Game Saved");
         
     }
@@ -108,8 +109,9 @@ public class Game
             
             String loadData = reader.readLine();
             builder.append(loadData);
+            String[] loadArray = loadData.split(";");
             
-            System.out.println(loadData);
+            System.out.println(loadArray);
             
             reader.close();
         } catch (FileNotFoundException ex) {
