@@ -39,12 +39,32 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private Button unlockButton;
     @FXML
     private TextField itemField;
+    @FXML
+    private Button northButton;
+    @FXML
+    private Button eastButton;
+    @FXML
+    private Button southButton;
+    @FXML
+    private Button westButton;
+    @FXML
+    private Button playButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
         storyField.appendText("Nu kører vi!\n");
-        game.play();
+        storyField.setVisible(false);
+        gameStart.setVisible(false);
+        pickButton.setVisible(false);
+        dropButton.setVisible(false);
+        unlockButton.setVisible(false);
+        itemField.setVisible(false);
+        northButton.setVisible(false);
+        eastButton.setVisible(false);
+        southButton.setVisible(false);
+        westButton.setVisible(false);
+        //game.play();
     }    
 
     @FXML
@@ -98,6 +118,22 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void unlockButtonAction(ActionEvent event) {
         
+    }
+
+    @FXML
+    private void playButtonAction(ActionEvent event) {
+        playButton.setVisible(false);
+        storyField.setVisible(true);
+        gameStart.setVisible(true);
+        pickButton.setVisible(true);
+        dropButton.setVisible(true);
+        unlockButton.setVisible(true);
+        itemField.setVisible(true);
+        northButton.setVisible(true);
+        eastButton.setVisible(true);
+        southButton.setVisible(true);
+        westButton.setVisible(true);
+        game.play();
     }
     
 }

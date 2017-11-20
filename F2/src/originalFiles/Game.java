@@ -142,13 +142,15 @@ public class Game
         printWelcome();
 
         boolean finished = false;
-        while (! finished) {
+        /*while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        c.toStoryField("Thank you for playing.  Good bye.");
+        c.toStoryField("Thank you for playing.  Good bye.");*/
 //        System.out.println("Thank you for playing.  Good bye.");
     }
+    
+    
     
     private void printWelcome()
     {
