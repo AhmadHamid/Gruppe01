@@ -24,6 +24,13 @@ public class Game
     private Room currentRoom;
     private static HashMap<ItemEnum, Item> inventory;
     private static int progress;
+    private final int ITEM_POINT_TIER_ONE = 15;
+    private final int ITEM_POINT_TIER_TWO = 25;
+    private final int ITEM_POINT_TIER_THREE = 40;
+    private int itemScore;
+    private int effScore;
+    private int timeScore;
+    private int steps;
     
     public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbourHouse;
     
@@ -114,21 +121,28 @@ public class Game
     }
     
     private void createItems() {
-        axe = new Item(ItemEnum.axe, shed);
+        // itemName = new Item(ItemEnum.itemName, itemLocation, itemScore, timeBonus);
+        
+        // Found items, worth 15 points.
+        axe = new Item(ItemEnum.axe, shed, 15);
+        shovel = new Item(ItemEnum.shovel, mountain, 25);
+        nails = new Item(ItemEnum.nails, bridge, 15);
+        wood = new Item(ItemEnum.wood, waterfall, 15);
+        
 //        block = new Item(ItemEnum.block, shed);
-        shovel = new Item(ItemEnum.shovel, mountain);
-        nails = new Item(ItemEnum.nails, bridge);
-        wood = new Item(ItemEnum.wood, waterfall);
+
+        // Test items.
         test = new Item(ItemEnum.test, garden);
         test1 = new Item(ItemEnum.test1, garden);
         test2 = new Item(ItemEnum.test2, garden);
         test3 = new Item(ItemEnum.test3, garden);
         test4 = new Item(ItemEnum.test4, garden);
-
-        key = new Item(ItemEnum.key);
-        hammer = new Item(ItemEnum.hammer);
-        lumber = new Item(ItemEnum.lumber);
-        ladder = new Item(ItemEnum.ladder);
+        
+        // Made items and quest rewards, worth 40 points.
+        key = new Item(ItemEnum.key, 40);
+        hammer = new Item(ItemEnum.hammer, 40);
+        lumber = new Item(ItemEnum.lumber, 40);
+        ladder = new Item(ItemEnum.ladder, 40);
     }
     
     private static void createInventory() {
@@ -264,7 +278,11 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
-        if (!pet.isFollow()){
+        if(steps < 50) {
+            steps++;
+        }
+        
+        if (!pet.isFollow()) {
             pet.move();
         }
         
@@ -349,7 +367,7 @@ public class Game
 
     }
     
-    private void unlockRoom(Command command){
+    private void unlockRoom(Command command) {
         if(!command.hasSecondWord()) {
 //            System.out.println("Unlock what?");
             c.toStoryField("unlock what?");
@@ -391,8 +409,7 @@ public class Game
         quit(command);
     }
     
-    private boolean quit(Command command) 
-    {
+    private boolean quit(Command command) {
         if(command.hasSecondWord()) {
             /*System.out.println("Quit what?");*/
             c.toStoryField("Quit what?");
@@ -648,5 +665,14 @@ public class Game
         }
          c.toStoryField(" ");
     }
+    
+    private String CalculateScore() {
+        
+        effScore = (1000 - (steps * 20));
+        timeScore = (int) (1200 - time.getTime() * 2);
+        int score = itemScore + effScore + timeScore;
+        String scoreString = Integer.toString(score);
+        
+        return scoreString;
+    }
 }
-
