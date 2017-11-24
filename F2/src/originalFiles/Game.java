@@ -30,7 +30,6 @@ public class Game
     private int itemScore;
     private int effScore;
     private int timeScore;
-    private int score;
     private int steps;
     
     public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbourHouse;
@@ -671,50 +670,9 @@ public class Game
         
         effScore = (1000 - (steps * 20));
         timeScore = (int) (1200 - time.getTime() * 2);
-        score = itemScore + effScore + timeScore;
+        int score = itemScore + effScore + timeScore;
         String scoreString = Integer.toString(score);
         
         return scoreString;
-    }
-    
-    private int HighScore() {
-        // Make it, so at least the top 3 scores are recorded.
-        
-        // Predetermined high scores to beat.
-        int highScoreFirst = 2000;
-        int highScoreSecond = 1500;
-        int highScoreThird = 500;
-        
-        // This variable should be equal to the score variable defined in the CalculateScore() method.
-        int newHighScore = score;
-        
-        /*
-        Variable that determines which placement on the leaderboard the player gets, based on their score.
-        1 = first place
-        2 = second place
-        3 = third place
-        */
-        int highScorePlacement;
-        
-        // If loop to check if 
-        if(newHighScore > highScoreFirst) {
-            highScoreFirst = newHighScore;
-            
-            highScorePlacement = 1;
-        }
-        
-        else if(newHighScore > highScoreSecond) {
-            highScoreSecond = newHighScore;
-            
-            highScorePlacement = 2;
-        }
-        
-        else if(newHighScore > highScoreThird) {
-            highScoreThird = newHighScore;
-            
-            highScorePlacement = 3;
-        }
-        
-        return newHighScore;
     }
 }
