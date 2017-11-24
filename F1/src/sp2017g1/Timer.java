@@ -12,7 +12,7 @@ public class Timer extends Thread {
     private long elapsedTime;
 
     public int getTime() {
-        return 1;
+        return (int) elapsedTime;
     }
     
     public static void main(String[] args) throws InterruptedException {

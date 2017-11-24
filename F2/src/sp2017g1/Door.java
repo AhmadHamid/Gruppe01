@@ -21,7 +21,7 @@ public class Door
     
     public  Door(String description, ItemEnum lockItem) 
     {
-        super(description);
+        super(description, "");
         this.lockItem = lockItem;
         lock = true;
         door = true;

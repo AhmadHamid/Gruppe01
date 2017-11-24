@@ -118,6 +118,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void unlockButtonAction(ActionEvent event) {
+    game.save();
     }
 
     @FXML
@@ -174,6 +175,21 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void loadButtonAction(ActionEvent event) {
+        game.load();
+        playButton.setVisible(false);
+        loadButton.setVisible(false);
+        quitButton.setVisible(false);
+        storyField.setVisible(true);
+        gameStart.setVisible(true);
+        pickButton.setVisible(true);
+        dropButton.setVisible(true);
+        unlockButton.setVisible(true);
+        itemList.setVisible(true);
+        inventoryList.setVisible(true);
+        northButton.setVisible(true);
+        eastButton.setVisible(true);
+        southButton.setVisible(true);
+        westButton.setVisible(true);
     }
     
 }

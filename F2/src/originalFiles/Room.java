@@ -2,7 +2,7 @@ package originalFiles;
 
 import java.util.*;
 import sp2017g1.*;
-import sp2017g1f2.*;
+//import sp2017g1f2.*;
 
 
 /**
@@ -12,16 +12,21 @@ import sp2017g1f2.*;
 public class Room 
 {
     private String description;
+    private String name;
     private HashMap<String, Room> exits;
     private HashMap<ItemEnum, Item> roomItems;
     private HashMap<String, Door> doorways;
-
-    public Room(String description) 
+    private static HashMap<String, Room> rooms = new HashMap<String, Room>();
+    
+    
+    public Room(String description, String name) 
     {
+        this.name = name;
         this.description = description;
         exits = new HashMap<String, Room>();
         this.roomItems = new HashMap<ItemEnum, Item>();
         doorways = new HashMap<String, Door>();
+        rooms.put(name, this);
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -44,6 +49,15 @@ public class Room
       for (ItemEnum item : roomItems.keySet()) {
             System.out.printf("%s ", roomItems.get(item).getItemName());
         }
+    }
+    
+    public String getRoomName()
+    {
+        return name;
+    }
+    
+    public static Room getRoom(String name){
+        return rooms.get(name);
     }
     
     public String getShortDescription()
@@ -79,5 +93,6 @@ public class Room
     public Door getExitDoor(String direction){
         return doorways.get(direction);
     }
+    
 }
 

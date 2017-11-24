@@ -20,7 +20,7 @@ public class SP2017G1 {
     public static void main(String[] args) {
         System.out.println("Which language? (DA/EN)");
         langSelect();
-
+        
         Game game = new Game();
         game.play();
 

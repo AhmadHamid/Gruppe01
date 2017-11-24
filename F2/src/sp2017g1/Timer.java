@@ -8,32 +8,26 @@ import java.util.logging.Logger;
 
 public class Timer extends Thread {
 
-    private long startTime = System.currentTimeMillis();
-    private long elapsedTime;
-
-
-    public static void main(String[] args) throws InterruptedException {
-        // TODO code application logic here
-        Timer te = new Timer();
-        te.start();
-        for(int i = 600; i>=0;i--){
-            System.out.println("Seconds passed: " + te.getElapsedTime()/1000);
-            Thread.sleep(1001);
-        }
-        te.interrupt();
+   
+    private int i;
+    
+    public long getTime() {
+        return i;
     }
     
-        public long getElapsedTime() {
-        return elapsedTime;
+    public void setTime(int i) {
+        this.i = i;
     }
-        
+       
         @Override
     public void run() {
         try {
-            while (true) {
-                elapsedTime = System.currentTimeMillis() - startTime;
+            for(i = 600; i>=0;i--){
+                
+                
                 Thread.sleep(1000);
             }
+            //call quit
         } catch (InterruptedException ex) {
             Logger.getLogger(Timer.class.getName()).log(Level.SEVERE, null, ex);
         }
