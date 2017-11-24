@@ -9,11 +9,11 @@ package sp2017g1;
  *
  * @author nikol
  */
-public class Points {
-    public int totalPoints = 0;
-    public int totalItemPoints = 0;
-    public int totalTimePoints = 0;
-    public int totalEfficiencyPoints = 0;
+public class Score {
+    public int totalScore = 0;
+    public int totalItemScore = 0;
+    public int totalTimeScore = 0;
+    public int totalEfficiencyScore = 0;
     public final int ITEM_TIER1_POINT = 15;
     public final int ITEM_TIER2_POINT = 25;
     public final int ITEM_TIER3_POINT = 40;
@@ -22,7 +22,7 @@ public class Points {
     public boolean itemTier3;
     public boolean itemPicked = false;
     
-    public Points(int totalPoints) {
+    public Score(int totalScore) {
         // Logic for calculating the end score based on the total points gained from the three types (item, time, and efficiency) of points.
         /*
         totalPoints = totalItemPoints + totalTimePoints + totalEfficiencyPoints;
@@ -48,18 +48,20 @@ public class Points {
         }
         */
         
-        return totalItemPoints;
+        return totalItemScore;
     }
     
     public int TimePoints() {
         // Logic for points given from time spent finishing the game.
+        // (1000 / time el. 1000 - time)
         
-        return totalTimePoints;
+        return totalTimeScore;
     }
     
     public int EfficiencyPoints() {
         // Logic for points given from efficiency (shortest route from start to finish) in finishing the game.
+        // (num / steps = p) el. 1000 - (20 * steps)
         
-        return totalEfficiencyPoints;
+        return totalEfficiencyScore;
     }
 }

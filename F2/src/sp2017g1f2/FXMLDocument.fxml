@@ -6,8 +6,9 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="374.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp2017g1f2.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="374.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp2017g1f2.FXMLDocumentController">
    <children>
+<<<<<<< HEAD
       <Button fx:id="northButton" layoutX="275.0" layoutY="232.0" mnemonicParsing="false" onAction="#northButtonAction" text="North" textAlignment="CENTER" />
       <Button fx:id="eastButton" layoutX="340.0" layoutY="280.0" mnemonicParsing="false" onAction="#eastButtonAction" prefWidth="48.0" text="East" textAlignment="CENTER" />
       <Button fx:id="southButton" layoutX="275.0" layoutY="328.0" mnemonicParsing="false" onAction="#southButtonAction" text="South" textAlignment="CENTER" />
@@ -18,12 +19,20 @@
       <Button fx:id="dropButton" layoutX="480.0" layoutY="212.0" mnemonicParsing="false" onAction="#dropButtonAction" text="Drop" />
       <Button fx:id="unlockButton" layoutX="112.0" layoutY="187.0" mnemonicParsing="false" onAction="#unlockButtonAction" text="Unlock" />
       <Button fx:id="playButton" layoutX="47.0" layoutY="245.0" mnemonicParsing="false" onAction="#playButtonAction" text="Play" />
+=======
+
+>>>>>>> 56f8215cc96d158ac4385037304285fed1b79fab
       <Button fx:id="quitButton" layoutX="47.0" layoutY="316.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
       <Button fx:id="loadButton" layoutX="48.0" layoutY="280.0" mnemonicParsing="false" onAction="#loadButtonAction" prefHeight="25.0" prefWidth="77.0" text="Load game" />
-      <ListView fx:id="inventoryList" layoutX="481.0" layoutY="31.0" prefHeight="183.0" prefWidth="90.0" />
+      <ListView fx:id="inventoryList" focusTraversable="false" layoutX="481.0" layoutY="31.0" prefHeight="183.0" prefWidth="90.0" />
       <Label layoutX="501.0" layoutY="14.0" text="Inventory" />
+<<<<<<< HEAD
       <ListView fx:id="itemList" layoutX="75.0" layoutY="27.0" prefHeight="51.0" prefWidth="90.0" />
       <!--<Button fx:id="northButton" layoutX="275.0" layoutY="232.0" mnemonicParsing="false" onAction="#northButtonAction" onKeyReleased="#northKeyAction" text="North" textAlignment="CENTER" />
+=======
+      <ListView fx:id="itemList" focusTraversable="false" layoutX="75.0" layoutY="27.0" prefHeight="51.0" prefWidth="90.0" />
+      <Button fx:id="northButton" layoutX="275.0" layoutY="232.0" mnemonicParsing="false" onAction="#northButtonAction" onKeyReleased="#northKeyAction" text="North" textAlignment="CENTER" />
+>>>>>>> 56f8215cc96d158ac4385037304285fed1b79fab
       <Button fx:id="eastButton" layoutX="340.0" layoutY="280.0" mnemonicParsing="false" onAction="#eastButtonAction" onKeyReleased="#eastKeyAction" prefWidth="48.0" text="East" textAlignment="CENTER" />
       <Button fx:id="southButton" layoutX="275.0" layoutY="328.0" mnemonicParsing="false" onAction="#southButtonAction" onKeyReleased="#southKeyAction" text="South" textAlignment="CENTER" />
       <Button fx:id="westButton" layoutX="210.0" layoutY="280.0" mnemonicParsing="false" onAction="#westButtonAction" onKeyReleased="#westKeyAction" prefWidth="48.0" text="West" textAlignment="CENTER" />
@@ -32,9 +41,12 @@
       <Button fx:id="pickButton" focusTraversable="false" layoutX="47.0" layoutY="54.0" mnemonicParsing="false" onAction="#pickButtonAction" text="Pick" />
       <Button fx:id="dropButton" focusTraversable="false" layoutX="47.0" layoutY="114.0" mnemonicParsing="false" onAction="#dropButtonAction" text="Drop" />
       <Button fx:id="unlockButton" focusTraversable="false" layoutX="47.0" layoutY="175.0" mnemonicParsing="false" onAction="#unlockButtonAction" text="Unlock" />
-      <TextField fx:id="itemField" focusTraversable="false" layoutX="34.0" layoutY="79.0" prefHeight="25.0" prefWidth="64.0" />
       <Button fx:id="playButton" focusTraversable="false" layoutX="48.0" layoutY="257.0" mnemonicParsing="false" onAction="#playButtonAction" text="Play" />
+<<<<<<< HEAD
       <Button focusTraversable="false" layoutX="471.0" layoutY="79.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />-->
 
+=======
+      <Button focusTraversable="false" layoutX="471.0" layoutY="79.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
+>>>>>>> 56f8215cc96d158ac4385037304285fed1b79fab
    </children>
 </AnchorPane>
