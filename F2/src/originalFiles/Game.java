@@ -1,14 +1,6 @@
 package originalFiles;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import sp2017g1.*;
 import language.*;
 //import sp2017g1f2.*;
@@ -35,6 +27,8 @@ public class Game
     public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbourHouse;
     
     Door door, Ladderdoor;
+    
+    private SaveAndLoad saveAndLoad = new SaveAndLoad(this);
     
     // Changed the access modifier of the Item variable to static so the hashmap key (not the actual item called key) can be accessed in TreeStump.java. No idea why it cannot be accessed from TreeStump.java without it.
     public static Item key, hammer, nails, axe, shovel, lumber, block, ladder, test, test1, test2, test3, test4, wood;
@@ -244,10 +238,10 @@ public class Game
             interact(command);
         }
         else if (commandWord == CommandWord.SAVE){
-            save();
+            saveAndLoad.save();
         }
         else if (commandWord == CommandWord.LOAD){
-            load();
+            saveAndLoad.load();
         }
         return wantToQuit;
     }
@@ -433,6 +427,10 @@ public class Game
         try {
             ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
       
+            if (!Item.getItem(inputItem).isPicked()){
+                time.addTime();
+            }
+            
         if(currentRoom.getRoomItems().containsKey(inputItem) && inventory.size() < 3) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
@@ -563,99 +561,7 @@ public class Game
         }
     }
     
-    public void save() {
-        /*
-        * Der skal laves en fil (som overwriter), der skal gemmes i.
-        * 
-        * Hent data (Strings): CurrentRoom Player/NPC/EvilNPC, Inventory.KeySet 
-        * Items + Item Location, AnimalFollow, Progress, Timer
-        * 
-        * Skriv data til fil (hver string har sin egen linje)
-        * 
-        * (Return true)
-        * 
-        * 
-        * inventoryString = Inventory.keyset();
-        * Gem item lokationer
-        * 
-        */ 
-        
-        String timerString = Long.toString(time.getTime());
-        //String timerString = Long.toString(sp2017g1.Timer.getTimeSeconds());
-        String currentRoomPlayer = currentRoom.getRoomName();
-        String currentRoomPet = pet.getCurrentRoom().getRoomName();
-        String currentRoomEvilNPC = evilNPC.getCurrentRoom().getRoomName();
-        String progressString = Integer.toString(progress);
-        //String petFollowString = Boolean.toString(pet.isFollow());
-        String inventoryString = inventory.keySet().toString();
-        
-        
-        
-        
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("savefile.txt"));
-
-            writer.write(
-                    currentRoomPlayer + ";" 
-                    + currentRoomPet + ";" 
-                    + currentRoomEvilNPC + ";"
-                    + progressString + ";" 
-                    + timerString + ";" 
-                    //+ petFollowString + ";"
-                    + inventoryString);
-            
-            writer.close();
-            
-        } catch (NullPointerException e) {
-            System.out.println("What interaction?");
-        } catch (IOException e) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, e);
-        }
-        
     
-       
-    }
-    
-    public void load() {
-        try {
-            BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
-            //StringBuilder builder = new StringBuilder();
-            
-            String loadData = reader.readLine();
-            //builder.append(loadData);
-            String[] loadArray = loadData.split(";");
-            
-            System.out.println(loadArray[0] + " " + loadArray[1] + " " + loadArray[2] + " " + loadArray[4]);
-            currentRoom = Room.getRoom(loadArray[0]);
-            pet.setCurrentRoom(Room.getRoom(loadArray[1]));
-            evilNPC.setCurrentRoom(Room.getRoom(loadArray[2]));
-            pet.setProgress(Integer.parseInt(loadArray[3]));
-            time.setTime(Integer.parseInt(loadArray[4]));
-            
-            if (pet.getCurrentRoom() == currentRoom) {
-                pet.startFollow();
-            }
-            
-            loadArray[5] = loadArray[5].replace("[", "");
-            loadArray[5] = loadArray[5].replace("]", "");
-            
-            String[] loadInventory = loadArray[5].split(", ");
-            
-            for (String item : loadInventory) {
-                inventory.put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
-                
-            }
-            
-            
-            System.out.println(loadInventory[0] + " " + loadInventory[1]);
-            
-            reader.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
 
     private void getRoomItemList (Room room) {
@@ -675,4 +581,65 @@ public class Game
         
         return scoreString;
     }
+    
+    public HashMap getRoomItems(){
+        return currentRoom.getRoomItems();
+    }
+
+    public int getGameTime() {
+       return time.getTime();
+    }
+    
+    public void setGameTime(int time) {
+        this.time.setTime(time);
+    }
+    
+    public String getPlayerRoom() {
+        return currentRoom.getRoomName();
+    }
+    
+    public void setPlayerRoom(String room) {
+        this.currentRoom = Room.getRoom(room);
+    }
+    
+    public String getPetRoom() {
+        return pet.getCurrentRoom().getRoomName();
+    }
+    
+    public void setPetRoom(String room) {
+        this.pet.setCurrentRoom(Room.getRoom(room));
+    }
+    
+    public String getEvilNPCRoom() {
+        return evilNPC.getCurrentRoom().getRoomName();
+    }
+    
+    public void setEvilNPCRoom(String room) {
+        this.evilNPC.setCurrentRoom(Room.getRoom(room));
+    }
+    
+    public int getProgress() {
+        return progress;
+    }
+    
+    public void setGameProgress(int progress) {
+        Game.progress = progress;
+    }
+    
+    public String getPlayerInventory() {
+        return inventory.keySet().toString();
+    }
+    
+    public void setInventory (String item) {
+        Game.inventory.put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+    }
+    
+    public void save(){
+        saveAndLoad.save();
+    }
+    
+    public void load(){
+        saveAndLoad.load();
+    }
+    
 }

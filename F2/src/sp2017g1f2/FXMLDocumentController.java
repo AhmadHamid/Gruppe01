@@ -7,6 +7,8 @@ package sp2017g1f2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,6 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import sp2017g1.WriteToStory;
 import originalFiles.Game;
+import sp2017g1.ItemEnum;
 
 
 
@@ -45,20 +48,32 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private Button quitButton;
     @FXML
     private Button loadButton;
+    
     @FXML
-    private ListView<?> inventoryList;
+    private ListView<String> inventoryList;
+    private ObservableList<String> inventoryItems;
     @FXML
-    private ListView<?> itemList;
+    private ListView<String> itemList;
+    private ObservableList<String> roomItems;
+    
     @FXML
     private Label inventoryLabel;
+    @FXML
+    private TextArea textArea;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
         storyField.appendText("Nu kører vi!\n");
         scene1();
+        this.inventoryItems = FXCollections.observableArrayList();
+        inventoryList.setItems(inventoryItems);
+        //roomItemLoad();
         //game.play();
-    }    
+    }
+
+    private void roomItemLoad(){
+    }
 
     @FXML
     private void northButtonAction(ActionEvent event) {
@@ -100,7 +115,11 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void pickButtonAction(ActionEvent event) {
-        //game.pickItem(itemList.getText());
+        //String item = itemList.getSelectionModel().getSelectedItem();
+        String item = textArea.getText();
+        game.pickItem(item);
+        inventoryItems.add(item);
+        textArea.clear();
     }
 
     @FXML
@@ -110,6 +129,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void dropButtonAction(ActionEvent event) {
+        //inventoryItems.remove(inventoryItems.remove("test"));
+        inventoryItems.remove(inventoryList.getSelectionModel().getSelectedItem());
     }
 
     @FXML

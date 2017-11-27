@@ -22,5 +22,6 @@
       <ListView fx:id="inventoryList" focusTraversable="false" layoutX="481.0" layoutY="31.0" prefHeight="183.0" prefWidth="90.0" />
       <Label fx:id="inventoryLabel" layoutX="501.0" layoutY="14.0" text="Inventory" />
       <ListView fx:id="itemList" layoutX="75.0" layoutY="27.0" prefHeight="51.0" prefWidth="90.0" />
+      <TextArea fx:id="textArea" layoutX="15.0" layoutY="123.0" prefHeight="25.0" prefWidth="66.0" />
    </children>
 </AnchorPane>
