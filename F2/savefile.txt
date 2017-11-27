@@ -1,1 +1,1 @@
-bridge;forest;waterfall;0;556;[nails, axe]
+forest;forest;waterfall;3;524;[]

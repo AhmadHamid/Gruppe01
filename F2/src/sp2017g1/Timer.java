@@ -11,7 +11,11 @@ public class Timer extends Thread {
    
     private int i;
     
-    public long getTime() {
+    public void addTime() {
+        i += 25;
+    }
+    
+    public int getTime() {
         return i;
     }
     
