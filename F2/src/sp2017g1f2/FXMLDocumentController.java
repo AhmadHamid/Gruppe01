@@ -33,9 +33,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     
     @FXML
     private TextArea storyField;
-    private Button gameStart;
     @FXML
-    private Button pickButton, dropButton, unlockButton, northButton, eastButton, southButton, westButton;
+    private Button gameStart, pickButton, dropButton, unlockButton, northButton, eastButton, southButton, westButton;
     @FXML
     private Button playButton;
     @FXML
@@ -46,8 +45,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private ListView<?> inventoryList;
     @FXML
     private ListView<?> itemList;
-    @FXML
-    private Button saveButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,7 +52,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         storyField.appendText("Nu kører vi!\n");
         storyField.setVisible(false);
         gameStart.setVisible(false);
-        saveButton.setVisible(true);
         pickButton.setVisible(false);
         dropButton.setVisible(false);
         unlockButton.setVisible(false);
@@ -100,6 +96,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         storyField.appendText(string);
     }
 
+    @FXML
     private void gameButtonAction(ActionEvent event) {
         gameStart.setDisable(true);
         game.play();
@@ -119,10 +116,15 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void dropButtonAction(ActionEvent event) {
     }
 
+    @FXML
     private void unlockButtonAction(ActionEvent event) {
     game.save();
     }
 
+    @FXML
+    private void newScreenButtonAction(ActionEvent event) {
+        
+    }
 
     @FXML
     private void playButtonAction(ActionEvent event) {
@@ -131,7 +133,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         quitButton.setVisible(false);
         storyField.setVisible(true);
         gameStart.setVisible(true);
-        saveButton.setVisible(true);
         pickButton.setVisible(true);
         dropButton.setVisible(true);
         unlockButton.setVisible(true);
@@ -144,24 +145,28 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.play();
     }
     
+    @FXML
     private void northKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.UP)) {
             game.goRoom("north");
         }
     }
 
+    @FXML
     private void eastKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.RIGHT)) {
             game.goRoom("east");
         }
     }
 
+    @FXML
     private void southKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.DOWN)) {
             game.goRoom("south");
         }
     }
 
+    @FXML
     private void westKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.LEFT)) {
             game.goRoom("west");
@@ -176,7 +181,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         quitButton.setVisible(false);
         storyField.setVisible(true);
         gameStart.setVisible(true);
-        saveButton.setVisible(true);
         pickButton.setVisible(true);
         dropButton.setVisible(true);
         unlockButton.setVisible(true);
@@ -186,11 +190,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         eastButton.setVisible(true);
         southButton.setVisible(true);
         westButton.setVisible(true);
-    }
-
-    @FXML
-    private void saveButtonAction(ActionEvent event) {
-        game.save();
     }
     
 }
