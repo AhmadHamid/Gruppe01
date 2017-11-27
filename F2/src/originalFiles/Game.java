@@ -582,8 +582,11 @@ public class Game
         return scoreString;
     }
     
-    public HashMap getRoomItems(){
-        return currentRoom.getRoomItems();
+    public String[] getRoomItems(){
+        String items = currentRoom.getRoomItems().keySet().toString();
+        items = items.replace("[", "");
+        items = items.replace("]", "");
+        return items.split(", ");
     }
 
     public int getGameTime() {

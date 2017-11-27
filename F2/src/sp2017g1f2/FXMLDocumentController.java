@@ -68,35 +68,45 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         scene1();
         this.inventoryItems = FXCollections.observableArrayList();
         inventoryList.setItems(inventoryItems);
-        //roomItemLoad();
+        this.roomItems = FXCollections.observableArrayList();
+        itemList.setItems(roomItems);
+        roomItemLoad();
         //game.play();
     }
 
     private void roomItemLoad(){
+        roomItems.clear();
+        for (String item : game.getRoomItems()) {
+            roomItems.add(item);
+        }
     }
 
     @FXML
     private void northButtonAction(ActionEvent event) {
         storyField.appendText("North\n");
         game.goRoom("north");
+        roomItemLoad();
     }
 
     @FXML
     private void eastButtonAction(ActionEvent event) {
         storyField.appendText("East\n");
         game.goRoom("east");
+        roomItemLoad();
     }
 
     @FXML
     private void southButtonAction(ActionEvent event) {
         storyField.appendText("South\n");
         game.goRoom("south");
+        roomItemLoad();
     }
 
     @FXML
     private void westButtonAction(ActionEvent event) {
         storyField.appendText("West\n");
         game.goRoom("west");
+        roomItemLoad();
     }
     
     public void toStoryField(String string) {
@@ -115,11 +125,10 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void pickButtonAction(ActionEvent event) {
-        //String item = itemList.getSelectionModel().getSelectedItem();
-        String item = textArea.getText();
+        String item = itemList.getSelectionModel().getSelectedItem();
         game.pickItem(item);
         inventoryItems.add(item);
-        textArea.clear();
+        roomItems.remove(item);
     }
 
     @FXML
