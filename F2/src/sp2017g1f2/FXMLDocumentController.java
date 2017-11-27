@@ -34,7 +34,11 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private TextArea storyField;
     @FXML
-    private Button gameStart, pickButton, dropButton, unlockButton, northButton, eastButton, southButton, westButton;
+    private Button gameStart;
+    @FXML
+    private Button pickButton;
+    @FXML
+    private Button dropButton, northButton, eastButton, southButton, westButton;
     @FXML
     private Button playButton;
     @FXML
@@ -45,22 +49,14 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private ListView<?> inventoryList;
     @FXML
     private ListView<?> itemList;
+    @FXML
+    private Label inventoryLabel;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
         storyField.appendText("Nu kører vi!\n");
-        storyField.setVisible(false);
-        gameStart.setVisible(false);
-        pickButton.setVisible(false);
-        dropButton.setVisible(false);
-        unlockButton.setVisible(false);
-        itemList.setVisible(false);
-        inventoryList.setVisible(false);
-        northButton.setVisible(false);
-        eastButton.setVisible(false);
-        southButton.setVisible(false);
-        westButton.setVisible(false);
+        scene1();
         //game.play();
     }    
 
@@ -117,56 +113,29 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
 
     @FXML
-    private void unlockButtonAction(ActionEvent event) {
-    game.save();
-    }
-
-    @FXML
-    private void newScreenButtonAction(ActionEvent event) {
-        
-    }
-
-    @FXML
     private void playButtonAction(ActionEvent event) {
-        playButton.setVisible(false);
-        loadButton.setVisible(false);
-        quitButton.setVisible(false);
-        storyField.setVisible(true);
-        gameStart.setVisible(true);
-        pickButton.setVisible(true);
-        dropButton.setVisible(true);
-        unlockButton.setVisible(true);
-        itemList.setVisible(true);
-        inventoryList.setVisible(true);
-        northButton.setVisible(true);
-        eastButton.setVisible(true);
-        southButton.setVisible(true);
-        westButton.setVisible(true);
+        scene2();
         game.play();
     }
     
-    @FXML
     private void northKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.UP)) {
             game.goRoom("north");
         }
     }
 
-    @FXML
     private void eastKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.RIGHT)) {
             game.goRoom("east");
         }
     }
 
-    @FXML
     private void southKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.DOWN)) {
             game.goRoom("south");
         }
     }
 
-    @FXML
     private void westKeyAction(KeyEvent event) {
         if(event.getCode().equals(KeyCode.LEFT)) {
             game.goRoom("west");
@@ -176,6 +145,24 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void loadButtonAction(ActionEvent event) {
         game.load();
+        scene2();
+    }
+
+    private void scene1(){
+        storyField.setVisible(false);
+        gameStart.setVisible(false);
+        pickButton.setVisible(false);
+        dropButton.setVisible(false);
+        itemList.setVisible(false);
+        inventoryList.setVisible(false);
+        inventoryLabel.setVisible(false);
+        northButton.setVisible(false);
+        eastButton.setVisible(false);
+        southButton.setVisible(false);
+        westButton.setVisible(false);
+    }
+    
+    private void scene2(){
         playButton.setVisible(false);
         loadButton.setVisible(false);
         quitButton.setVisible(false);
@@ -183,13 +170,12 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         gameStart.setVisible(true);
         pickButton.setVisible(true);
         dropButton.setVisible(true);
-        unlockButton.setVisible(true);
         itemList.setVisible(true);
         inventoryList.setVisible(true);
+        inventoryLabel.setVisible(true);
         northButton.setVisible(true);
         eastButton.setVisible(true);
         southButton.setVisible(true);
         westButton.setVisible(true);
     }
-    
 }
