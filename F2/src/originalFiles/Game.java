@@ -675,4 +675,8 @@ public class Game
         
         return scoreString;
     }
+    
+    public HashMap getRoomItems(){
+        return currentRoom.getRoomItems();
+    }
 }
