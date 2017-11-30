@@ -5,22 +5,29 @@
  */
 package sp2017g1;
 
+import originalFiles.*;
+import language.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nikol
  */
 public class Score {
-    public int totalScore = 0;
-    public int totalItemScore = 0;
-    public int totalTimeScore = 0;
-    public int totalEfficiencyScore = 0;
-    public final int ITEM_TIER1_POINT = 15;
-    public final int ITEM_TIER2_POINT = 25;
-    public final int ITEM_TIER3_POINT = 40;
-    public boolean itemTier1;
-    public boolean itemTier2;
-    public boolean itemTier3;
-    public boolean itemPicked = false;
+    
+    private Game game;
+    
+    public Score(Game game) {
+        this.game = game;
+    }
     
     public Score(int totalScore) {
         // Logic for calculating the end score based on the total points gained from the three types (item, time, and efficiency) of points.
@@ -28,40 +35,33 @@ public class Score {
         totalPoints = totalItemPoints + totalTimePoints + totalEfficiencyPoints;
         */
     }
-    
-    public int ItemPoints() {
-        // Logic for points given from obtained items.
+
+    public void Save() {
         
-        /* This solution, written in pseudo-code, requires all items to have a flag that can be set the first time it is in the player inventory.
-           It may not count any one item more than once.
+        String scoreString = game.scoreString;
         
-        if(itemPicked == itemTier1) {
-            totalItemPoints = totalItemPoints + ITEM_TIER1_POINT;
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("highscore.txt"));
+            
+            writer.write("Best: " + scoreString);
+            
+            writer.close();
+        } catch (NullPointerException e) {
+            System.out.println("What interaction?");
+        } catch (IOException e) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, e);
         }
-        
-        else if(itemPicked == itemTier2) {
-            totalItemPoints = totalItemPoints + ITEM_TIER2_POINT;
-        }
-        
-        else if(itemPicked == itemTier3) {
-            totalItemPoints = totalItemPoints + ITEM_TIER3_POINT;
-        }
-        */
-        
-        return totalItemScore;
     }
     
-    public int TimePoints() {
-        // Logic for points given from time spent finishing the game.
-        // (1000 / time el. 1000 - time)
-        
-        return totalTimeScore;
-    }
-    
-    public int EfficiencyPoints() {
-        // Logic for points given from efficiency (shortest route from start to finish) in finishing the game.
-        // (num / steps = p) el. 1000 - (20 * steps)
-        
-        return totalEfficiencyScore;
+    public void Load() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("highscore.txt"));
+            
+            reader.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
