@@ -70,7 +70,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         inventoryList.setItems(inventoryItems);
         this.roomItems = FXCollections.observableArrayList();
         itemList.setItems(roomItems);
-        roomItemLoad();
         //game.play();
     }
 
@@ -121,6 +120,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void gameButtonAction(ActionEvent event) {
         gameStart.setDisable(true);
         game.play();
+        roomItemLoad();
     }
 
     @FXML
@@ -146,6 +146,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void playButtonAction(ActionEvent event) {
         scene2();
         game.play();
+        roomItemLoad();
     }
     
     private void northKeyAction(KeyEvent event) {
@@ -176,6 +177,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void loadButtonAction(ActionEvent event) {
         game.load();
         scene2();
+        roomItemLoad();
     }
 
     private void scene1(){

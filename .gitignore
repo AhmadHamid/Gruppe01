@@ -10,3 +10,7 @@ F2/dist/
 *.properties
 F1/nbproject/private/private.xml
 F2/nbproject/private/private.xml
+*.properties
+*.properties
+F2/nbproject/private/private.properties
+F2/build/built-jar.properties
