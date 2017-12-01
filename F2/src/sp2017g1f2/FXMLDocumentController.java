@@ -37,8 +37,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private TextArea storyField;
     @FXML
-    private Button gameStart;
-    @FXML
     private Button pickButton;
     @FXML
     private Button dropButton, northButton, eastButton, southButton, westButton;
@@ -59,7 +57,11 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private Label inventoryLabel;
     @FXML
-    private TextArea textArea;
+    private Button combineButton;
+    @FXML
+    private Button helpButton;
+    @FXML
+    private Button saveButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -70,7 +72,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         inventoryList.setItems(inventoryItems);
         this.roomItems = FXCollections.observableArrayList();
         itemList.setItems(roomItems);
-        roomItemLoad();
+        itemLoad();
         //game.play();
     }
 
@@ -80,33 +82,45 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
             roomItems.add(item);
         }
     }
+    
+    private void inventoryLoad(){
+        inventoryItems.clear();
+        for (String item : game.getInventoryItems()) {
+            inventoryItems.add(item);
+        }
+    }
+    
+    private void itemLoad(){
+        roomItemLoad();
+        inventoryLoad();
+    }
 
     @FXML
     private void northButtonAction(ActionEvent event) {
         storyField.appendText("North\n");
         game.goRoom("north");
-        roomItemLoad();
+        itemLoad();
     }
 
     @FXML
     private void eastButtonAction(ActionEvent event) {
         storyField.appendText("East\n");
         game.goRoom("east");
-        roomItemLoad();
+        itemLoad();
     }
 
     @FXML
     private void southButtonAction(ActionEvent event) {
         storyField.appendText("South\n");
         game.goRoom("south");
-        roomItemLoad();
+        itemLoad();
     }
 
     @FXML
     private void westButtonAction(ActionEvent event) {
         storyField.appendText("West\n");
         game.goRoom("west");
-        roomItemLoad();
+        itemLoad();
     }
     
     public void toStoryField(String string) {
@@ -117,18 +131,12 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         storyField.appendText(string);
     }
 
-    @FXML
-    private void gameButtonAction(ActionEvent event) {
-        gameStart.setDisable(true);
-        game.play();
-    }
 
     @FXML
     private void pickButtonAction(ActionEvent event) {
         String item = itemList.getSelectionModel().getSelectedItem();
         game.pickItem(item);
-        inventoryItems.add(item);
-        roomItems.remove(item);
+        itemLoad();
     }
 
     @FXML
@@ -138,8 +146,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void dropButtonAction(ActionEvent event) {
-        //inventoryItems.remove(inventoryItems.remove("test"));
+        game.dropItem(inventoryList.getSelectionModel().getSelectedItem());
         inventoryItems.remove(inventoryList.getSelectionModel().getSelectedItem());
+        itemLoad();
     }
 
     @FXML
@@ -176,11 +185,11 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void loadButtonAction(ActionEvent event) {
         game.load();
         scene2();
+        itemLoad();
     }
 
     private void scene1(){
         storyField.setVisible(false);
-        gameStart.setVisible(false);
         pickButton.setVisible(false);
         dropButton.setVisible(false);
         itemList.setVisible(false);
@@ -197,7 +206,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         loadButton.setVisible(false);
         quitButton.setVisible(false);
         storyField.setVisible(true);
-        gameStart.setVisible(true);
         pickButton.setVisible(true);
         dropButton.setVisible(true);
         itemList.setVisible(true);
@@ -207,5 +215,20 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         eastButton.setVisible(true);
         southButton.setVisible(true);
         westButton.setVisible(true);
+    }
+
+    @FXML
+    private void combineButtonAction(ActionEvent event) {
+        game.interact("stump");
+    }
+
+    @FXML
+    private void helpButtonAction(ActionEvent event) {
+        game.interact("pet");
+    }
+
+    @FXML
+    private void saveButtonAction(ActionEvent event) {
+        game.save();
     }
 }
