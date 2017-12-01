@@ -12,16 +12,18 @@
       <Button fx:id="eastButton" layoutX="340.0" layoutY="280.0" mnemonicParsing="false" onAction="#eastButtonAction" prefWidth="48.0" text="East" textAlignment="CENTER" />
       <Button fx:id="southButton" layoutX="275.0" layoutY="328.0" mnemonicParsing="false" onAction="#southButtonAction" text="South" textAlignment="CENTER" />
       <Button fx:id="westButton" layoutX="210.0" layoutY="280.0" mnemonicParsing="false" onAction="#westButtonAction" prefWidth="48.0" text="West" textAlignment="CENTER" />
-      <TextArea fx:id="storyField" editable="false" focusTraversable="false" layoutX="175.0" layoutY="15.0" prefHeight="200.0" prefWidth="296.0" wrapText="true" />
-      <Button fx:id="gameStart" layoutX="531.0" layoutY="328.0" mnemonicParsing="false" onAction="#gameButtonAction" text="Start" />
-      <Button fx:id="pickButton" layoutX="75.0" layoutY="78.0" mnemonicParsing="false" onAction="#pickButtonAction" text="Pick" />
-      <Button fx:id="dropButton" layoutX="481.0" layoutY="214.0" mnemonicParsing="false" onAction="#dropButtonAction" text="Drop" />
-      <Button fx:id="playButton" layoutX="47.0" layoutY="245.0" mnemonicParsing="false" onAction="#playButtonAction" text="Play" />
-      <Button fx:id="quitButton" layoutX="47.0" layoutY="316.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
-      <Button fx:id="loadButton" layoutX="48.0" layoutY="280.0" mnemonicParsing="false" onAction="#loadButtonAction" prefHeight="25.0" prefWidth="77.0" text="Load game" />
-      <ListView fx:id="inventoryList" focusTraversable="false" layoutX="481.0" layoutY="31.0" prefHeight="183.0" prefWidth="90.0" />
-      <Label fx:id="inventoryLabel" layoutX="501.0" layoutY="14.0" text="Inventory" />
-      <ListView fx:id="itemList" layoutX="75.0" layoutY="27.0" prefHeight="51.0" prefWidth="90.0" />
-      <TextArea fx:id="textArea" layoutX="15.0" layoutY="123.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextArea fx:id="storyField" editable="false" focusTraversable="false" layoutX="137.0" layoutY="23.0" prefHeight="200.0" prefWidth="325.0" wrapText="true" />
+      <Button fx:id="pickButton" focusTraversable="false" layoutX="30.0" layoutY="103.0" mnemonicParsing="false" onAction="#pickButtonAction" text="Pick" />
+      <Button fx:id="dropButton" focusTraversable="false" layoutX="479.0" layoutY="103.0" mnemonicParsing="false" onAction="#dropButtonAction" text="Drop" />
+      <Button fx:id="playButton" focusTraversable="false" layoutX="30.0" layoutY="245.0" mnemonicParsing="false" onAction="#playButtonAction" text="Play" />
+      <Button fx:id="quitButton" focusTraversable="false" layoutX="30.0" layoutY="328.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
+      <Button fx:id="loadButton" focusTraversable="false" layoutX="30.0" layoutY="280.0" mnemonicParsing="false" onAction="#loadButtonAction" prefHeight="25.0" prefWidth="77.0" text="Load game" />
+      <ListView fx:id="inventoryList" focusTraversable="false" layoutX="479.0" layoutY="32.0" prefHeight="72.0" prefWidth="90.0" />
+      <Label fx:id="inventoryLabel" focusTraversable="false" layoutX="501.0" layoutY="14.0" text="Inventory" />
+      <ListView fx:id="itemList" focusTraversable="false" layoutX="30.0" layoutY="31.0" prefHeight="72.0" prefWidth="90.0" />
+      <Label focusTraversable="false" layoutX="43.0" layoutY="14.0" text="Room items" />
+      <Button fx:id="combineButton" layoutX="479.0" layoutY="128.0" mnemonicParsing="false" onAction="#combineButtonAction" prefHeight="25.0" prefWidth="64.0" text="Combine" />
+      <Button fx:id="helpButton" layoutX="462.0" layoutY="198.0" mnemonicParsing="false" onAction="#helpButtonAction" text="Help" />
+      <Button fx:id="saveButton" layoutX="518.0" layoutY="328.0" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
    </children>
 </AnchorPane>
