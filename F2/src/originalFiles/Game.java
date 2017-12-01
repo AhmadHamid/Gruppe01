@@ -420,13 +420,13 @@ public class Game
         }
     }
     
-    public boolean pickItem(String item){
+    public void pickItem(String item){
         CommandWord commandWord = CommandWord.GO;
         Command command = new Command(commandWord, item);
-        return pickItem(command);
+        pickItem(command);
     }
     
-    private boolean pickItem(Command command) {
+    private void pickItem(Command command) {
         try {
             ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
       
@@ -442,15 +442,12 @@ public class Game
             }
             /*System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");*/
             c.toStoryField(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
-            return true;
         } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
             /*System.out.println("That item is not in the room!");*/
             c.toStoryField("That item is not in the room!");
-            return false;
         } else {
             /*System.out.println("Inventory is full");*/
             c.toStoryField("Inventory is full");
-            return false;
         }
         } catch (NullPointerException e) {
             /*System.out.println("Pick what item?");*/
@@ -459,7 +456,6 @@ public class Game
             /*System.out.println("That is not an item!");*/
             c.toStoryField("That is not an item!");
         }
-        return false;
     }
     
     private void useItem(Command command) {

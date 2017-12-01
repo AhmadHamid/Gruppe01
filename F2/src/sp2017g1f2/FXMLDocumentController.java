@@ -62,6 +62,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private Button helpButton;
     @FXML
     private Button saveButton;
+    @FXML
+    private Label roomItemLabel;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -193,12 +195,16 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         pickButton.setVisible(false);
         dropButton.setVisible(false);
         itemList.setVisible(false);
+        roomItemLabel.setVisible(false);
         inventoryList.setVisible(false);
         inventoryLabel.setVisible(false);
         northButton.setVisible(false);
         eastButton.setVisible(false);
         southButton.setVisible(false);
         westButton.setVisible(false);
+        combineButton.setVisible(false);
+        helpButton.setVisible(false);
+        saveButton.setVisible(false);
     }
     
     private void scene2(){
@@ -209,12 +215,16 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         pickButton.setVisible(true);
         dropButton.setVisible(true);
         itemList.setVisible(true);
+        roomItemLabel.setVisible(true);
         inventoryList.setVisible(true);
         inventoryLabel.setVisible(true);
         northButton.setVisible(true);
         eastButton.setVisible(true);
         southButton.setVisible(true);
         westButton.setVisible(true);
+        combineButton.setVisible(true);
+        helpButton.setVisible(true);
+        saveButton.setVisible(true);
     }
 
     @FXML
