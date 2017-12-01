@@ -271,6 +271,10 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
+        if(nextRoom == null && nextRoom1.getLock() == true){
+            unlockRoom(command);
+        }
+        
         if(steps < 50) {
             steps++;
         }
@@ -416,13 +420,13 @@ public class Game
         }
     }
     
-    public void pickItem(String item){
+    public boolean pickItem(String item){
         CommandWord commandWord = CommandWord.GO;
         Command command = new Command(commandWord, item);
-        pickItem(command);
+        return pickItem(command);
     }
     
-    private void pickItem(Command command) {
+    private boolean pickItem(Command command) {
         try {
             ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
       
@@ -438,12 +442,15 @@ public class Game
             }
             /*System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");*/
             c.toStoryField(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
+            return true;
         } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
             /*System.out.println("That item is not in the room!");*/
             c.toStoryField("That item is not in the room!");
+            return false;
         } else {
             /*System.out.println("Inventory is full");*/
             c.toStoryField("Inventory is full");
+            return false;
         }
         } catch (NullPointerException e) {
             /*System.out.println("Pick what item?");*/
@@ -452,6 +459,7 @@ public class Game
             /*System.out.println("That is not an item!");*/
             c.toStoryField("That is not an item!");
         }
+        return false;
     }
     
     private void useItem(Command command) {
@@ -459,6 +467,12 @@ public class Game
             System.out.println("Use what item?");
             // Denne kan slettes. Bruges slet ikke.
         }
+    }
+    
+    public void dropItem(String item) {
+        CommandWord commandWord = CommandWord.DROP;
+        Command command = new Command(commandWord, item);
+        dropItem(command);
     }
     
     private void dropItem(Command command) {
@@ -504,6 +518,11 @@ public class Game
     System.out.println("None of the required items are in your inventory.");
     }
     }*/
+    public void interact(String npc) {
+        CommandWord commandWord = CommandWord.INTERACT;
+        Command command = new Command(commandWord, npc);
+        interact(command);
+    }
     
     private void interact(Command command) {
         try {
@@ -583,6 +602,13 @@ public class Game
     
     public String[] getRoomItems(){
         String items = currentRoom.getRoomItems().keySet().toString();
+        items = items.replace("[", "");
+        items = items.replace("]", "");
+        return items.split(", ");
+    }
+    
+    public String[] getInventoryItems() {
+        String items = inventory.keySet().toString();
         items = items.replace("[", "");
         items = items.replace("]", "");
         return items.split(", ");
