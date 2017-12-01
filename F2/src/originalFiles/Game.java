@@ -16,18 +16,17 @@ public class Game
     private Room currentRoom;
     private static HashMap<ItemEnum, Item> inventory;
     private static int progress;
-    private final int ITEM_POINT_TIER_ONE = 15;
-    private final int ITEM_POINT_TIER_TWO = 25;
-    private final int ITEM_POINT_TIER_THREE = 40;
     private int itemScore;
     private int effScore;
     private int timeScore;
     private int steps;
+    public String scoreString;
     
     public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbourHouse;
     
     Door door, Ladderdoor;
     
+    private Score score = new Score(this);
     private SaveAndLoad saveAndLoad = new SaveAndLoad(this);
     
     // Changed the access modifier of the Item variable to static so the hashmap key (not the actual item called key) can be accessed in TreeStump.java. No idea why it cannot be accessed from TreeStump.java without it.
@@ -591,12 +590,12 @@ public class Game
          c.toStoryField(" ");
     }
     
-    private String CalculateScore() {
+    public String CalculateScore() {
         
         effScore = (1000 - (steps * 20));
         timeScore = (int) (1200 - time.getTime() * 2);
         int score = itemScore + effScore + timeScore;
-        String scoreString = Integer.toString(score);
+        scoreString = Integer.toString(score);
         
         return scoreString;
     }
@@ -671,4 +670,15 @@ public class Game
         saveAndLoad.load();
     }
     
+    public String getScore() {
+        return scoreString;
+    }
+    
+    public void highScoreSave() {
+        score.Save();
+    }
+    
+    public void highScoreLoad() {
+        score.Load();
+    }
 }
