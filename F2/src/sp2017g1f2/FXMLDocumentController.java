@@ -100,28 +100,24 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void northButtonAction(ActionEvent event) {
-        storyField.appendText("North\n");
         game.goRoom("north");
         itemLoad();
     }
 
     @FXML
     private void eastButtonAction(ActionEvent event) {
-        storyField.appendText("East\n");
         game.goRoom("east");
         itemLoad();
     }
 
     @FXML
     private void southButtonAction(ActionEvent event) {
-        storyField.appendText("South\n");
         game.goRoom("south");
         itemLoad();
     }
 
     @FXML
     private void westButtonAction(ActionEvent event) {
-        storyField.appendText("West\n");
         game.goRoom("west");
         itemLoad();
     }

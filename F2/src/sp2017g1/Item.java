@@ -30,12 +30,14 @@ public class Item {
     public Item(ItemEnum itemname, int points) {
         this.itemName = itemname;
         this.points = points;
+        allItems.put(itemName, this);
     }
     
     public Item(ItemEnum itemname, int points, Timer timeBonus) {
         this.itemName = itemname;
         this.points = points;
         this.time = timeBonus;
+        allItems.put(itemname, this);
     }
 
     public Item(ItemEnum itemName, Room room) {
@@ -43,7 +45,6 @@ public class Item {
         selectedRoom = room;
         selectedRoom.getRoomItems().put(this.itemName, this);
         allItems.put(itemName, this);
-        /*allItems.put(ItemEnum.test, this);*/
     }
     
     public Item(ItemEnum itemName, Room room, int points) {

@@ -271,7 +271,7 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
-        if(nextRoom == null && nextRoom1.getLock() == true){
+        if(nextRoom == null && nextRoom1 != null && nextRoom1.getLock() == true){
             unlockRoom(command);
         }
         
@@ -455,13 +455,6 @@ public class Game
         } catch (IllegalArgumentException e) {
             /*System.out.println("That is not an item!");*/
             c.toStoryField("That is not an item!");
-        }
-    }
-    
-    private void useItem(Command command) {
-        if(!command.hasSecondWord()) {
-            System.out.println("Use what item?");
-            // Denne kan slettes. Bruges slet ikke.
         }
     }
     
