@@ -209,7 +209,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void scene2(){
         playButton.setVisible(false);
         loadButton.setVisible(false);
-        quitButton.setVisible(false);
+        quitButton.setVisible(true); // Needs to stay visible at all times, due to the game not closing properly if pressing the red X button in the top right corner (Windows), unless alternative is available.
         storyField.setVisible(true);
         pickButton.setVisible(true);
         dropButton.setVisible(true);
