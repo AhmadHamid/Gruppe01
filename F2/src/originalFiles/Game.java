@@ -170,7 +170,6 @@ public class Game
     
     private void printWelcome()
     {
-        c.toStoryField("");
         c.toStoryField(WordList.WELCOME);
         c.toStoryField(WordList.DESCRIPTION);
         c.toStoryField(WordList.GET_HELP);
