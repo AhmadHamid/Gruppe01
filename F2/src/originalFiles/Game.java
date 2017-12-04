@@ -170,27 +170,20 @@ public class Game
     
     private void printWelcome()
     {
-        /*System.out.println();
-        System.out.println(WordList.WELCOME);
-        System.out.println(WordList.DESCRIPTION);
-        System.out.println(WordList.GET_HELP);
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());*/
         c.toStoryField("");
         c.toStoryField(WordList.WELCOME);
         c.toStoryField(WordList.DESCRIPTION);
         c.toStoryField(WordList.GET_HELP);
         c.toStoryField("");
         c.toStoryField(currentRoom.getLongDescription());
-        if(!currentRoom.getRoomItems().isEmpty()) {
-//            System.out.println(WordList.ITEMS_IN_ROOM);
-            c.toStoryField(WordList.ITEMS_IN_ROOM);
-        } else {
-            
-        }
-//        currentRoom.getRoomItemsList();
-//        c.toStoryField(currentRoom.getRoomItemsList());
-        getRoomItemList(currentRoom);
+//        if(!currentRoom.getRoomItems().isEmpty()) {
+//            c.toStoryField(WordList.ITEMS_IN_ROOM);
+//        } else {
+//            
+//        }
+////        currentRoom.getRoomItemsList();
+////        c.toStoryField(currentRoom.getRoomItemsList());
+//        getRoomItemList(currentRoom);
     }
 
     private boolean processCommand(Command command) 
@@ -303,22 +296,19 @@ public class Game
             currentRoom = nextRoom1.getExit(direction);
             pet.goPet(nextRoom1.getExit(direction));
             if (currentRoom == home) {
-//                System.out.println(WordList.END_DESCRIPTION);
                 c.toStoryField(WordList.END_DESCRIPTION);
                 System.exit(0);
             }
-            /*System.out.println("Going through door");
-            System.out.println(currentRoom.getLongDescription());*/
             c.toStoryField("going through door");
             c.toStoryField(currentRoom.getLongDescription());
             /*if (neighbour.getCurrentRoom() == currentRoom) {
                 neighbour.interact(command);
             }*/
 //            System.out.println(WordList.ITEMS_IN_ROOM);
-            c.toStoryField(WordList.ITEMS_IN_ROOM);
+//            c.toStoryField(WordList.ITEMS_IN_ROOM);
 //            currentRoom.getRoomItemsList();
 //            c.toStoryField(currentRoom.getRoomItemsList());
-            getRoomItemList(currentRoom);
+//            getRoomItemList(currentRoom);
         } else {
             currentRoom = nextRoom;
             pet.goPet(nextRoom);
@@ -343,16 +333,16 @@ public class Game
                 System.out.println("TestNPC is in the room");
             }
             
-            if (!currentRoom.getRoomItems().isEmpty()) {
+//            if (!currentRoom.getRoomItems().isEmpty()) {
 //                System.out.println(WordList.ITEMS_IN_ROOM);
-                c.toStoryField(WordList.ITEMS_IN_ROOM);
-                currentRoom.getRoomItemsList();
+//                c.toStoryField(WordList.ITEMS_IN_ROOM);
+//                currentRoom.getRoomItemsList();
 //                c.toStoryField(currentRoom.getRoomItemsList());
 //                getRoomItemList(currentRoom);
-            } else {
+//            } else {
 //                System.out.println("No items in room.");
-                c.toStoryField("No items in room.");
-            }
+//                c.toStoryField("No items in room.");
+//            }
         }
         
 

@@ -68,7 +68,6 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
-        storyField.appendText("Nu kører vi!\n");
         scene1();
         this.inventoryItems = FXCollections.observableArrayList();
         inventoryList.setItems(inventoryItems);
