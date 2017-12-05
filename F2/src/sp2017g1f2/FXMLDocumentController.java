@@ -84,7 +84,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     Background windowBackground = new Background(windowBackgroundImage);
     
     Image roomGarden = new Image("file:roomGarden.png", 250, 250, true, true);
-    BackgroundImage imageGarden = new BackgroundImage(roomGarden, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageGarden = new BackgroundImage(roomGarden, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapGarden = new Background(imageGarden);
     
