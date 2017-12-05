@@ -14,6 +14,7 @@ import originalFiles.*;
 public abstract class NPC {
     protected Species species;
     protected Room currentRoom;
+    protected int interactCount;
     
     public Species getSpecies(){
         return species;

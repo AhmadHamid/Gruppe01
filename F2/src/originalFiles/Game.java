@@ -519,7 +519,10 @@ public class Game
                 }
             } else if (inputCommand.equals("neighbour")){
                 if (currentRoom == neighbour.getCurrentRoom()) {
-                neighbour.interactExtended(command, key, hammer, inventory);
+                //neighbour.interactExtended(command, key, hammer, inventory);
+                
+                    c.toStoryFieldnln(neighbour.interactExtended(command, key, hammer, inventory));
+                
                 setProgress(3);
                 if(inventory.containsKey(ItemEnum.hammer)){
                     //setProgress();

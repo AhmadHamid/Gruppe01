@@ -38,14 +38,14 @@ public class TreeStump extends NPC {
     }*/
     
     public void interactExtendedStump(Command command, Item iNails, Item iHammer, Item iWood, Item iLumber, Item iLadder, HashMap<ItemEnum, Item> inv) {
-        Scanner input = new Scanner(System.in);
-        
-        System.out.println("You see a tree stump where you can create a ladder or refine wood into lumber." + "\n" + "Type ladder to make a ladder or type lumber to make lumber.");
-        
-        String option = input.next();
+//        Scanner input = new Scanner(System.in);
+//        
+//        System.out.println("You see a tree stump where you can create a ladder or refine wood into lumber." + "\n" + "Type ladder to make a ladder or type lumber to make lumber.");
+//        
+//        String option = input.next();
         
         // Dialogue tree for creating lumber.
-        if(option.equalsIgnoreCase(ItemEnum.lumber.toString())) {
+        if(interactCount == 0) {
             if(!Game.getInventory().containsKey(ItemEnum.axe) || !Game.getInventory().containsKey(ItemEnum.wood)) {
                 System.out.println("To refine wood into lumber, you need the following items: " + "\n" + Game.axe.getItemName() + "\t" + Game.wood.getItemName());
             }
@@ -54,12 +54,13 @@ public class TreeStump extends NPC {
                 getItemLumber(iLumber, inv);
                 Game.getInventory().remove(ItemEnum.wood);
                 System.out.println("You have refined wood with the axe and created lumber." + "\n" + "Lumber has been added to your inventory.");
+                interactCount = 1;
             }
             
         }
         
         // Dialogue tree for creating ladder.
-        else if (option.equalsIgnoreCase(ItemEnum.ladder.toString())) {
+        else if (interactCount == 1) {
             if(!Game.getInventory().containsKey(ItemEnum.lumber) || !Game.getInventory().containsKey(ItemEnum.nails) || !Game.getInventory().containsKey(ItemEnum.hammer)) {
                 System.out.println("To assemble a ladder, you need the following items: " + "\n" + Game.hammer.getItemName() + "\t" + Game.nails.getItemName() + "\t" + Game.lumber.getItemName());
             }
