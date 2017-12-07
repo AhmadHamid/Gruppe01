@@ -31,19 +31,19 @@
             <Button fx:id="quitButton" focusTraversable="false" layoutX="14.0" layoutY="241.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="scoreScene" layoutX="136.0" prefHeight="374.0" prefWidth="325.0">
+      <AnchorPane fx:id="scoreScene" layoutX="137.0" prefHeight="374.0" prefWidth="325.0">
          <children>
             <Button fx:id="PlayAgain" layoutX="128.0" layoutY="227.0" mnemonicParsing="false" onAction="#PlayAgainAction" text="Play again" />
             <Button layoutX="144.0" layoutY="258.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
-            <Label layoutX="133.0" layoutY="53.0" text="Your score:" />
-            <Label fx:id="gameScore" layoutX="137.0" layoutY="70.0" text="0000">
+            <Label layoutX="133.0" layoutY="53.0" text="Your score:" textFill="WHITE" />
+            <Label fx:id="gameScore" layoutX="143.0" layoutY="70.0" text="000" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="newHighscore" layoutX="122.0" layoutY="105.0" text="New highscore!" />
-            <Label layoutX="136.0" layoutY="149.0" text="Highscore:" />
-            <Label fx:id="highscore" layoutX="149.0" layoutY="166.0" text="0000">
+            <Label fx:id="newHighscore" layoutX="122.0" layoutY="105.0" text="New highscore!" textFill="WHITE" />
+            <Label layoutX="136.0" layoutY="149.0" text="Highscore:" textFill="WHITE" />
+            <Label fx:id="highscore" layoutX="153.0" layoutY="166.0" text="000" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
