@@ -582,7 +582,10 @@ public class Game
     }
     
     public boolean highscore() {
-        if(true) {
+        int scoreInt = Integer.parseInt(calculateScore());
+        int highscoreInt = Integer.parseInt(highScoreLoad());
+        if(scoreInt > highscoreInt) {
+            highScoreSave();
             return true;
         } else {
             return false;
@@ -667,7 +670,7 @@ public class Game
         score.Save();
     }
     
-    public void highScoreLoad() {
-        score.Load();
+    public String highScoreLoad() {
+        return score.Load();
     }
 }

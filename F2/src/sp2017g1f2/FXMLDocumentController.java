@@ -345,6 +345,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         saveButton.setVisible(true);
         map.setVisible(true);
         scene1.setVisible(false);
+        scoreScene.setVisible(true);
     }
     
     private void scene3() {
@@ -374,6 +375,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         if(game.highscore()) {
             highscore.setText(score);
             newHighscore.setVisible(true);
+        } else {
+            highscore.setText(game.highScoreLoad());
         }
     }
     
@@ -394,5 +397,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
 
     @FXML
     private void PlayAgainAction(ActionEvent event) {
+        game = new Game(this);
+        scene2();
+        game.play();
+        itemLoad();
     }
 }
