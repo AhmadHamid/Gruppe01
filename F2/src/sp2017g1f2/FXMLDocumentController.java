@@ -345,7 +345,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         saveButton.setVisible(true);
         map.setVisible(true);
         scene1.setVisible(false);
-        scoreScene.setVisible(true);
+        scoreScene.setVisible(false);
     }
     
     private void scene3() {

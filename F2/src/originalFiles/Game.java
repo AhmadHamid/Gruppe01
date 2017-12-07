@@ -1,5 +1,6 @@
 package originalFiles;
 
+import java.io.File;
 import java.util.*;
 import sp2017g1.*;
 import language.*;
@@ -584,7 +585,7 @@ public class Game
     public boolean highscore() {
         int scoreInt = Integer.parseInt(calculateScore());
         int highscoreInt = Integer.parseInt(highScoreLoad());
-        if(scoreInt > highscoreInt) {
+        if((new File("highscore.txt").isFile() && scoreInt > highscoreInt) || !(new File("highscore.txt").isFile())) {
             highScoreSave();
             return true;
         } else {
