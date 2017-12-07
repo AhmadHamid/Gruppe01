@@ -296,7 +296,7 @@ public class Game
             pet.goPet(nextRoom1.getExit(direction));
             if (currentRoom == home) {
                 c.toStoryField(WordList.END_DESCRIPTION);
-                System.exit(0);
+                //System.exit(0);
             }
             c.toStoryField("going through door");
             c.toStoryField(currentRoom.getLongDescription());
@@ -348,7 +348,7 @@ public class Game
         if (currentRoom == home) {
 //            System.out.println("You win!");
             c.toStoryField("You win!");
-            System.exit(0);
+            //System.exit(0);
         }
 
     }
@@ -571,7 +571,7 @@ public class Game
          c.toStoryField(" ");
     }
     
-    public String CalculateScore() {
+    public String calculateScore() {
         
         effScore = (1000 - (steps * 20));
         timeScore = (int) (1200 - time.getTime() * 2);
@@ -579,6 +579,14 @@ public class Game
         scoreString = Integer.toString(score);
         
         return scoreString;
+    }
+    
+    public boolean highscore() {
+        if(true) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public String[] getRoomItems(){

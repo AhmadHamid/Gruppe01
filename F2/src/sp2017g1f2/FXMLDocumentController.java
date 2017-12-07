@@ -127,8 +127,19 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     BackgroundImage imageWaterfall = new BackgroundImage(roomWaterfall, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
         BackgroundSize.DEFAULT);
     Background mapWaterfall = new Background(imageWaterfall);
+    
     @FXML
-    private AnchorPane keys;
+    private AnchorPane scene1;
+    @FXML
+    private AnchorPane scoreScene;
+    @FXML
+    private Button PlayAgain;
+    @FXML
+    private Label gameScore;
+    @FXML
+    private Label newHighscore;
+    @FXML
+    private Label highscore;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -212,8 +223,13 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void southButtonAction(ActionEvent event) {
         game.goRoom("south");
+        if(game.getPlayerRoom() == "home") {
+            scene3();
+            scoreLoad();
+        } else {
         itemLoad();
         loadMap(game.getPlayerRoom());
+        }
     }
 
     @FXML
@@ -306,7 +322,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         helpButton.setVisible(false);
         saveButton.setVisible(false);
         map.setVisible(false);
-        keys.setVisible(false);
+        scoreScene.setVisible(false);
     }
     
     private void scene2(){
@@ -328,9 +344,39 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         helpButton.setVisible(true);
         saveButton.setVisible(true);
         map.setVisible(true);
-        keys.setVisible(true);
+        scene1.setVisible(false);
+    }
+    
+    private void scene3() {
+        storyField.setVisible(false);
+        pickButton.setVisible(false);
+        dropButton.setVisible(false);
+        itemList.setVisible(false);
+        roomItemLabel.setVisible(false);
+        inventoryList.setVisible(false);
+        inventoryLabel.setVisible(false);
+        northButton.setVisible(false);
+        eastButton.setVisible(false);
+        southButton.setVisible(false);
+        westButton.setVisible(false);
+        combineButton.setVisible(false);
+        helpButton.setVisible(false);
+        saveButton.setVisible(false);
+        map.setVisible(false);
+        scene1.setVisible(false);
+        scoreScene.setVisible(true);
+        newHighscore.setVisible(false);
     }
 
+    private void scoreLoad() {
+        String score = game.calculateScore();
+        gameScore.setText(score);
+        if(game.highscore()) {
+            highscore.setText(score);
+            newHighscore.setVisible(true);
+        }
+    }
+    
     @FXML
     private void combineButtonAction(ActionEvent event) {
         game.interact("stump");
@@ -344,5 +390,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void saveButtonAction(ActionEvent event) {
         game.save();
+    }
+
+    @FXML
+    private void PlayAgainAction(ActionEvent event) {
     }
 }
