@@ -585,7 +585,7 @@ public class Game
     public boolean highscore() {
         int scoreInt = Integer.parseInt(calculateScore());
         int highscoreInt = Integer.parseInt(highScoreLoad());
-        if((new File("highscore.txt").isFile() && scoreInt > highscoreInt) || !(new File("highscore.txt").isFile())) {
+        if(scoreInt > highscoreInt) {
             highScoreSave();
             return true;
         } else {
@@ -672,6 +672,10 @@ public class Game
     }
     
     public String highScoreLoad() {
-        return score.Load();
+        if(new File("highscore.txt").exists()){
+            return score.Load();
+        } else {
+            return "0";
+        }
     }
 }

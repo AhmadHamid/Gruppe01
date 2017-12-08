@@ -50,5 +50,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="title" prefHeight="262.0" prefWidth="598.0" AnchorPane.bottomAnchor="112.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

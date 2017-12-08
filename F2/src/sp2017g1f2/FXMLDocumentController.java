@@ -78,6 +78,11 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private AnchorPane map;
     
+    Image titleImage = new Image("file:runawayTitle.png", 575, 95, true, true);
+    BackgroundImage titleTextImage = new BackgroundImage(titleImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+        BackgroundSize.DEFAULT);
+    Background titleText = new Background(titleTextImage);
+    
     Image windowImage = new Image("file:forest.jpg", true);
     BackgroundImage windowBackgroundImage = new BackgroundImage(windowImage, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
         BackgroundSize.DEFAULT);
@@ -140,6 +145,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private Label newHighscore;
     @FXML
     private Label highscore;
+    @FXML
+    private AnchorPane title;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -152,6 +159,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         window.setBackground(windowBackground);
         map.setBackground(mapGarden);
+        //title.setBackground(titleText);
         //game.play();
     }
 
@@ -326,6 +334,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
     
     private void scene2(){
+        title.setVisible(false);
         playButton.setVisible(false);
         loadButton.setVisible(false);
         quitButton.setVisible(false); // Needs to stay visible at all times, due to the game not closing properly if pressing the red X button in the top right corner (Windows), unless alternative is available.
