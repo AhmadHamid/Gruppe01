@@ -1,5 +1,6 @@
 package originalFiles;
 
+import java.io.File;
 import java.util.*;
 import sp2017g1.*;
 import language.*;
@@ -170,27 +171,19 @@ public class Game
     
     private void printWelcome()
     {
-        /*System.out.println();
-        System.out.println(WordList.WELCOME);
-        System.out.println(WordList.DESCRIPTION);
-        System.out.println(WordList.GET_HELP);
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());*/
-        c.toStoryField("");
         c.toStoryField(WordList.WELCOME);
         c.toStoryField(WordList.DESCRIPTION);
         c.toStoryField(WordList.GET_HELP);
         c.toStoryField("");
         c.toStoryField(currentRoom.getLongDescription());
-        if(!currentRoom.getRoomItems().isEmpty()) {
-//            System.out.println(WordList.ITEMS_IN_ROOM);
-            c.toStoryField(WordList.ITEMS_IN_ROOM);
-        } else {
-            
-        }
-//        currentRoom.getRoomItemsList();
-//        c.toStoryField(currentRoom.getRoomItemsList());
-        getRoomItemList(currentRoom);
+//        if(!currentRoom.getRoomItems().isEmpty()) {
+//            c.toStoryField(WordList.ITEMS_IN_ROOM);
+//        } else {
+//            
+//        }
+////        currentRoom.getRoomItemsList();
+////        c.toStoryField(currentRoom.getRoomItemsList());
+//        getRoomItemList(currentRoom);
     }
 
     private boolean processCommand(Command command) 
@@ -271,7 +264,7 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
-        if(nextRoom == null && nextRoom1.getLock() == true){
+        if(nextRoom == null && nextRoom1 != null && nextRoom1.getLock() == true){
             unlockRoom(command);
         }
         
@@ -303,22 +296,19 @@ public class Game
             currentRoom = nextRoom1.getExit(direction);
             pet.goPet(nextRoom1.getExit(direction));
             if (currentRoom == home) {
-//                System.out.println(WordList.END_DESCRIPTION);
                 c.toStoryField(WordList.END_DESCRIPTION);
-                System.exit(0);
+                //System.exit(0);
             }
-            /*System.out.println("Going through door");
-            System.out.println(currentRoom.getLongDescription());*/
             c.toStoryField("going through door");
             c.toStoryField(currentRoom.getLongDescription());
             /*if (neighbour.getCurrentRoom() == currentRoom) {
                 neighbour.interact(command);
             }*/
 //            System.out.println(WordList.ITEMS_IN_ROOM);
-            c.toStoryField(WordList.ITEMS_IN_ROOM);
+//            c.toStoryField(WordList.ITEMS_IN_ROOM);
 //            currentRoom.getRoomItemsList();
 //            c.toStoryField(currentRoom.getRoomItemsList());
-            getRoomItemList(currentRoom);
+//            getRoomItemList(currentRoom);
         } else {
             currentRoom = nextRoom;
             pet.goPet(nextRoom);
@@ -343,23 +333,23 @@ public class Game
                 System.out.println("TestNPC is in the room");
             }
             
-            if (!currentRoom.getRoomItems().isEmpty()) {
+//            if (!currentRoom.getRoomItems().isEmpty()) {
 //                System.out.println(WordList.ITEMS_IN_ROOM);
-                c.toStoryField(WordList.ITEMS_IN_ROOM);
-                currentRoom.getRoomItemsList();
+//                c.toStoryField(WordList.ITEMS_IN_ROOM);
+//                currentRoom.getRoomItemsList();
 //                c.toStoryField(currentRoom.getRoomItemsList());
 //                getRoomItemList(currentRoom);
-            } else {
+//            } else {
 //                System.out.println("No items in room.");
-                c.toStoryField("No items in room.");
-            }
+//                c.toStoryField("No items in room.");
+//            }
         }
         
 
         if (currentRoom == home) {
 //            System.out.println("You win!");
             c.toStoryField("You win!");
-            System.exit(0);
+            //System.exit(0);
         }
 
     }
@@ -442,7 +432,10 @@ public class Game
             }
             /*System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");*/
             c.toStoryField(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
+<<<<<<< HEAD
             
+=======
+>>>>>>> 8c2dd45149e84be6f69adb4f75b728b941fa657b
         } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
             /*System.out.println("That item is not in the room!");*/
             c.toStoryField("That item is not in the room!");
@@ -457,6 +450,7 @@ public class Game
             /*System.out.println("That is not an item!");*/
             c.toStoryField("That is not an item!");
         }
+<<<<<<< HEAD
 
     }
     
@@ -465,6 +459,8 @@ public class Game
             System.out.println("Use what item?");
             // Denne kan slettes. Bruges slet ikke.
         }
+=======
+>>>>>>> 8c2dd45149e84be6f69adb4f75b728b941fa657b
     }
     
     public void dropItem(String item) {
@@ -539,7 +535,10 @@ public class Game
                 }
             } else if (inputCommand.equals("neighbour")){
                 if (currentRoom == neighbour.getCurrentRoom()) {
-                neighbour.interactExtended(command, key, hammer, inventory);
+                //neighbour.interactExtended(command, key, hammer, inventory);
+                
+                    c.toStoryFieldnln(neighbour.interactExtended(command, key, hammer, inventory));
+                
                 setProgress(3);
                 if(inventory.containsKey(ItemEnum.hammer)){
                     //setProgress();
@@ -588,7 +587,7 @@ public class Game
          c.toStoryField(" ");
     }
     
-    public String CalculateScore() {
+    public String calculateScore() {
         
         effScore = (1000 - (steps * 20));
         timeScore = (int) (1200 - time.getTime() * 2);
@@ -596,6 +595,17 @@ public class Game
         scoreString = Integer.toString(score);
         
         return scoreString;
+    }
+    
+    public boolean highscore() {
+        int scoreInt = Integer.parseInt(calculateScore());
+        int highscoreInt = Integer.parseInt(highScoreLoad());
+        if(scoreInt > highscoreInt) {
+            highScoreSave();
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public String[] getRoomItems(){
@@ -684,7 +694,11 @@ public class Game
         score.Save();
     }
     
-    public void highScoreLoad() {
-        score.Load();
+    public String highScoreLoad() {
+        if(new File("highscore.txt").exists()){
+            return score.Load();
+        } else {
+            return "0";
+        }
     }
 }

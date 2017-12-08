@@ -53,15 +53,19 @@ public class Score {
         }
     }
     
-    public void Load() {
+    public String Load() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("highscore.txt"));
+            String loadData = reader.readLine();
+            String[] loadArray = loadData.split(" ");
             
             reader.close();
+            return loadArray[1];
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 }
