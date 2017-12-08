@@ -50,13 +50,12 @@ public class SaveAndLoad {
         */ 
         
         String timerString = Integer.toString(game.getGameTime());
-        //String timerString = Long.toString(sp2017g1.Timer.getTimeSeconds());
         String currentRoomPlayer = game.getPlayerRoom();
         String currentRoomPet = game.getPetRoom();
         String currentRoomEvilNPC = game.getEvilNPCRoom();
         String progressString = Integer.toString(game.getProgress());
-        //String petFollowString = Boolean.toString(pet.isFollow());
         String inventoryString = game.getPlayerInventory();
+        String interactString = Integer.toString(game.getNeighbourInteractCount());
         
         
         
@@ -70,8 +69,11 @@ public class SaveAndLoad {
                     + currentRoomEvilNPC + ";"
                     + progressString + ";" 
                     + timerString + ";" 
-                    //+ petFollowString + ";"
-                    + inventoryString);
+                    + inventoryString + ";"
+                    + interactString);
+            /*Flere ting der skal gemmes: room item locations, evil NPC inventory?, nabo tilstand, 
+            døre tilstand åben/lukket, item ispicked(), score, antal skridt
+            */        
             
             writer.close();
             
@@ -88,18 +90,17 @@ public class SaveAndLoad {
     public void load() {
         try {
             BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
-            //StringBuilder builder = new StringBuilder();
             
             String loadData = reader.readLine();
-            //builder.append(loadData);
             String[] loadArray = loadData.split(";");
             
-            System.out.println(loadArray[0] + " " + loadArray[1] + " " + loadArray[2] + " " + loadArray[4]);
+            //System.out.println(loadArray[0] + " " + loadArray[1] + " " + loadArray[2] + " " + loadArray[4]);
             game.setPlayerRoom(loadArray[0]);
             game.setPetRoom(loadArray[1]);
             game.setEvilNPCRoom(loadArray[2]);
             game.setGameProgress(Integer.parseInt(loadArray[3]));
             game.setGameTime(Integer.parseInt(loadArray[4]));
+            game.setNeighbourInteractCount(Integer.parseInt(loadArray[6]));
             
             if (game.getPetRoom().equals(game.getPlayerRoom())) {
                 game.pet.startFollow();
@@ -110,13 +111,11 @@ public class SaveAndLoad {
             if (!loadArray[5].isEmpty()) {
             String[] loadInventory = loadArray[5].split(", ");
             
-            
             for (String item : loadInventory) {
                 game.setInventory(item);
             
             }
-            
-            System.out.println(loadInventory[0] + " " + loadInventory[1]);
+            //System.out.println(loadInventory[0] + " " + loadInventory[1]);
             }
             
             reader.close();

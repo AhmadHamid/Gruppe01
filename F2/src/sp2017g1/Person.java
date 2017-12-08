@@ -11,7 +11,7 @@ import originalFiles.*;
  * @author Student
  */
 public class Person extends NPC {
-    int interactCount = 0;
+    private int interactCount = 0;
     
     public Person(Room room){
         this.currentRoom = room;
@@ -67,4 +67,13 @@ public class Person extends NPC {
     public String introMessage(String string) {
         return super.introMessage(string); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public int getInteractCount() {
+        return interactCount;
+    }
+    
+    public void setInteractCount(int interactCount) {
+        this.interactCount = interactCount;
+    }
+    
 }

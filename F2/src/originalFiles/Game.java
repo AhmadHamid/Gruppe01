@@ -442,24 +442,13 @@ public class Game
             }
             /*System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");*/
             c.toStoryField(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
-<<<<<<< HEAD
+            
         } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
             /*System.out.println("That item is not in the room!");*/
             c.toStoryField("That item is not in the room!");
         } else {
             /*System.out.println("Inventory is full");*/
             c.toStoryField("Inventory is full");
-=======
-            
-        } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
-            /*System.out.println("That item is not in the room!");*/
-            c.toStoryField("That item is not in the room!");
-         
-        } else {
-            /*System.out.println("Inventory is full");*/
-            c.toStoryField("Inventory is full");
-            
->>>>>>> 6bb869d51b10c28b420089b2e6eb324d6ed7824a
         }
         } catch (NullPointerException e) {
             /*System.out.println("Pick what item?");*/
@@ -468,10 +457,7 @@ public class Game
             /*System.out.println("That is not an item!");*/
             c.toStoryField("That is not an item!");
         }
-<<<<<<< HEAD
-=======
-        
->>>>>>> 6bb869d51b10c28b420089b2e6eb324d6ed7824a
+
     }
     
     private void useItem(Command command) {
@@ -656,6 +642,14 @@ public class Game
     
     public void setEvilNPCRoom(String room) {
         this.evilNPC.setCurrentRoom(Room.getRoom(room));
+    }
+    
+    public int getNeighbourInteractCount() {
+        return neighbour.getInteractCount();
+    }
+    
+    public void setNeighbourInteractCount(int interactCount) {
+        neighbour.setInteractCount(interactCount);
     }
     
     public int getProgress() {

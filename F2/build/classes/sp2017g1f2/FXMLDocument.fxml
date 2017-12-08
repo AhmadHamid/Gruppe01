@@ -21,9 +21,9 @@
       <ListView fx:id="inventoryList" focusTraversable="false" layoutX="479.0" layoutY="32.0" prefHeight="72.0" prefWidth="90.0" />
       <Label fx:id="inventoryLabel" focusTraversable="false" layoutX="501.0" layoutY="14.0" text="Inventory" />
       <ListView fx:id="itemList" focusTraversable="false" layoutX="30.0" layoutY="31.0" prefHeight="72.0" prefWidth="90.0" />
-      <Label focusTraversable="false" layoutX="43.0" layoutY="14.0" text="Room items" />
-      <Button fx:id="combineButton" layoutX="479.0" layoutY="128.0" mnemonicParsing="false" onAction="#combineButtonAction" prefHeight="25.0" prefWidth="64.0" text="Combine" />
-      <Button fx:id="helpButton" layoutX="462.0" layoutY="198.0" mnemonicParsing="false" onAction="#helpButtonAction" text="Help" />
-      <Button fx:id="saveButton" layoutX="518.0" layoutY="328.0" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
+      <Label fx:id="roomItemLabel" focusTraversable="false" layoutX="43.0" layoutY="14.0" text="Room items" />
+      <Button fx:id="combineButton" focusTraversable="false" layoutX="479.0" layoutY="128.0" mnemonicParsing="false" onAction="#combineButtonAction" prefHeight="25.0" prefWidth="64.0" text="Combine" />
+      <Button fx:id="helpButton" focusTraversable="false" layoutX="462.0" layoutY="198.0" mnemonicParsing="false" onAction="#helpButtonAction" text="Help" />
+      <Button fx:id="saveButton" focusTraversable="false" layoutX="518.0" layoutY="328.0" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
    </children>
 </AnchorPane>

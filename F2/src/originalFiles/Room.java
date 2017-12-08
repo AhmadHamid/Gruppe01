@@ -51,6 +51,10 @@ public class Room
         }
     }
     
+    public void setRoomItems(HashMap<ItemEnum, Item> roomItems) {
+        this.roomItems = roomItems;
+    }
+    
     public String getRoomName()
     {
         return name;
