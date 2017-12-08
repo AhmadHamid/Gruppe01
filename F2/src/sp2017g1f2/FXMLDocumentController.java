@@ -18,6 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -147,6 +148,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private Label highscore;
     @FXML
     private AnchorPane title;
+    @FXML
+    private ImageView mapImage;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -159,6 +162,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         window.setBackground(windowBackground);
         map.setBackground(mapGarden);
+        //mapImage.setImage(roomGarden);
         //title.setBackground(titleText);
         //game.play();
     }
@@ -392,6 +396,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void combineButtonAction(ActionEvent event) {
         game.interact("stump");
+        itemLoad();
     }
 
     @FXML
