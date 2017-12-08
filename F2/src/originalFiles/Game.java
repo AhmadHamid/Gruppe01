@@ -36,7 +36,7 @@ public class Game
     Person neighbour;
     TreeStump treeStump;
     public Animal pet;
-    Person evilNPC;
+    EvilNPC evilNPC;
     sp2017g1.Timer time = new sp2017g1.Timer();
     
     Person testNPC;
@@ -44,6 +44,13 @@ public class Game
     public static void setProgress(int i){
         if(progress < i)
             progress = i;
+    }
+    public void evilNPCEncounter(String item){
+        inventory.remove(ItemEnum.valueOf(item));
+        //evilInventory.put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+        evilNPC.setStolenItem(item);
+        c.toStoryField("EvilNPC stole your " + evilNPC.getStolenItem() + " and ran away");
+        //evilNPC.setCurrentRoom(evilNPC.getLastRoom());
     }
     
     public Game(WriteToStory _c) 
@@ -151,7 +158,7 @@ public class Game
         neighbour = new Person(neighbourHouse);
         treeStump = new TreeStump(shed);
         pet = new Animal(Species.DOG, forest);
-        evilNPC = new Person(waterfall);
+        evilNPC = new EvilNPC(waterfall);
         
         testNPC = new Person(garden);
     }
@@ -275,6 +282,7 @@ public class Game
         if (!pet.isFollow()) {
             pet.move();
         }
+        evilNPC.move();
         
         if (nextRoom == null && nextRoom1 == null) {
 //            System.out.println("There is no door!");
@@ -329,6 +337,61 @@ public class Game
                 pet.startFollow();
                 setProgress(1);
             }
+            if (currentRoom == evilNPC.getCurrentRoom()) {
+                if (getPlayerInventory().isEmpty()){
+                }
+                else{
+                String stringInventory = getPlayerInventory().replace("[", "").replace("]", "").replace(";", "").replace(" ", "");
+                String[] keys = stringInventory.split(",");
+                
+
+                if (!inventory.isEmpty()  && evilNPC.getStolenItem()== null) {
+
+                    switch (inventory.size()) {
+                        case 1: 
+                            evilNPCEncounter(keys[0]);
+                            break;
+                        case 2: {
+                            double j = Math.random() * 10;
+                            if (j <= 5) {
+                                evilNPCEncounter(keys[0]);
+                            } else {
+                                evilNPCEncounter(keys[1]);
+                            }
+                            break;
+                        }
+                        case 3: {
+                            c.toStoryField(stringInventory);
+                            double j = Math.random() * 10;
+                            if (j < 3.33) {
+                                evilNPCEncounter(keys[0]);
+                            } else if (j >= 3.33 && j < 6.66) {
+                                evilNPCEncounter(keys[1]);
+                            } else if (j >= 6.66 && j <= 10) {
+                                evilNPCEncounter(keys[2]);
+                            }
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+
+                }
+                else if (inventory.isEmpty() && evilNPC.getStolenItem()== null){
+                    
+                }
+             else if (evilNPC.getStolenItem()!= null) {//evilInventory.size()>0
+                //ItemEnum stolenItem = ItemEnum.valueOf(evilNPC.getStolenItem());
+                c.toStoryField("EvilNPC returns your " + evilNPC.getStolenItem());
+                //evilInventory.remove(ItemEnum.valueOf(evilNPC.getStolenItem()));
+                inventory.put(ItemEnum.valueOf(evilNPC.getStolenItem()), Item.getItem(ItemEnum.valueOf(evilNPC.getStolenItem())));
+                evilNPC.setStolenItem(null);
+            } else  {
+            }
+                
+                }
+            }
+            
             if (currentRoom == testNPC.getCurrentRoom()){
                 System.out.println("TestNPC is in the room");
             }
@@ -432,6 +495,7 @@ public class Game
             }
             /*System.out.println(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");*/
             c.toStoryField(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
+
         } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
             /*System.out.println("That item is not in the room!");*/
             c.toStoryField("That item is not in the room!");
@@ -446,6 +510,8 @@ public class Game
             /*System.out.println("That is not an item!");*/
             c.toStoryField("That is not an item!");
         }
+
+
     }
     
     public void dropItem(String item) {
@@ -637,6 +703,14 @@ public class Game
     
     public void setEvilNPCRoom(String room) {
         this.evilNPC.setCurrentRoom(Room.getRoom(room));
+    }
+    
+    public int getNeighbourInteractCount() {
+        return neighbour.getInteractCount();
+    }
+    
+    public void setNeighbourInteractCount(int interactCount) {
+        neighbour.setInteractCount(interactCount);
     }
     
     public int getProgress() {
