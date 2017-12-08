@@ -1,1 +1,1 @@
-bridge;forest;waterfall;0;556;[nails, axe]
+bridge;shed;waterfall;3;627;2;true;true;[axe, nails];[];bridge,null,null,bridge,mountain,null,null,waterfall

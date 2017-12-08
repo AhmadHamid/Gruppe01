@@ -44,6 +44,7 @@ public class Item {
         this.itemName = itemName;
         selectedRoom = room;
         selectedRoom.getRoomItems().put(this.itemName, this);
+        selectedRoom.addItem(itemName.toString());
         allItems.put(itemName, this);
     }
     
@@ -69,6 +70,10 @@ public class Item {
         picked = false;
     }
 
+    public void setRoom(Room room) {
+        this.selectedRoom = room;
+    }
+    
 //    returnerer navnet af item
     public String getItemName() {
         return itemName.toString();
@@ -86,6 +91,14 @@ public class Item {
     }
     public String getAllItemLocations() {
         return "items";
+    }
+    
+    public String getItemLocation() {
+        if(selectedRoom != null){
+            return selectedRoom.getRoomName();
+        } else {
+            return null;
+        }
     }
     
     public static Item getItem(ItemEnum itemName){
@@ -106,5 +119,6 @@ public class Item {
     
     public boolean isPicked() {
         return picked;
+        
     }
 }
