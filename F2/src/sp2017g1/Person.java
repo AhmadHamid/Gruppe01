@@ -43,9 +43,12 @@ public class Person extends NPC {
 //                getItemH(h, inv);
 //                interactCount++;
 //            }
-            getItemH(h, inv);
-            interactCount++;
-            return ItemEnum.hammer.toString() + " is added to the inventory";
+            if (getItemH(h, inv)) {
+                interactCount++;
+                return ItemEnum.hammer.toString() + " is added to the inventory"; 
+            } else {
+                return "Inventory full";
+            }
         } else if (interactCount == 2) {
             if (!Game.getInventory().containsKey(ItemEnum.shovel)) {
                 System.out.println("You have the hammer.");
@@ -62,8 +65,13 @@ public class Person extends NPC {
         return null;
     }
     
-    public void getItemH(Item item, HashMap<ItemEnum, Item> inv) {
-        inv.put(ItemEnum.hammer, item);
+    public boolean getItemH(Item item, HashMap<ItemEnum, Item> inv) {
+        if (inv.size() < 3) {
+            inv.put(ItemEnum.hammer, item);
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public void getItemK(Item item, HashMap<ItemEnum, Item> inv) {
