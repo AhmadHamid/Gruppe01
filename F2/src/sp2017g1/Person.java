@@ -5,6 +5,7 @@
  */
 package sp2017g1;
 import java.util.*;
+import language.WordList;
 import originalFiles.*;
 /**
  *
@@ -30,6 +31,7 @@ public class Person extends NPC {
             System.out.println("1. First time.");
             interactCount++;
             Game.setProgress(3);
+            return WordList.NEIGHBOUR_QUEST;
             
         } else if (interactCount == 1) {
             

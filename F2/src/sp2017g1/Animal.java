@@ -82,27 +82,28 @@ public class Animal extends NPC{
         System.out.println("Animal interact.");
     }
     
-    public void interact(int progress) {
+    public String interact(int progress) {
         switch(progress){
             case 1:
                 System.out.println(WordList.AFTER_PET);
-                break;
+                return WordList.AFTER_PET;
             case 2:
                 System.out.println(WordList.ASK_NEIGHBOR);
-                break;
+                return WordList.ASK_NEIGHBOR;
             case 3:
                 System.out.println(WordList.CRAFT_LADDER);
-                break;
+                return WordList.CRAFT_LADDER;
             case 4:
                 System.out.println(WordList.GET_SHOVEL);
-                break;
+                return WordList.GET_SHOVEL;
             case 5:
                 System.out.println(WordList.GET_KEY);
-                break;
+                return WordList.GET_KEY;
             case 6:
                 System.out.println(WordList.GO_HOME);
-                break;
+                return WordList.GO_HOME;
         }   
+        return null;
     }
     
     public boolean setProgress(int i){

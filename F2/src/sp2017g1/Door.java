@@ -18,6 +18,7 @@ public class Door
     private boolean lock;
     private final boolean door;
     private ItemEnum lockItem;
+    private String name;
     
     public  Door(String description, ItemEnum lockItem) 
     {
@@ -25,6 +26,16 @@ public class Door
         this.lockItem = lockItem;
         lock = true;
         door = true;
+        this.name = null;
+    }
+    
+    public  Door(String description, ItemEnum lockItem, String name) 
+    {
+        super(description, "");
+        this.lockItem = lockItem;
+        lock = true;
+        door = true;
+        this.name = name;
     }
 
     public void setLock(boolean lock) {
