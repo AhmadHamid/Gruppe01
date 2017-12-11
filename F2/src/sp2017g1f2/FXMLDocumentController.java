@@ -85,7 +85,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     Background titleText = new Background(titleTextImage);
     
     Image windowImage = new Image("file:forest.jpg", 1920, 1080, true, true);
-    BackgroundImage windowBackgroundImage = new BackgroundImage(windowImage, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage windowBackgroundImage = new BackgroundImage(windowImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background windowBackground = new Background(windowBackgroundImage);
     
@@ -95,42 +95,42 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     Background mapGarden = new Background(imageGarden);
     
     Image roomShed = new Image("file:roomShed.png", 250, 250, true, true);
-    BackgroundImage imageShed = new BackgroundImage(roomShed, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageShed = new BackgroundImage(roomShed, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapShed = new Background(imageShed);
     
     Image roomMountainside = new Image("file:roomMountainside.png", 250, 250, true, true);
-    BackgroundImage imageMountainside = new BackgroundImage(roomMountainside, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageMountainside = new BackgroundImage(roomMountainside, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapMountainside = new Background(imageMountainside);
     
     Image roomMountain = new Image("file:roomMountain.png", 250, 250, true, true);
-    BackgroundImage imageMountain = new BackgroundImage(roomMountain, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageMountain = new BackgroundImage(roomMountain, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapMountain = new Background(imageMountain);
     
     Image roomForest = new Image("file:roomForest.png", 250, 250, true, true);
-    BackgroundImage imageForest = new BackgroundImage(roomForest, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageForest = new BackgroundImage(roomForest, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapForest = new Background(imageForest);
     
     Image roomBridge = new Image("file:roomBridge.png", 250, 250, true, true);
-    BackgroundImage imageBridge = new BackgroundImage(roomBridge, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageBridge = new BackgroundImage(roomBridge, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapBridge = new Background(imageBridge);
     
     Image roomNeighbourhouse = new Image("file:roomNeighbourhouse.png", 250, 250, true, true);
-    BackgroundImage imageNeighbourhouse = new BackgroundImage(roomNeighbourhouse, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageNeighbourhouse = new BackgroundImage(roomNeighbourhouse, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapNeighbourhouse = new Background(imageNeighbourhouse);
     
     Image roomRiver = new Image("file:roomRiver.png", 250, 250, true, true);
-    BackgroundImage imageRiver = new BackgroundImage(roomRiver, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageRiver = new BackgroundImage(roomRiver, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapRiver = new Background(imageRiver);
     
     Image roomWaterfall = new Image("file:roomWaterfall.png", 250, 250, true, true);
-    BackgroundImage imageWaterfall = new BackgroundImage(roomWaterfall, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+    BackgroundImage imageWaterfall = new BackgroundImage(roomWaterfall, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapWaterfall = new Background(imageWaterfall);
     
