@@ -148,8 +148,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private Label highscore;
     @FXML
     private AnchorPane title;
-    @FXML
-    private ImageView mapImage;
+    //@FXML
+    //private ImageView mapImage;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
