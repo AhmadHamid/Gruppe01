@@ -43,7 +43,7 @@ public class Score {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("highscore.txt"));
             
-            writer.write("Best: " + scoreString);
+            writer.write(scoreString);
             
             writer.close();
         } catch (NullPointerException e) {
@@ -57,15 +57,15 @@ public class Score {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("highscore.txt"));
             String loadData = reader.readLine();
-            String[] loadArray = loadData.split(" ");
             
             reader.close();
-            return loadArray[1];
+            return loadData;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+        
     }
 }
