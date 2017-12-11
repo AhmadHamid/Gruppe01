@@ -84,7 +84,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         BackgroundSize.DEFAULT);
     Background titleText = new Background(titleTextImage);
     
-    Image windowImage = new Image("file:forest.jpg", true);
+    Image windowImage = new Image("file:forest.jpg", 1920, 1080, true, true);
     BackgroundImage windowBackgroundImage = new BackgroundImage(windowImage, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
         BackgroundSize.DEFAULT);
     Background windowBackground = new Background(windowBackgroundImage);
@@ -315,7 +315,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.load();
         scene2();
         itemLoad();
-
+        loadMap(game.getPlayerRoom());
     }
 
     private void scene1(){

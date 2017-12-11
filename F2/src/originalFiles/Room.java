@@ -15,6 +15,7 @@ public class Room
     private String name;
     private HashMap<String, Room> exits;
     private HashMap<ItemEnum, Item> roomItems;
+    private ArrayList<String> roomItemsArray;
     private HashMap<String, Door> doorways;
     private static HashMap<String, Room> rooms = new HashMap<String, Room>();
     
@@ -25,6 +26,7 @@ public class Room
         this.description = description;
         exits = new HashMap<String, Room>();
         this.roomItems = new HashMap<ItemEnum, Item>();
+        this.roomItemsArray = new ArrayList<String>();
         doorways = new HashMap<String, Door>();
         rooms.put(name, this);
     }
@@ -44,6 +46,11 @@ public class Room
         return roomItems;
     }
 
+    public void addItem(String item) {
+        //roomItems.put(ItemEnum.valueOf(item.getItemName()), item);
+        roomItemsArray.add(item);
+    }
+    
 //    Return list of items in room - HER ER POBLEMER. VISER KUN DET FØRSTE. 
     public void getRoomItemsList() {
       for (ItemEnum item : roomItems.keySet()) {
@@ -98,5 +105,8 @@ public class Room
         return doorways.get(direction);
     }
     
+    public ArrayList<String> getRoomItemsArray() {
+        return roomItemsArray;
+    }
 }
 

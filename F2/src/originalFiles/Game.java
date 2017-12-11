@@ -22,16 +22,17 @@ public class Game
     private int timeScore;
     private int steps;
     public String scoreString;
+    private ArrayList<String> pickedItems = new ArrayList<String>();
     
     public Room home, garden, bridge, river, waterfall, shed, mountainside, forest, mountain, neighbourHouse;
     
-    Door door, Ladderdoor;
+    Door door, ladderDoor;
     
     private Score score = new Score(this);
     private SaveAndLoad saveAndLoad = new SaveAndLoad(this);
     
     // Changed the access modifier of the Item variable to static so the hashmap key (not the actual item called key) can be accessed in TreeStump.java. No idea why it cannot be accessed from TreeStump.java without it.
-    public static Item key, hammer, nails, axe, shovel, lumber, block, ladder, test, test1, test2, test3, test4, wood;
+    public static Item axe, key, hammer, nails, shovel, lumber, block, ladder, test, test1, test2, test3, test4, wood;
     
     Person neighbour;
     TreeStump treeStump;
@@ -80,7 +81,7 @@ public class Game
         neighbourHouse = new Room("at your neighbours house", "neighbourHouse");
         
         door = new Door("The door to your house", ItemEnum.key);
-        Ladderdoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
+        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
    
         
         //Defines the exits of each room and where they lead.
@@ -103,7 +104,7 @@ public class Game
         shed.setExit("west", garden);
 
 
-        mountainside.setExit("north", Ladderdoor);
+        mountainside.setExit("north", ladderDoor);
         mountainside.setExit("east", forest);
         mountainside.setExit("south", shed);
 
@@ -117,7 +118,7 @@ public class Game
         
         door.setExit("south", home);
         
-        Ladderdoor.setExit("north", mountain);
+        ladderDoor.setExit("north", mountain);
         currentRoom = garden;
     }
     
@@ -482,8 +483,9 @@ public class Game
     private void pickItem(Command command) {
         try {
             ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
-      
-            if (!Item.getItem(inputItem).isPicked()){
+            
+            if (!pickedItems.contains(inputItem.toString())) {
+                pickedItems.add(inputItem.toString());
                 time.addTime();
             }
             
@@ -511,7 +513,6 @@ public class Game
             c.toStoryField("That is not an item!");
         }
 
-
     }
     
     public void dropItem(String item) {
@@ -526,6 +527,7 @@ public class Game
         
         if(inventory.containsKey(inputItem)) {
             currentRoom.getRoomItems().put(inputItem, inventory.get(inputItem));
+            inventory.get(inputItem).setRoom(currentRoom);
             inventory.remove(inputItem);
             
             /*System.out.println(currentRoom.getRoomItems().get(inputItem).getItemName() + " is removed from the inventory");*/
@@ -641,7 +643,7 @@ public class Game
     public String calculateScore() {
         
         effScore = (1000 - (steps * 20));
-        timeScore = (int) (1200 - time.getTime() * 2);
+        timeScore = (int) (time.getTime() * 2);
         int score = itemScore + effScore + timeScore;
         scoreString = Integer.toString(score);
         
@@ -752,4 +754,74 @@ public class Game
             return "0";
         }
     }
+    
+    public void setPickedItems(ArrayList<String> pickedItems) {
+        this.pickedItems = pickedItems;
+    }
+    
+    public ArrayList<String> getPickedItems() {
+        return pickedItems;
+    }
+    
+    public boolean getDoorLock() {
+        return door.getLock();
+    }
+    
+    public void setDoorLock(Boolean lock) {
+        door.setLock(lock);
+    }
+    
+    public boolean getLadderDoorLock() {
+        return ladderDoor.getLock();
+    }
+    
+    public void setLadderDoorLock(Boolean lock) {
+        ladderDoor.setLock(lock);
+    }
+    
+    public void itemClear() {
+        garden.getRoomItems().clear();
+        shed.getRoomItems().clear();
+        mountainside.getRoomItems().clear();
+        forest.getRoomItems().clear();
+        mountain.getRoomItems().clear();
+        bridge.getRoomItems().clear();
+        river.getRoomItems().clear();
+        waterfall.getRoomItems().clear();
+        neighbourHouse.getRoomItems().clear();
+    }
+    
+    public void loadItem(String item, String room) {
+        switch(room) {
+            case "garden":
+                garden.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "shed":
+                shed.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "mountainside":
+                mountainside.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "mountain":
+                mountain.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "forest":
+                forest.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "bridge":
+                bridge.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "river":
+                river.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "waterfall":
+                waterfall.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+            case "neighbourHouse":
+                neighbourHouse.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
+                break;
+        }
+        
+    }
+    
 }
