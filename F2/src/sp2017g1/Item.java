@@ -79,6 +79,10 @@ public class Item {
         return itemName.toString();
     }
     
+    public static HashMap<ItemEnum, Item> getAllItems() {
+        return allItems;
+    }
+    
     public boolean isUnknown() {
         return (itemName == ItemEnum.unknown);
     }

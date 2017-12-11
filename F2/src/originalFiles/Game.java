@@ -492,6 +492,7 @@ public class Game
         if(currentRoom.getRoomItems().containsKey(inputItem) && inventory.size() < 3) {
             inventory.put(inputItem, currentRoom.getRoomItems().get(inputItem));
             currentRoom.getRoomItems().remove(inputItem);
+            Item.getAllItems().get(inputItem).setRoom(null);
             if(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() == "shovel"){
                 setProgress(5);
             }
@@ -661,6 +662,38 @@ public class Game
         }
     }
     
+    public void setItemLocation(Item item, String room) {
+        switch(room) {
+            case "garden":
+                item.setRoom(garden);
+                break;
+            case "shed":
+                item.setRoom(shed);
+                break;
+            case "mountainside":
+                item.setRoom(mountainside);
+                break;
+            case "forest":
+                item.setRoom(forest);
+                break;
+            case "mountain":
+                item.setRoom(mountain);
+                break;
+            case "bridge":
+                item.setRoom(bridge);
+                break;
+            case "river":
+                item.setRoom(river);
+                break;
+            case "waterfall":
+                item.setRoom(waterfall);
+                break;
+            case "neighbourHouse":
+                item.setRoom(neighbourHouse);
+                break;
+        }
+    }
+    
     public String[] getRoomItems(){
         String items = currentRoom.getRoomItems().keySet().toString();
         items = items.replace("[", "");
@@ -780,15 +813,15 @@ public class Game
     }
     
     public void itemClear() {
-        garden.getRoomItems().clear();
-        shed.getRoomItems().clear();
-        mountainside.getRoomItems().clear();
-        forest.getRoomItems().clear();
-        mountain.getRoomItems().clear();
-        bridge.getRoomItems().clear();
-        river.getRoomItems().clear();
-        waterfall.getRoomItems().clear();
-        neighbourHouse.getRoomItems().clear();
+        garden.itemClear();
+        shed.itemClear();
+        mountainside.itemClear();
+        forest.itemClear();
+        mountain.itemClear();
+        bridge.itemClear();
+        river.itemClear();        
+        waterfall.itemClear();
+        neighbourHouse.itemClear();
     }
     
     public void loadItem(String item, String room) {
@@ -821,7 +854,13 @@ public class Game
                 neighbourHouse.getRoomItems().put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
                 break;
         }
-        
     }
     
+    public String getEvilNPCItem() {
+        return evilNPC.getStolenItem();
+    }
+    
+    public void setEvilNPCItem(String item) {
+        evilNPC.setStolenItem(item);
+    }
 }

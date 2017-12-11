@@ -51,6 +51,10 @@ public class Room
         roomItemsArray.add(item);
     }
     
+    public void itemClear() {
+        roomItems.clear();
+    }
+    
 //    Return list of items in room - HER ER POBLEMER. VISER KUN DET FØRSTE. 
     public void getRoomItemsList() {
       for (ItemEnum item : roomItems.keySet()) {
