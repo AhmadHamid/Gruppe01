@@ -81,9 +81,9 @@ public class EvilNPC extends NPC {
      System.out.println("EvilNPC stole your " + item + " and ran away");
 }
     */
-        public void setStolenItem(String stolenItem){
-            this.stolenItem = stolenItem;
-        }
+    public void setStolenItem(String stolenItem){
+        this.stolenItem = stolenItem;
+    }
     
     public String getStolenItem(){
         return stolenItem;
