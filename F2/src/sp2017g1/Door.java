@@ -50,6 +50,10 @@ public class Door
         return door;
     }
     
+    public String getName() {
+        return name;
+    }
+    
     public String getKey(){
         return lockItem.toString();
     }

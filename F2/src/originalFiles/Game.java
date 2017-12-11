@@ -79,8 +79,8 @@ public class Game
         mountain = new Room("on a mountain cliff", "mountain");
         neighbourHouse = new Room("at your neighbours house", "neighbourHouse");
         
-        door = new Door("The door to your house", ItemEnum.key);
-        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.ladder, "mountain door");
+        door = new Door("The door to your house", ItemEnum.key, "home");
+        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.ladder, "mountain");
    
         
         //Defines the exits of each room and where they lead.
@@ -182,7 +182,7 @@ public class Game
         c.toStoryField(WordList.DESCRIPTION);
         c.toStoryField(WordList.GET_HELP);
         c.toStoryField("");
-        c.toStoryField(currentRoom.getLongDescription());
+//        c.toStoryField(currentRoom.getLongDescription());
 //        if(!currentRoom.getRoomItems().isEmpty()) {
 //            c.toStoryField(WordList.ITEMS_IN_ROOM);
 //        } else {
@@ -287,7 +287,7 @@ public class Game
         }
         else if (nextRoom == null && nextRoom1.getLock() == true){
 //            System.out.println("The door is locked");
-            if(nextRoom1.getRoomName() == "mountain door") {
+            if(nextRoom1.getName() == "mountain") {
                 c.toStoryField(WordList.MOUNTAIN_DOOR + "\n");
             } else {
                 c.toStoryField(WordList.HOME_DOOR + "\n");
@@ -309,7 +309,7 @@ public class Game
                 //System.exit(0);
             }
             c.toStoryField("going through door");
-            c.toStoryField(currentRoom.getLongDescription());
+//            c.toStoryField(currentRoom.getLongDescription());
             /*if (neighbour.getCurrentRoom() == currentRoom) {
                 neighbour.interact(command);
             }*/
@@ -323,7 +323,7 @@ public class Game
             pet.goPet(nextRoom);
             
 //            System.out.println(currentRoom.getLongDescription());
-            c.toStoryField(currentRoom.getLongDescription());
+//            c.toStoryField(currentRoom.getLongDescription());
             if (currentRoom == neighbour.getCurrentRoom()) {
 //                System.out.println("You see your neighbour in the room.");
                 c.toStoryField("You see your neightbour in the room.");
@@ -430,27 +430,22 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
-        if (nextRoom != null){
-//            System.out.println("Room is not locked");
-            c.toStoryField("Room is not locked");
-        }
-        else if (nextRoom == null && nextRoom1 == null) {
-            /*System.out.println("There is no door!");*/
-            c.toStoryField("There is no door!");
-        }
-        else if (nextRoom == null && nextRoom1.getLock() == false){
-            /*System.out.println("Room is not locked");*/
-            c.toStoryField("Room is not locked");
-        }
-        else if(!inventory.containsKey(ItemEnum.valueOf(nextRoom1.getKey()))) {
-            /*System.out.println("You don't have the key!");*/
-            c.toStoryField("You don't have the key!");
-        } else {
+        if (nextRoom1.getName() != "home"){
             nextRoom1.setLock(false);
             /*System.out.println("Room is now unlocked");*/
             c.toStoryField("Room is now unlocked");
             inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
             goRoom(command);
+        } else {
+            if (pet.isFollow()) {
+                nextRoom1.setLock(false);
+                /*System.out.println("Room is now unlocked");*/
+                c.toStoryField("Room is now unlocked");
+                inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
+                goRoom(command);
+            } else {
+                c.toStoryField(WordList.NO_PET);
+            }
         }
     }
 

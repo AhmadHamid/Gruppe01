@@ -49,14 +49,14 @@ public class WordList {
     
     
 //    progress message.
-    public static final String NO_PET = "Find your pet\n";
+    public static final String NO_PET = "Go get your pet\n";
     public static final String AFTER_PET = "You have found your pet, go home";
     public static final String ASK_NEIGHBOR = "You gave your neighbour a spare key, go ask him if he still has it";
-    public static final String FIND_SHOVEL = "You neighbour lost his shovel on the mountain, you need to find it";
+    public static final String FIND_SHOVEL = "Your neighbour lost his shovel on the mountain, you need to find it";
     public static final String CRAFT_LADDER = "To get on the mountain you need something to climb, maybe you could craft a ladder";
     public static final String GET_SHOVEL = "Use ladder to climb the mountain and get the shovel";
     public static final String GET_KEY = "Take the shovel to your neighbour, so he can give you the key";
-    public static final String GO_HOME = "Go home";
+    public static final String GO_HOME = "We should go home now";
     
 //    interact message.
     public static final String WRONG_INTERACT = "Can't interact";
