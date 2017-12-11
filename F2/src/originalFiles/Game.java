@@ -49,7 +49,7 @@ public class Game
         inventory.remove(ItemEnum.valueOf(item));
         //evilInventory.put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
         evilNPC.setStolenItem(item);
-        c.toStoryField("EvilNPC stole your " + evilNPC.getStolenItem() + " and ran away");
+        c.toStoryField("EvilNPC stole your " + evilNPC.getStolenItem() + " and ran away\n");
         //evilNPC.setCurrentRoom(evilNPC.getLastRoom());
     }
     
@@ -80,7 +80,7 @@ public class Game
         neighbourHouse = new Room("at your neighbours house", "neighbourHouse");
         
         door = new Door("The door to your house", ItemEnum.key);
-        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.ladder);
+        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.ladder, "mountain door");
    
         
         //Defines the exits of each room and where they lead.
@@ -279,18 +279,19 @@ public class Game
             steps++;
         }
         
-        if (!pet.isFollow()) {
-            pet.move();
-        }
         evilNPC.move();
         
         if (nextRoom == null && nextRoom1 == null) {
 //            System.out.println("There is no door!");
-            c.toStoryField("There is no door!");
+            c.toStoryField("There is no door!\n");
         }
         else if (nextRoom == null && nextRoom1.getLock() == true){
 //            System.out.println("The door is locked");
-            c.toStoryField("The door is locked");
+            if(nextRoom1.getRoomName() == "mountain door") {
+                c.toStoryField(WordList.MOUNTAIN_DOOR + "\n");
+            } else {
+                c.toStoryField(WordList.HOME_DOOR + "\n");
+            }
             if (nextRoom1.getExit(direction).getShortDescription() == "home"){
                 if(progress == 0){
 //                    System.out.println("I should get my pet before going home");
@@ -333,7 +334,7 @@ public class Game
                 c.toStoryField("you see a treestump in the room.");
             } else if (currentRoom == pet.getCurrentRoom() && !pet.isFollow()) {
 //                System.out.println("You see a pet. It will now follow you.");
-                c.toStoryField("You see a pet. It will now follow you.");
+                c.toStoryField(WordList.FOUND_PET);
                 pet.startFollow();
                 setProgress(1);
             }
@@ -581,16 +582,17 @@ public class Game
             
             if (inputCommand.equals("pet")){
                 if (pet.getCurrentRoom() == currentRoom){
-                    pet.interact(progress);
+                    c.toStoryField(pet.interact(progress));
                     setProgress(1);
                 } else {
                 System.out.println(WordList.NO_PET);
+                c.toStoryField(WordList.NO_PET);
                 }
             } else if (inputCommand.equals("neighbour")){
                 if (currentRoom == neighbour.getCurrentRoom()) {
                 //neighbour.interactExtended(command, key, hammer, inventory);
                 
-                    c.toStoryFieldnln(neighbour.interactExtended(command, key, hammer, inventory));
+                    c.toStoryField(neighbour.interactExtended(command, key, hammer, inventory));
                 
                 setProgress(3);
                 if(inventory.containsKey(ItemEnum.hammer)){
@@ -601,7 +603,7 @@ public class Game
                 }
             } else if (inputCommand.equals("stump")){
                 if (currentRoom == treeStump.getCurrentRoom()) {
-                treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory);
+                c.toStoryField(treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory));
                     if(inventory.containsKey(ItemEnum.ladder)){
                     setProgress(4);
                     }
