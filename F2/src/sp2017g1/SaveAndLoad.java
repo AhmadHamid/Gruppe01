@@ -55,6 +55,7 @@ public class SaveAndLoad {
         String ladderString = Game.ladder.getItemLocation();
         String woodString = Game.wood.getItemLocation();
         String stolenItemString = game.getEvilNPCItem();
+        String stepsString = Integer.toString(game.getSteps());
         
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("savefile.txt"));
@@ -78,7 +79,8 @@ public class SaveAndLoad {
                     + lumberString + ","
                     + ladderString + ","
                     + woodString + ";"
-                    + stolenItemString);
+                    + stolenItemString + ";"
+                    + stepsString);
                     
             /*Flere ting der skal gemmes: room item locations, evil NPC inventory?, nabo tilstand, 
             døre tilstand åben/lukket, item ispicked(), score, antal skridt
@@ -117,6 +119,8 @@ public class SaveAndLoad {
             if (!"null".equals(loadArray[11])) {
                 game.setEvilNPCItem(loadArray[11]);
             }
+            game.setSteps(Integer.parseInt(loadArray[12]));
+
             
             loadArray[8] = loadArray[8].replace("[", "");
             loadArray[8] = loadArray[8].replace("]", "");

@@ -17,7 +17,6 @@ public class Game
     private Room currentRoom;
     private static HashMap<ItemEnum, Item> inventory;
     private static int progress;
-    private int itemScore;
     private int effScore;
     private int timeScore;
     private int steps;
@@ -645,10 +644,18 @@ public class Game
         
         effScore = (1000 - (steps * 20));
         timeScore = (int) (time.getTime() * 2);
-        int score = itemScore + effScore + timeScore;
+        int score = effScore + timeScore;
         scoreString = Integer.toString(score);
         
         return scoreString;
+    }
+    
+    public int getSteps() {
+        return steps;
+    }
+    
+    public void setSteps(int loadSteps) {
+        steps = loadSteps;
     }
     
     public boolean highscore() {
