@@ -382,11 +382,15 @@ public class Game
                     
                 }
              else if (evilNPC.getStolenItem()!= null) {//evilInventory.size()>0
-                //ItemEnum stolenItem = ItemEnum.valueOf(evilNPC.getStolenItem());
-                c.toStoryField("EvilNPC returns your " + evilNPC.getStolenItem());
-                //evilInventory.remove(ItemEnum.valueOf(evilNPC.getStolenItem()));
-                inventory.put(ItemEnum.valueOf(evilNPC.getStolenItem()), Item.getItem(ItemEnum.valueOf(evilNPC.getStolenItem())));
-                evilNPC.setStolenItem(null);
+                //ItemEnum stolenItem = ItemEnum.valueOf(evilNPC.getStolenItem());                   
+                    if (inventory.size() > 3) {
+                        c.toStoryField("EvilNPC returns your " + evilNPC.getStolenItem());
+                        //evilInventory.remove(ItemEnum.valueOf(evilNPC.getStolenItem()));
+                        inventory.put(ItemEnum.valueOf(evilNPC.getStolenItem()), Item.getItem(ItemEnum.valueOf(evilNPC.getStolenItem())));
+                        evilNPC.setStolenItem(null);
+                    } else {
+                        c.toStoryField("EvilNPc wants to return your " + evilNPC.getStolenItem() + ", but your inventory is full.");
+                    }
             } else  {
             }
                 
