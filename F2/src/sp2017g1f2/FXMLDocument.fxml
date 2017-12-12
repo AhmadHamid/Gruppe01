@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -36,7 +35,6 @@
       <AnchorPane fx:id="scoreScene" layoutX="137.0" prefHeight="374.0" prefWidth="325.0">
          <children>
             <Button fx:id="PlayAgain" layoutX="128.0" layoutY="227.0" mnemonicParsing="false" onAction="#PlayAgainAction" text="Play again" />
-            <Button layoutX="144.0" layoutY="258.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
             <Label layoutX="133.0" layoutY="53.0" text="Your score:" textFill="WHITE" />
             <Label fx:id="gameScore" layoutX="143.0" layoutY="70.0" text="000" textFill="WHITE">
                <font>
@@ -50,9 +48,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button layoutX="144.0" layoutY="258.0" mnemonicParsing="false" onAction="#quitButtonAction" text="Quit" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="title" prefHeight="262.0" prefWidth="598.0" AnchorPane.bottomAnchor="112.0" AnchorPane.topAnchor="0.0" />
-      <ImageView fx:id="mapImage" fitHeight="250.0" fitWidth="250.0" layoutX="177.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="11.0" />
    </children>
 </AnchorPane>
