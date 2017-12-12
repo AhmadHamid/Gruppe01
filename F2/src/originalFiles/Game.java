@@ -271,8 +271,8 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
-        if(nextRoom == null && nextRoom1 != null && nextRoom1.getLock() == true){
-            unlockRoom(command);
+        if(nextRoom != null && nextRoom1 != null && nextRoom1.getLock() == true){
+           unlockRoom(command); //Fejl
         }
         
         if(steps < 50) {
@@ -383,7 +383,7 @@ public class Game
                 }
              else if (evilNPC.getStolenItem()!= null) {//evilInventory.size()>0
                 //ItemEnum stolenItem = ItemEnum.valueOf(evilNPC.getStolenItem());                   
-                    if (inventory.size() > 3) {
+                    if (inventory.size() < 3) {
                         c.toStoryField("EvilNPC returns your " + evilNPC.getStolenItem());
                         //evilInventory.remove(ItemEnum.valueOf(evilNPC.getStolenItem()));
                         inventory.put(ItemEnum.valueOf(evilNPC.getStolenItem()), Item.getItem(ItemEnum.valueOf(evilNPC.getStolenItem())));
