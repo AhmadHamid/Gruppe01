@@ -770,6 +770,7 @@ public class Game
     
     public void save(){
         saveAndLoad.save();
+        c.toStoryField(WordList.GAME_SAVE);
     }
     
     public void load(){

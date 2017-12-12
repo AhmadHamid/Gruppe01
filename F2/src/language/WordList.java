@@ -46,6 +46,7 @@ public class WordList {
                                              + "Your command words are:";
     public static final String GO_WHERE = "Go where?";
     public static final String END_DESCRIPTION = "you win";
+    public static final String GAME_SAVE = "Game Saved";
     
     
 //    progress message.

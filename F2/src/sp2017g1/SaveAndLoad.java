@@ -120,7 +120,6 @@ public class SaveAndLoad {
                 game.setEvilNPCItem(loadArray[11]);
             }
             game.setSteps(Integer.parseInt(loadArray[12]));
-
             
             loadArray[8] = loadArray[8].replace("[", "");
             loadArray[8] = loadArray[8].replace("]", "");
@@ -130,7 +129,6 @@ public class SaveAndLoad {
             
                 game.setPickedItems(loadPickedItems);
             }
-
             
             loadArray[9] = loadArray[9].replace("[", "");
             loadArray[9] = loadArray[9].replace("]", "");
