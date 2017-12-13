@@ -106,8 +106,7 @@ public class SaveAndLoad {
             if (game.getPetRoom().equals(game.getPlayerRoom())) {
                 game.pet.startFollow();
             }
-
-            //System.out.println(loadArray[0] + " " + loadArray[1] + " " + loadArray[2] + " " + loadArray[4]);
+            
             game.setPlayerRoom(loadArray[0]);
             game.setPetRoom(loadArray[1]);
             game.setEvilNPCRoom(loadArray[2]);
@@ -124,7 +123,7 @@ public class SaveAndLoad {
             loadArray[8] = loadArray[8].replace("[", "");
             loadArray[8] = loadArray[8].replace("]", "");
             if (!loadArray[8].isEmpty()) {
-                //String[] loadPickedItems = loadArray[6].split(", ");
+                
                 ArrayList<String> loadPickedItems = new ArrayList<String>(Arrays.asList(loadArray[8].split(", ")));
             
                 game.setPickedItems(loadPickedItems);

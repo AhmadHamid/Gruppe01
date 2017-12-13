@@ -47,19 +47,11 @@ public class Room
     }
 
     public void addItem(String item) {
-        //roomItems.put(ItemEnum.valueOf(item.getItemName()), item);
         roomItemsArray.add(item);
     }
     
     public void itemClear() {
         roomItems.clear();
-    }
-    
-//    Return list of items in room - HER ER POBLEMER. VISER KUN DET FØRSTE. 
-    public void getRoomItemsList() {
-      for (ItemEnum item : roomItems.keySet()) {
-            System.out.printf("%s ", roomItems.get(item).getItemName());
-        }
     }
     
     public void setRoomItems(HashMap<ItemEnum, Item> roomItems) {
