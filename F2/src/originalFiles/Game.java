@@ -226,9 +226,9 @@ public class Game
         else if (commandWord == CommandWord.INVENTORY) {
             printInventory(command);
         }
-        else if (commandWord == CommandWord.UNLOCK) {
-            unlockRoom(command);
-        }
+//        else if (commandWord == CommandWord.UNLOCK) {
+//            unlockRoom(command);
+//        }
         /* The combine command has been replaced by the Tree Stump interaction.
         else if (commandWord == CommandWord.COMBINE) {
         combineItems(command);
@@ -271,9 +271,9 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         Door nextRoom1 = currentRoom.getExitDoor(direction);
         
-        if(nextRoom != null && nextRoom1 != null && nextRoom1.getLock() == true){
-           unlockRoom(command); //Fejl
-        }
+//        if(nextRoom != null && nextRoom1 != null && nextRoom1.getLock() == true){
+//           unlockRoom(command); //Fejl
+//        }
         
         if(steps < 50) {
             steps++;
@@ -287,12 +287,28 @@ public class Game
         }
         else if (nextRoom == null && nextRoom1.getLock() == true){
 //            System.out.println("The door is locked");
-            if(nextRoom1.getName() == "mountain") {
-                c.toStoryField(WordList.MOUNTAIN_DOOR + "\n");
-            } else {
-                c.toStoryField(WordList.HOME_DOOR + "\n");
+            if(nextRoom1.getName().equals("mountain")) {
+                if (inventory.containsKey(ItemEnum.ladder)) {
+                    nextRoom1.setLock(false);
+                    currentRoom = nextRoom1.getExit(direction);
+                    pet.goPet(nextRoom1.getExit(direction));
+                    inventory.remove(ItemEnum.ladder);
+                } else {
+                    c.toStoryField(WordList.MOUNTAIN_DOOR + "\n");
+                }
+            } else if (nextRoom1.getName().equals("home")) {
+                if (inventory.containsKey(ItemEnum.key) && pet.isFollow()) {
+                    nextRoom1.setLock(false);
+                    currentRoom = nextRoom1.getExit(direction);
+                    pet.goPet(nextRoom1.getExit(direction));
+                    inventory.remove(ItemEnum.key);
+                } else if (inventory.containsKey(ItemEnum.key)) {
+                    c.toStoryField(WordList.STILL_NEED_PET);
+                } else {
+                    c.toStoryField(WordList.HOME_DOOR + "\n");
+                }
             }
-            if (nextRoom1.getExit(direction).getShortDescription() == "home"){
+            if (nextRoom1.getExit(direction).getRoomName() == "home"){
                 if(progress == 0){
 //                    System.out.println("I should get my pet before going home");
                     c.toStoryField("I should get my pet before going home");
@@ -422,36 +438,41 @@ public class Game
 
     }
     
-    private void unlockRoom(Command command) {
-        if(!command.hasSecondWord()) {
-//            System.out.println("Unlock what?");
-            c.toStoryField("unlock what?");
-            return;
-        }
-        
-        String direction = command.getSecondWord();
-
-        Room nextRoom = currentRoom.getExit(direction);
-        Door nextRoom1 = currentRoom.getExitDoor(direction);
-        
-        if (nextRoom1.getName() != "home"){
-            nextRoom1.setLock(false);
-            /*System.out.println("Room is now unlocked");*/
-            c.toStoryField("Room is now unlocked");
-            inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
-            goRoom(command);
-        } else {
-            if (pet.isFollow()) {
-                nextRoom1.setLock(false);
-                /*System.out.println("Room is now unlocked");*/
-                c.toStoryField("Room is now unlocked");
-                inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
-                goRoom(command);
-            } else {
-                c.toStoryField(WordList.NO_PET);
-            }
-        }
-    }
+//    private void unlockRoom(Command command) {
+//        if(!command.hasSecondWord()) {
+////            System.out.println("Unlock what?");
+//            c.toStoryField("unlock what?");
+//            return;
+//        }
+//        
+//        String direction = command.getSecondWord();
+//
+//        Room nextRoom = currentRoom.getExit(direction);
+//        Door nextRoom1 = currentRoom.getExitDoor(direction);
+//        
+//        if (nextRoom1.getName().equals("home") && pet.isFollow()) {
+//            nextRoom1.setLock(false);
+//            goRoom(command);
+//        }
+//        
+//        if (nextRoom1.getName() != "home"){
+//            nextRoom1.setLock(false);
+//            /*System.out.println("Room is now unlocked");*/
+//            c.toStoryField("Room is now unlocked");
+//            inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
+//            goRoom(command);
+//        } else {
+//            if (pet.isFollow()) {
+//                nextRoom1.setLock(false);
+//                /*System.out.println("Room is now unlocked");*/
+//                c.toStoryField("Room is now unlocked");
+//                inventory.remove(ItemEnum.valueOf(nextRoom1.getKey()));
+//                goRoom(command);
+//            } else {
+//                c.toStoryField(WordList.NO_PET);
+//            }
+//        }
+//    }
 
     public void quit() {
         CommandWord commandWord = CommandWord.QUIT;

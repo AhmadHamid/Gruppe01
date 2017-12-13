@@ -31,7 +31,7 @@ public class WordList {
     public static final String LOAD = "load";
     
 //    class Game.
-    public static final String WELCOME = "Welcome to the World of Zuul!";
+    public static final String WELCOME = "";
     public static final String DESCRIPTION = "As you are cooking a delicous meal, "
                                            + "in your cozy cottage, your trusty "
                                            + "pet companion runs out of the door, "
@@ -71,6 +71,7 @@ public class WordList {
     
 //    Doors
     public static final String HOME_DOOR = "The door is locked. The wind most have slammed the door shut, so it locked itself. You need to get the key to open it.";
+    public static final String STILL_NEED_PET = "Before I go home, I still need to find my pet.";
     public static final String MOUNTAIN_DOOR = "You can't climb the steep mountain, you need a ladder to get up.";
     
     

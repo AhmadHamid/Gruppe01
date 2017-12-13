@@ -171,7 +171,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         map.setBackground(mapGarden);
         characters.setBackground(backgroundCharacter);
         //mapImage.setImage(roomGarden);
-        //title.setBackground(titleText);
+        title.setBackground(titleText);
         //game.play();
     }
 
@@ -428,7 +428,14 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void PlayAgainAction(ActionEvent event) {
         game = new Game(this);
         scene2();
+        storyField.clear();
         game.play();
         itemLoad();
+        
+        imageCharacter = new Image("file:player.png", 100, 100, true, true);
+        backgroundImageCharacter = new BackgroundImage(imageCharacter, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+            BackgroundSize.DEFAULT);
+        backgroundCharacter = new Background(backgroundImageCharacter);
+        characters.setBackground(backgroundCharacter);
     }
 }
