@@ -872,4 +872,30 @@ public class Game
     public void setEvilNPCItem(String item) {
         evilNPC.setStolenItem(item);
     }
+    
+    public String characters() {
+        if (currentRoom == pet.getCurrentRoom()) {
+            if (currentRoom == evilNPC.getCurrentRoom()) {
+                if (currentRoom ==  neighbour.getCurrentRoom()) {
+                    return "playerNPCPetNeighbour";
+                }
+                return "playerNPCPet";
+            } else if (currentRoom ==  neighbour.getCurrentRoom()) {
+                return "playerPetNeighbour";
+            } else {
+                return "playerPet";
+            }
+        } else if (currentRoom == evilNPC.getCurrentRoom()) {
+            if (currentRoom ==  neighbour.getCurrentRoom()) {
+                return "playerNPCNeighbour";
+            } else {
+                return "playerNPC";
+            }
+        } else if (currentRoom ==  neighbour.getCurrentRoom()) {
+            return "playerNeighbour";
+        } else {
+            return "player";
+        }
+    }
+    
 }

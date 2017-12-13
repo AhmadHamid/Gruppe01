@@ -134,6 +134,11 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         BackgroundSize.DEFAULT);
     Background mapWaterfall = new Background(imageWaterfall);
     
+    Image imageCharacter = new Image("file:player.png", 100, 100, true, true);
+    BackgroundImage backgroundImageCharacter = new BackgroundImage(imageCharacter, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+        BackgroundSize.DEFAULT);
+    Background backgroundCharacter = new Background(backgroundImageCharacter);
+    
     @FXML
     private AnchorPane scene1;
     @FXML
@@ -150,6 +155,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private AnchorPane title;
     //@FXML
     //private ImageView mapImage;
+    @FXML
+    private AnchorPane characters;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -162,6 +169,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         window.setBackground(windowBackground);
         map.setBackground(mapGarden);
+        characters.setBackground(backgroundCharacter);
         //mapImage.setImage(roomGarden);
         //title.setBackground(titleText);
         //game.play();
@@ -187,6 +195,13 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
 
     private void loadMap(String currentRoom) {
+        
+        imageCharacter = new Image("file:" + game.characters() + ".png", 100, 100, true, true);
+        backgroundImageCharacter = new BackgroundImage(imageCharacter, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+            BackgroundSize.DEFAULT);
+        backgroundCharacter = new Background(backgroundImageCharacter);
+        characters.setBackground(backgroundCharacter);
+        
         switch(currentRoom){
             case "garden":
                 map.setBackground(mapGarden);
