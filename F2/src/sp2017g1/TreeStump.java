@@ -54,6 +54,7 @@ public class TreeStump extends NPC {
             else if (Game.getInventory().containsKey(ItemEnum.axe) && Game.getInventory().containsKey(ItemEnum.wood)) {
                 getItemLumber(iLumber, inv);
                 Game.getInventory().remove(ItemEnum.wood);
+                Game.getInventory().remove(ItemEnum.axe);
                 System.out.println("You have refined wood with the axe and created lumber." + "\n" + "Lumber has been added to your inventory.");
                 interactCount = 1;
                 return "You have refined wood with the axe and created lumber." + "\n" + "Lumber has been added to your inventory.";
@@ -72,6 +73,7 @@ public class TreeStump extends NPC {
                 getItemLadder(iLadder, inv);
                 Game.getInventory().remove(ItemEnum.lumber);
                 Game.getInventory().remove(ItemEnum.nails);
+                Game.getInventory().remove(ItemEnum.hammer);
                 System.out.println("You have used the hammer on the lumber and nails to assemble a ladder." + "\n" + "Ladder has been added to your inventory.");
                 return "You have used the hammer on the lumber and nails to assemble a ladder." + "\n" + "Ladder has been added to your inventory.";
             }

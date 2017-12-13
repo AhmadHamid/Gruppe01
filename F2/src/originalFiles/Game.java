@@ -31,7 +31,7 @@ public class Game
     private SaveAndLoad saveAndLoad = new SaveAndLoad(this);
     
     // Changed the access modifier of the Item variable to static so the hashmap key (not the actual item called key) can be accessed in TreeStump.java. No idea why it cannot be accessed from TreeStump.java without it.
-    public static Item axe, key, hammer, nails, shovel, lumber, block, ladder, test, test1, test2, test3, test4, wood;
+    public static Item axe, key, hammer, nails, shovel, lumber, block, ladder, wood;
     
     Person neighbour;
     TreeStump treeStump;
@@ -131,13 +131,6 @@ public class Game
         wood = new Item(ItemEnum.wood, waterfall, 15);
         
 //        block = new Item(ItemEnum.block, shed);
-
-        // Test items.
-        test = new Item(ItemEnum.test, garden);
-        test1 = new Item(ItemEnum.test1, garden);
-        test2 = new Item(ItemEnum.test2, garden);
-        test3 = new Item(ItemEnum.test3, garden);
-        test4 = new Item(ItemEnum.test4, garden);
         
         // Made items and quest rewards, worth 40 points.
         key = new Item(ItemEnum.key, 40);
@@ -774,7 +767,6 @@ public class Game
     
     public void save(){
         saveAndLoad.save();
-        c.toStoryField(WordList.GAME_SAVE);
     }
     
     public void load(){
@@ -897,5 +889,11 @@ public class Game
             return "player";
         }
     }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+    
+    
     
 }
