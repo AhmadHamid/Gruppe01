@@ -39,8 +39,6 @@ public class Game
     EvilNPC evilNPC;
     sp2017g1.Timer time = new sp2017g1.Timer();
     
-    Person testNPC;
-    
     public static void setProgress(int i){
         if(progress < i)
             progress = i;
@@ -153,7 +151,6 @@ public class Game
         pet = new Animal(Species.DOG, forest);
         evilNPC = new EvilNPC(waterfall);
         
-        testNPC = new Person(garden);
     }
 
     public void play() 
@@ -404,12 +401,7 @@ public class Game
             }
                 
                 }
-            }
-            
-            if (currentRoom == testNPC.getCurrentRoom()){
-                System.out.println("TestNPC is in the room");
-            }
-            
+            }            
 //            if (!currentRoom.getRoomItems().isEmpty()) {
 //                System.out.println(WordList.ITEMS_IN_ROOM);
 //                c.toStoryField(WordList.ITEMS_IN_ROOM);
