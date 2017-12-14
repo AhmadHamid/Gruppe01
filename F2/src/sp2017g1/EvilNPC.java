@@ -26,21 +26,39 @@ public class EvilNPC extends NPC {
     private String stolenItem; 
 //    private String[] items;
     
-    
+    /**
+     * 
+     * @param room spawn location
+     */
     public EvilNPC(Room room){
         this.currentRoom = room;
         this.species = Species.HUMAN;
         lastRoom = null;
     }
-@Override
+    
+    /**
+     * 
+     * @param command 
+     */
+    @Override
     public void interact(Command command) {
       System.out.println("EvilNPC returns your ");
     
     }
-  @Override
+    
+    /**
+     * 
+     * @return location of the NPC 
+     */
+    @Override
     public  Room getCurrentRoom() {
         return currentRoom;
     }
+    
+    /**
+     * Method for changing the location of the NPC
+     * @param currentRoom room the NPC is moved to
+     */
     @Override
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
@@ -81,10 +99,19 @@ public class EvilNPC extends NPC {
      System.out.println("EvilNPC stole your " + item + " and ran away");
 }
     */
+    
+    /**
+     * 
+     * @param stolenItem item that is taking from players inventory
+     */
     public void setStolenItem(String stolenItem){
         this.stolenItem = stolenItem;
     }
     
+    /**
+     * 
+     * @return the stolen item
+     */
     public String getStolenItem(){
         return stolenItem;
     }
@@ -101,9 +128,19 @@ public class EvilNPC extends NPC {
     }
     
     */
+    
+    /**
+     * 
+     * @param currentRoom 
+     */
     public void setLastRoom(Room currentRoom){
         this.lastRoom = currentRoom;
     }
+    
+    /**
+     * 
+     * @return the last room the was in 
+     */
     public Room getLastRoom(){
         return lastRoom;
     }

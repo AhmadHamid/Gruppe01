@@ -15,20 +15,38 @@ import originalFiles.*;
  */
 public class TreeStump extends NPC {
 
+    /**
+     * Constructor for TreeStump
+     * @param room location of the treestump
+     */
     public TreeStump(Room room) {
         this.currentRoom = room;
         this.species = Species.INANIMATE;
     }
     
+    /**
+     * 
+     * @param command 
+     */
     @Override
     public void interact(Command command) {
         System.out.println("Treestump interact.");
     }
     
+    /**
+     * 
+     * @param item
+     * @param inv 
+     */
     public void getItemLadder(Item item, HashMap<ItemEnum, Item> inv) {
         inv.put(ItemEnum.ladder, item);
     }
     
+    /**
+     * 
+     * @param item
+     * @param inv 
+     */
     public void getItemLumber(Item item, HashMap<ItemEnum, Item> inv) {
         inv.put(ItemEnum.lumber, item);
     }
@@ -37,6 +55,17 @@ public class TreeStump extends NPC {
     inv.put(ItemEnum.lumber, item);
     }*/
     
+    /**
+     * 
+     * @param command
+     * @param iNails
+     * @param iHammer
+     * @param iWood
+     * @param iLumber
+     * @param iLadder
+     * @param inv
+     * @return 
+     */
     public String interactExtendedStump(Command command, Item iNails, Item iHammer, Item iWood, Item iLumber, Item iLadder, HashMap<ItemEnum, Item> inv) {
 //        Scanner input = new Scanner(System.in);
 //        

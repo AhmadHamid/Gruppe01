@@ -14,10 +14,18 @@ public enum ItemEnum {
     
     private String itemString;
 
+    /**
+     * 
+     * @param itemString name of an item
+     */
     private ItemEnum(String itemString) {
         this.itemString = itemString;
     }
     
+    /**
+     * 
+     * @return item name as string
+     */
     public String toString() {
         return itemString;
     }

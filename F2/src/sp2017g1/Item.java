@@ -23,16 +23,31 @@ public class Item {
     
     private static HashMap<ItemEnum, Item> allItems = new HashMap<>();
     
+    /**
+     * Constructor for item
+     * @param itemname the name of the item
+     */
     public Item(ItemEnum itemname) {
         this.itemName = itemname;
     }
     
+    /**
+     * constructor for item class
+     * @param itemname the name of the item
+     * @param points the amount of points given on pick up
+     */
     public Item(ItemEnum itemname, int points) {
         this.itemName = itemname;
         this.points = points;
         allItems.put(itemName, this);
     }
     
+    /**
+     * constructor for item class
+     * @param itemname the name of the item
+     * @param points amount of points given on pick up
+     * @param timeBonus amount of time given on pick up
+     */
     public Item(ItemEnum itemname, int points, Timer timeBonus) {
         this.itemName = itemname;
         this.points = points;
@@ -40,6 +55,11 @@ public class Item {
         allItems.put(itemname, this);
     }
 
+    /**
+     * constructor for item class
+     * @param itemName the name of the item
+     * @param room location of the item
+     */
     public Item(ItemEnum itemName, Room room) {
         this.itemName = itemName;
         selectedRoom = room;
@@ -48,6 +68,12 @@ public class Item {
         allItems.put(itemName, this);
     }
     
+    /**
+     * 
+     * @param itemName the name of the item
+     * @param room location of the item
+     * @param points amount of points the item gives on pick up
+     */
     public Item(ItemEnum itemName, Room room, int points) {
         this.itemName = itemName;
         selectedRoom = room;
@@ -58,6 +84,13 @@ public class Item {
         picked = false;
     }
     
+    /**
+     * 
+     * @param itemName the name of the item
+     * @param room location of the item
+     * @param points amount of points the item gives on pick up
+     * @param timeBonus amount of time the item gives on pick up
+     */
     public Item(ItemEnum itemName, Room room, int points, Timer timeBonus) {
         this.itemName = itemName;
         selectedRoom = room;
@@ -70,33 +103,60 @@ public class Item {
         picked = false;
     }
 
+    /**
+     * changes the location of an item
+     * @param room new location for the item 
+     */
     public void setRoom(Room room) {
         this.selectedRoom = room;
     }
     
-//    returnerer navnet af item
+    /**
+     * 
+     * @return name of the item 
+     */
     public String getItemName() {
         return itemName.toString();
     }
     
+    /**
+     * 
+     * @return HashMap of all items
+     */
     public static HashMap<ItemEnum, Item> getAllItems() {
         return allItems;
     }
     
+    /**
+     * 
+     * @return true if items name is unknown, otherwise false
+     */
     public boolean isUnknown() {
         return (itemName == ItemEnum.unknown);
     }
 
+    /**
+     * 
+     */
     public static void enumAllItems() {
         for (ItemEnum itemName : allItems.keySet()) {
             System.out.println(itemName.toString());
         }
 
     }
-    public String getAllItemLocations() {
-        return "items";
-    }
     
+//    /**
+//     * 
+//     * @return string 
+//     */
+//    public String getAllItemLocations() {
+//        return "items";
+//    }
+  
+    /**
+     * 
+     * @return location of the item if it has a location, otherwise null
+     */
     public String getItemLocation() {
         if(selectedRoom != null){
             return selectedRoom.getRoomName();
@@ -105,10 +165,19 @@ public class Item {
         }
     }
     
+    /**
+     * 
+     * @param itemName name of an item
+     * @return item object
+     */
     public static Item getItem(ItemEnum itemName){
         return allItems.get(itemName);
     }
     
+    /**
+     * 
+     * @return points that the item gives 
+     */
     public int getPoints() {
         if(picked) {
             return 0;
@@ -117,10 +186,17 @@ public class Item {
         }
     }
     
+    /**
+     * 
+     */
     public void picked() {
         picked = true;
     }
     
+    /**
+     * 
+     * @return true if the item has been picked up, otherwise false
+     */
     public boolean isPicked() {
         return picked;
         

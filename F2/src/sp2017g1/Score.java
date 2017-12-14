@@ -25,10 +25,18 @@ public class Score {
     
     private Game game;
     
+    /**
+     * Constructor for Score
+     * @param game the current game object
+     */
     public Score(Game game) {
         this.game = game;
     }
     
+    /**
+     * 
+     * @param totalScore 
+     */
     public Score(int totalScore) {
         // Logic for calculating the end score based on the total points gained from the three types (item, time, and efficiency) of points.
         /*
@@ -36,6 +44,9 @@ public class Score {
         */
     }
 
+    /**
+     * Method used to save a highscore to a file
+     */
     public void Save() {
         
         String scoreString = game.scoreString;
@@ -53,6 +64,10 @@ public class Score {
         }
     }
     
+    /**
+     * method used to load highscore from a file
+     * @return highscore
+     */
     public String Load() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("highscore.txt"));

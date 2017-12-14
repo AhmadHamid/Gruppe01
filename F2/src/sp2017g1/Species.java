@@ -16,10 +16,18 @@ public enum Species {
     
     private String speciesString;
     
+    /**
+     * 
+     * @param speciesString NPC type
+     */
     private Species(String speciesString) {
         this.speciesString = speciesString;
     }
 
+    /**
+     * 
+     * @return NPC type as string 
+     */
     public String toString() {
         return speciesString;
     }

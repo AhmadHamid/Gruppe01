@@ -158,6 +158,11 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private AnchorPane characters;
     
+    /**
+     * 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
@@ -175,6 +180,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         //game.play();
     }
 
+    /**
+     * Method for updating the list of items in a room
+     */
     private void roomItemLoad(){
         roomItems.clear();
         for (String item : game.getRoomItems()) {
@@ -182,6 +190,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         }
     }
     
+    /**
+     * Method for updating the list of items in the players inventory
+     */
     private void inventoryLoad(){
         inventoryItems.clear();
         for (String item : game.getInventoryItems()) {
@@ -189,11 +200,18 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         }
     }
     
+    /**
+     * Method that calls both inventoryLoad and roomItemLoad
+     */
     private void itemLoad(){
         roomItemLoad();
         inventoryLoad();
     }
 
+    /**
+     * method used to update the map
+     * @param currentRoom location of the player
+     */
     private void loadMap(String currentRoom) {
         
         imageCharacter = new Image("file:" + game.characters() + ".png", 100, 100, true, true);
@@ -266,14 +284,21 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         loadMap(game.getPlayerRoom());
     }
     
+    /**
+     * Writes string to story field, with new line
+     * @param string text to be written in the games story field
+     */
     public void toStoryField(String string) {
         storyField.appendText(string + "\n");
     }
     
+    /**
+     * Writes string to story field, with new line
+     * @param string text to be written in the games story field
+     */
     public void toStoryFieldnln(String string) {
         storyField.appendText(string);
     }
-
 
     @FXML
     private void pickButtonAction(ActionEvent event) {
@@ -333,6 +358,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         loadMap(game.getPlayerRoom());
     }
 
+    /**
+     * makes so only scene 1 bottoms are visible
+     */
     private void scene1(){
         storyField.setVisible(false);
         pickButton.setVisible(false);
@@ -352,6 +380,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         scoreScene.setVisible(false);
     }
     
+    /**
+     * makes so only scene 2 bottoms are visible
+     */
     private void scene2(){
         title.setVisible(false);
         playButton.setVisible(false);
@@ -376,6 +407,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         scoreScene.setVisible(false);
     }
     
+    /**
+     * makes so only scene 3 bottoms are visible
+     */
     private void scene3() {
         storyField.setVisible(false);
         pickButton.setVisible(false);
@@ -397,6 +431,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         newHighscore.setVisible(false);
     }
 
+    /**
+     * shows the game score
+     */
     private void scoreLoad() {
         String score = game.calculateScore();
         gameScore.setText(score);
