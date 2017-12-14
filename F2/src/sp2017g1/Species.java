@@ -12,7 +12,7 @@ import sp2017g1.*;
  * @author Kasper
  */
 public enum Species {
-    HUMAN("human"), DOG("dog"), CAT("cat"), INANIMATE("inanimate");
+    HUMAN("human"), DOG("dog"), INANIMATE("inanimate");
     
     private String speciesString;
     

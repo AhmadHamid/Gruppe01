@@ -42,25 +42,11 @@ public class Person extends NPC {
      */
     public String interactExtended(Command command, Item k, Item h, HashMap<ItemEnum, Item> inv) {
         if (interactCount == 0) {
-            System.out.println("WELCOME!");
-            
-            System.out.println("1. First time.");
             interactCount++;
             Game.setProgress(3);
-            return WordList.NEIGHBOUR_QUEST;
+            return "WELCOME!\n" + WordList.NEIGHBOUR_QUEST;
             
         } else if (interactCount == 1) {
-            
-//            System.out.println("2. Key or Hammer?");
-//            Scanner input = new Scanner(System.in);
-//            String option = input.next();
-//            if (option.equalsIgnoreCase(ItemEnum.key.toString())) {
-//                System.out.println("Tell about key.");
-//            } else if(option.equalsIgnoreCase(ItemEnum.hammer.toString()) && !Game.getInventory().containsKey(ItemEnum.hammer)) {
-//                System.out.println(ItemEnum.hammer.toString() + " is added to the inventory");
-//                getItemH(h, inv);
-//                interactCount++;
-//            }
             if (getItemH(h, inv)) {
                 interactCount++;
                 return ItemEnum.hammer.toString() + " is added to the inventory"; 
@@ -69,12 +55,8 @@ public class Person extends NPC {
             }
         } else if (interactCount == 2) {
             if (!Game.getInventory().containsKey(ItemEnum.shovel)) {
-                System.out.println("You have the hammer.");
-                System.out.println("Go find the shovel!");
                 return "You have the hammer"  + "\n" + "Go find the shovel!";
             } else {
-                System.out.println("Here is the key!");
-                System.out.println(ItemEnum.key.toString() +  " is added to the inventory");
                 getItemK(k, inv);
                 Game.getInventory().remove(ItemEnum.shovel);
                 return "Here is the key!" + "\n" + ItemEnum.key.toString() +  " is added to the inventory";

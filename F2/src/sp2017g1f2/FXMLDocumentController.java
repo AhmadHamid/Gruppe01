@@ -12,6 +12,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -158,11 +160,16 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private AnchorPane characters;
     
+<<<<<<< HEAD
     /**
      * 
      * @param url
      * @param rb 
      */
+=======
+    Alert saveAlert = new Alert(AlertType.INFORMATION);
+    
+>>>>>>> 4da4248a06ca097430abf6e345f259184b947c77
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
@@ -176,7 +183,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         map.setBackground(mapGarden);
         characters.setBackground(backgroundCharacter);
         //mapImage.setImage(roomGarden);
-        //title.setBackground(titleText);
+        title.setBackground(titleText);
         //game.play();
     }
 
@@ -206,6 +213,14 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private void itemLoad(){
         roomItemLoad();
         inventoryLoad();
+    }
+    
+    private void visableCombine() {
+        if (game.getCurrentRoom() == game.shed) {
+            combineButton.setDisable(false);
+        } else {
+            combineButton.setDisable(true);
+        }
     }
 
     /**
@@ -256,6 +271,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.goRoom("north");
         itemLoad();
         loadMap(game.getPlayerRoom());
+        visableCombine();
     }
 
     @FXML
@@ -263,6 +279,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.goRoom("east");
         itemLoad();
         loadMap(game.getPlayerRoom());
+        visableCombine();
     }
 
     @FXML
@@ -275,6 +292,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         loadMap(game.getPlayerRoom());
         }
+        visableCombine();
     }
 
     @FXML
@@ -282,6 +300,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.goRoom("west");
         itemLoad();
         loadMap(game.getPlayerRoom());
+        visableCombine();
     }
     
     /**
@@ -400,6 +419,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         southButton.setVisible(true);
         westButton.setVisible(true);
         combineButton.setVisible(true);
+        combineButton.setDisable(true);
         helpButton.setVisible(true);
         saveButton.setVisible(true);
         map.setVisible(true);
@@ -459,13 +479,31 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void saveButtonAction(ActionEvent event) {
         game.save();
+        saveAlert();
+    }
+    
+    private void saveAlert() {
+        saveAlert.setTitle("Game saved");
+        saveAlert.setHeaderText(null);
+        saveAlert.setContentText("The game has been saved.\n" + "Thanks for playing!");
+        
+        saveAlert.showAndWait();
+        
+        System.exit(0);
     }
 
     @FXML
     private void PlayAgainAction(ActionEvent event) {
         game = new Game(this);
         scene2();
+        storyField.clear();
         game.play();
         itemLoad();
+        
+        imageCharacter = new Image("file:player.png", 100, 100, true, true);
+        backgroundImageCharacter = new BackgroundImage(imageCharacter, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+            BackgroundSize.DEFAULT);
+        backgroundCharacter = new Background(backgroundImageCharacter);
+        characters.setBackground(backgroundCharacter);
     }
 }
