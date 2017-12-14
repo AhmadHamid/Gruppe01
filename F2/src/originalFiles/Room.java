@@ -19,7 +19,11 @@ public class Room
     private HashMap<String, Door> doorways;
     private static HashMap<String, Room> rooms = new HashMap<String, Room>();
     
-    
+    /**
+     *
+     * @param description
+     * @param name
+     */
     public Room(String description, String name) 
     {
         this.name = name;
@@ -31,11 +35,21 @@ public class Room
         rooms.put(name, this);
     }
 
+    /**
+     *
+     * @param direction
+     * @param neighbor
+     */
     public void setExit(String direction, Room neighbor) 
     {
         exits.put(direction, neighbor);
     }
     
+    /**
+     *
+     * @param direction
+     * @param doorway
+     */
     public void setExit(String direction, Door doorway) 
     {
         this.doorways.put(direction, doorway);
@@ -46,40 +60,72 @@ public class Room
         return roomItems;
     }
 
+    /**
+     *
+     * @param item
+     */
     public void addItem(String item) {
         //roomItems.put(ItemEnum.valueOf(item.getItemName()), item);
         roomItemsArray.add(item);
     }
     
+    /**
+     *
+     */
     public void itemClear() {
         roomItems.clear();
     }
     
 //    Return list of items in room - HER ER POBLEMER. VISER KUN DET FØRSTE. 
+
+    /**
+     *
+     */
     public void getRoomItemsList() {
       for (ItemEnum item : roomItems.keySet()) {
             System.out.printf("%s ", roomItems.get(item).getItemName());
         }
     }
     
+    /**
+     *
+     * @param roomItems
+     */
     public void setRoomItems(HashMap<ItemEnum, Item> roomItems) {
         this.roomItems = roomItems;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getRoomName()
     {
         return name;
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     */
     public static Room getRoom(String name){
         return rooms.get(name);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getShortDescription()
     {
         return description;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLongDescription()
     {
       
@@ -100,15 +146,29 @@ public class Room
         return returnString;
     }
 
+    /**
+     *
+     * @param direction
+     * @return
+     */
     public Room getExit(String direction) 
     {
         return exits.get(direction);
     }
     
+    /**
+     *
+     * @param direction
+     * @return
+     */
     public Door getExitDoor(String direction){
         return doorways.get(direction);
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getRoomItemsArray() {
         return roomItemsArray;
     }

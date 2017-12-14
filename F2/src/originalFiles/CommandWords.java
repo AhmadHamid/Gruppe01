@@ -11,6 +11,9 @@ public class CommandWords
 {
     private HashMap<String, CommandWord> validCommands;
 
+    /**
+     *
+     */
     public CommandWords()
     {
         validCommands = new HashMap<String, CommandWord>();
@@ -21,6 +24,11 @@ public class CommandWords
         }
     }
 
+    /**
+     *
+     * @param commandWord
+     * @return
+     */
     public CommandWord getCommandWord(String commandWord)
     {
         CommandWord command = validCommands.get(commandWord);
@@ -32,11 +40,19 @@ public class CommandWords
         }
     }
     
+    /**
+     *
+     * @param aString
+     * @return
+     */
     public boolean isCommand(String aString)
     {
         return validCommands.containsKey(aString);
     }
 
+    /**
+     *
+     */
     public void showAll() 
     {
         for(String command : validCommands.keySet()) {

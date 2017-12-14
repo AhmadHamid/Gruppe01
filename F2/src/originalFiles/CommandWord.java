@@ -28,6 +28,11 @@ public enum CommandWord
         this.commandString = commandString;
     }
     
+    /**
+     *
+     * @return
+     */
+    @Override
     public String toString()
     {
         return commandString;

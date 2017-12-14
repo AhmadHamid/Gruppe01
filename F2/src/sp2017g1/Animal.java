@@ -8,9 +8,10 @@ package sp2017g1;
 import language.*;
 import java.awt.Robot;
 import originalFiles.*;
+
 /**
- *
- * @author Student
+ * 
+ * 
  */
 public class Animal extends NPC{
     private boolean flying;
@@ -28,6 +29,10 @@ public class Animal extends NPC{
         this.follow = false;
     }
     
+    /**
+     *
+     * @return Type of species as string.
+     */
     public String speciesToString() {
         return species.toString();
     }
@@ -57,31 +62,60 @@ public class Animal extends NPC{
 //        return species;
 //    }
 
+    /**
+     *
+     * @return true if the pet is a flying type, otherwise false. 
+     */
     public boolean isFlying() {
         return flying;
     }
 
+    /**
+     *
+     * @return true if the pet is a swimming type, otherwise false.
+     */
     public boolean isSwimming() {
         return swimming;
     }
 
+    /**
+     *
+     * @return true if the pet is a predator type, otherwise false.
+     */
     public boolean isPredator() {
         return predator;
     }
 
+    /**
+     *
+     * @return true if the pet is following you, otherwise false.
+     */
     public boolean isFollow() {
         return follow;
     }
     
+    /**
+     * Sets the follow attribute as true.
+     * 
+     */
     public void startFollow(){
         follow = true;
     }
 
+    /**
+     *
+     * @param command 
+     */
     @Override
     public void interact(Command command) {
         System.out.println("Animal interact.");
     }
     
+    /**
+     *
+     * @param progress indication of how far you are in the game
+     * @return a hint as a string based on the progression you have
+     */
     public String interact(int progress) {
         switch(progress){
             case 1:
@@ -106,6 +140,11 @@ public class Animal extends NPC{
         return null;
     }
     
+    /**
+     *
+     * @param i number that represents how far you are in the game
+     * @return true if the progress is changed, otherwise false
+     */
     public boolean setProgress(int i){
         if(progress < i){
             progress = i;
@@ -115,6 +154,11 @@ public class Animal extends NPC{
         }
     }
     
+    /**
+     *
+     * @param room the room you are entering
+     * @return true if your pet is following you into a room, otherwise false
+     */
     public boolean goPet(Room room){
         if (follow){
             currentRoom = room;

@@ -41,10 +41,19 @@ public class Game
     
     Person testNPC;
     
+    /**
+     *
+     * @param i
+     */
     public static void setProgress(int i){
         if(progress < i)
             progress = i;
     }
+    
+    /**
+     *
+     * @param item
+     */
     public void evilNPCEncounter(String item){
         inventory.remove(ItemEnum.valueOf(item));
         //evilInventory.put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
@@ -53,6 +62,10 @@ public class Game
         //evilNPC.setCurrentRoom(evilNPC.getLastRoom());
     }
     
+    /**
+     *
+     * @param _c
+     */
     public Game(WriteToStory _c) 
     {
         createInventory();
@@ -150,6 +163,10 @@ public class Game
         inventory = new HashMap<ItemEnum, Item>();
     }
 
+    /**
+     *
+     * @return
+     */
     public static HashMap<ItemEnum, Item> getInventory() {
         return inventory;
     }
@@ -163,11 +180,15 @@ public class Game
         testNPC = new Person(garden);
     }
 
+    /**
+     *
+     */
     public void play() 
     {            
         printWelcome();
         time.start();
         boolean finished = false;
+        String test;
         /*while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
@@ -175,7 +196,9 @@ public class Game
     }
     
     
-    
+    /**
+     *
+     */
     private void printWelcome()
     {
         c.toStoryField(WordList.WELCOME);
@@ -193,6 +216,11 @@ public class Game
 //        getRoomItemList(currentRoom);
     }
 
+    /**
+     *
+     * @param command
+     * @return 
+     */
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
@@ -252,12 +280,20 @@ public class Game
         parser.showCommands();
     }
     
+    /**
+     *
+     * @param direction
+     */
     public void goRoom(String direction){
         CommandWord commandWord = CommandWord.GO;
         Command command = new Command(commandWord,direction);
         goRoom(command);
     }
     
+    /**
+     *
+     * @param command
+     */
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
@@ -474,12 +510,20 @@ public class Game
 //        }
 //    }
 
+    /**
+     *
+     */
     public void quit() {
         CommandWord commandWord = CommandWord.QUIT;
         Command command = new Command(commandWord, null);
         quit(command);
     }
     
+    /**
+     *
+     * @param direction
+     * @return 
+     */
     private boolean quit(Command command) {
         if(command.hasSecondWord()) {
             /*System.out.println("Quit what?");*/
@@ -494,12 +538,20 @@ public class Game
         }
     }
     
+    /**
+     *
+     * @param item
+     */
     public void pickItem(String item){
         CommandWord commandWord = CommandWord.GO;
         Command command = new Command(commandWord, item);
         pickItem(command);
     }
     
+    /**
+     *
+     * @param command
+     */
     private void pickItem(Command command) {
         try {
             ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
@@ -536,12 +588,20 @@ public class Game
 
     }
     
+    /**
+     *
+     * @param item
+     */
     public void dropItem(String item) {
         CommandWord commandWord = CommandWord.DROP;
         Command command = new Command(commandWord, item);
         dropItem(command);
     }
     
+    /**
+     *
+     * @param command
+     */
     private void dropItem(Command command) {
         try {
             ItemEnum inputItem = ItemEnum.valueOf(command.getSecondWord().toLowerCase());
@@ -563,6 +623,10 @@ public class Game
         }
     }
     
+    /**
+     *
+     * @param command
+     */
     private void printInventory(Command command) {
         if(!inventory.isEmpty()) {
             System.out.println("In your inventory is: ");
@@ -586,12 +650,21 @@ public class Game
     System.out.println("None of the required items are in your inventory.");
     }
     }*/
+
+    /**
+     *
+     * @param npc
+     */
     public void interact(String npc) {
         CommandWord commandWord = CommandWord.INTERACT;
         Command command = new Command(commandWord, npc);
         interact(command);
     }
     
+    /**
+     *
+     * @param command
+     */
     private void interact(Command command) {
         try {
             String inputCommand = command.getSecondWord().toLowerCase();
@@ -653,7 +726,10 @@ public class Game
     
     
 
-
+    /**
+     *
+     * @param room
+     */
     private void getRoomItemList (Room room) {
          for (ItemEnum item : room.getRoomItems().keySet()) {
             //System.out.printf("%s ", room.getRoomItems().get(item).getItemName());
@@ -662,6 +738,11 @@ public class Game
          c.toStoryField(" ");
     }
     
+    /**
+     * Calculates the total game score by adding the score for time and steps.
+     * 
+     * @return Total score as a string.
+     */
     public String calculateScore() {
         
         effScore = (1000 - (steps * 20));
@@ -672,14 +753,26 @@ public class Game
         return scoreString;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getSteps() {
         return steps;
     }
     
+    /**
+     *
+     * @param loadSteps
+     */
     public void setSteps(int loadSteps) {
         steps = loadSteps;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean highscore() {
         int scoreInt = Integer.parseInt(calculateScore());
         int highscoreInt = Integer.parseInt(highScoreLoad());
@@ -691,6 +784,11 @@ public class Game
         }
     }
     
+    /**
+     *
+     * @param item
+     * @param room
+     */
     public void setItemLocation(Item item, String room) {
         switch(room) {
             case "garden":
@@ -723,6 +821,10 @@ public class Game
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public String[] getRoomItems(){
         String items = currentRoom.getRoomItems().keySet().toString();
         items = items.replace("[", "");
@@ -730,6 +832,10 @@ public class Game
         return items.split(", ");
     }
     
+    /**
+     *
+     * @return
+     */
     public String[] getInventoryItems() {
         String items = inventory.keySet().toString();
         items = items.replace("[", "");
@@ -737,79 +843,152 @@ public class Game
         return items.split(", ");
     }
 
+    /**
+     *
+     * @return
+     */
     public int getGameTime() {
        return time.getTime();
     }
     
+    /**
+     *
+     * @param time
+     */
     public void setGameTime(int time) {
         this.time.setTime(time);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPlayerRoom() {
         return currentRoom.getRoomName();
     }
     
+    /**
+     *
+     * @param room
+     */
     public void setPlayerRoom(String room) {
         this.currentRoom = Room.getRoom(room);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPetRoom() {
         return pet.getCurrentRoom().getRoomName();
     }
     
+    /**
+     *
+     * @param room
+     */
     public void setPetRoom(String room) {
         this.pet.setCurrentRoom(Room.getRoom(room));
     }
     
+    /**
+     *
+     * @return
+     */
     public String getEvilNPCRoom() {
         return evilNPC.getCurrentRoom().getRoomName();
     }
     
+    /**
+     *
+     * @param room
+     */
     public void setEvilNPCRoom(String room) {
         this.evilNPC.setCurrentRoom(Room.getRoom(room));
     }
     
+    /**
+     *
+     * @return
+     */
     public int getNeighbourInteractCount() {
         return neighbour.getInteractCount();
     }
     
+    /**
+     *
+     * @param interactCount
+     */
     public void setNeighbourInteractCount(int interactCount) {
         neighbour.setInteractCount(interactCount);
     }
     
+    /**
+     *
+     * @return
+     */
     public int getProgress() {
         return progress;
     }
     
+    /**
+     *
+     * @param progress
+     */
     public void setGameProgress(int progress) {
         Game.progress = progress;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPlayerInventory() {
         return inventory.keySet().toString();
     }
     
+    /**
+     *
+     * @param item
+     */
     public void setInventory (String item) {
         Game.inventory.put(ItemEnum.valueOf(item), Item.getItem(ItemEnum.valueOf(item)));
     }
     
+    /**
+     *
+     */
     public void save(){
         saveAndLoad.save();
         c.toStoryField(WordList.GAME_SAVE);
     }
     
+    /**
+     *
+     */
     public void load(){
         saveAndLoad.load();
     }
     
+    /**
+     *
+     * @return
+     */
     public String getScore() {
         return scoreString;
     }
     
+    /**
+     *
+     */
     public void highScoreSave() {
         score.Save();
     }
     
+    /**
+     *
+     * @return
+     */
     public String highScoreLoad() {
         if(new File("highscore.txt").exists()){
             return score.Load();
@@ -818,30 +997,57 @@ public class Game
         }
     }
     
+    /**
+     *
+     * @param pickedItems
+     */
     public void setPickedItems(ArrayList<String> pickedItems) {
         this.pickedItems = pickedItems;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getPickedItems() {
         return pickedItems;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean getDoorLock() {
         return door.getLock();
     }
     
+    /**
+     *
+     * @param lock
+     */
     public void setDoorLock(Boolean lock) {
         door.setLock(lock);
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean getLadderDoorLock() {
         return ladderDoor.getLock();
     }
     
+    /**
+     *
+     * @param lock
+     */
     public void setLadderDoorLock(Boolean lock) {
         ladderDoor.setLock(lock);
     }
     
+    /**
+     *
+     */
     public void itemClear() {
         garden.itemClear();
         shed.itemClear();
@@ -854,6 +1060,11 @@ public class Game
         neighbourHouse.itemClear();
     }
     
+    /**
+     *
+     * @param item
+     * @param room
+     */
     public void loadItem(String item, String room) {
         switch(room) {
             case "garden":
@@ -886,14 +1097,26 @@ public class Game
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public String getEvilNPCItem() {
         return evilNPC.getStolenItem();
     }
     
+    /**
+     *
+     * @param item
+     */
     public void setEvilNPCItem(String item) {
         evilNPC.setStolenItem(item);
     }
     
+    /**
+     *
+     * @return
+     */
     public String characters() {
         if (currentRoom == pet.getCurrentRoom()) {
             if (currentRoom == evilNPC.getCurrentRoom()) {
