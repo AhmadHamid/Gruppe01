@@ -12,6 +12,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -158,6 +160,16 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private AnchorPane characters;
     
+<<<<<<< HEAD
+    /**
+     * 
+     * @param url
+     * @param rb 
+     */
+=======
+    Alert saveAlert = new Alert(AlertType.INFORMATION);
+    
+>>>>>>> 4da4248a06ca097430abf6e345f259184b947c77
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
@@ -175,6 +187,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         //game.play();
     }
 
+    /**
+     * Method for updating the list of items in a room
+     */
     private void roomItemLoad(){
         roomItems.clear();
         for (String item : game.getRoomItems()) {
@@ -182,6 +197,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         }
     }
     
+    /**
+     * Method for updating the list of items in the players inventory
+     */
     private void inventoryLoad(){
         inventoryItems.clear();
         for (String item : game.getInventoryItems()) {
@@ -189,11 +207,26 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         }
     }
     
+    /**
+     * Method that calls both inventoryLoad and roomItemLoad
+     */
     private void itemLoad(){
         roomItemLoad();
         inventoryLoad();
     }
+    
+    private void visableCombine() {
+        if (game.getCurrentRoom() == game.shed) {
+            combineButton.setDisable(false);
+        } else {
+            combineButton.setDisable(true);
+        }
+    }
 
+    /**
+     * method used to update the map
+     * @param currentRoom location of the player
+     */
     private void loadMap(String currentRoom) {
         
         imageCharacter = new Image("file:" + game.characters() + ".png", 100, 100, true, true);
@@ -238,6 +271,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.goRoom("north");
         itemLoad();
         loadMap(game.getPlayerRoom());
+        visableCombine();
     }
 
     @FXML
@@ -245,6 +279,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.goRoom("east");
         itemLoad();
         loadMap(game.getPlayerRoom());
+        visableCombine();
     }
 
     @FXML
@@ -257,6 +292,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         loadMap(game.getPlayerRoom());
         }
+        visableCombine();
     }
 
     @FXML
@@ -264,16 +300,24 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.goRoom("west");
         itemLoad();
         loadMap(game.getPlayerRoom());
+        visableCombine();
     }
     
+    /**
+     * Writes string to story field, with new line
+     * @param string text to be written in the games story field
+     */
     public void toStoryField(String string) {
         storyField.appendText(string + "\n");
     }
     
+    /**
+     * Writes string to story field, with new line
+     * @param string text to be written in the games story field
+     */
     public void toStoryFieldnln(String string) {
         storyField.appendText(string);
     }
-
 
     @FXML
     private void pickButtonAction(ActionEvent event) {
@@ -333,6 +377,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         loadMap(game.getPlayerRoom());
     }
 
+    /**
+     * makes so only scene 1 bottoms are visible
+     */
     private void scene1(){
         storyField.setVisible(false);
         pickButton.setVisible(false);
@@ -352,6 +399,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         scoreScene.setVisible(false);
     }
     
+    /**
+     * makes so only scene 2 bottoms are visible
+     */
     private void scene2(){
         title.setVisible(false);
         playButton.setVisible(false);
@@ -369,6 +419,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         southButton.setVisible(true);
         westButton.setVisible(true);
         combineButton.setVisible(true);
+        combineButton.setDisable(true);
         helpButton.setVisible(true);
         saveButton.setVisible(true);
         map.setVisible(true);
@@ -376,6 +427,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         scoreScene.setVisible(false);
     }
     
+    /**
+     * makes so only scene 3 bottoms are visible
+     */
     private void scene3() {
         storyField.setVisible(false);
         pickButton.setVisible(false);
@@ -397,6 +451,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         newHighscore.setVisible(false);
     }
 
+    /**
+     * shows the game score
+     */
     private void scoreLoad() {
         String score = game.calculateScore();
         gameScore.setText(score);
@@ -422,6 +479,17 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private void saveButtonAction(ActionEvent event) {
         game.save();
+        saveAlert();
+    }
+    
+    private void saveAlert() {
+        saveAlert.setTitle("Game saved");
+        saveAlert.setHeaderText(null);
+        saveAlert.setContentText("The game has been saved.\n" + "Thanks for playing!");
+        
+        saveAlert.showAndWait();
+        
+        System.exit(0);
     }
 
     @FXML

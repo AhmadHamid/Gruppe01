@@ -14,17 +14,11 @@ import originalFiles.*;
  * 
  */
 public class Animal extends NPC{
-    private boolean flying;
-    private boolean swimming;
-    private boolean predator;
     private int progress;
     private boolean follow;
     
     public Animal(Species species, Room room){
         this.species = species;
-        this.swimming = true;
-        this.flying = false;
-        this.predator = false;
         this.currentRoom = room;
         this.follow = false;
     }
@@ -35,55 +29,6 @@ public class Animal extends NPC{
      */
     public String speciesToString() {
         return species.toString();
-    }
-    /*
-    public Animal(String name, String species, boolean predator) {
-        this.name = name;
-        this.species = species;
-        this.predator = predator;
-    }
-    
-    public Animal(String name, String species, boolean predator, boolean canFly) {
-        this.name = name;
-        this.species = species;
-        this.predator = predator;
-        this.flying = canFly;
-    }
-    
-    public Animal(String name, String species, boolean predator, boolean canSwim, int i) {
-        this.name = name;
-        this.species = species;
-        this.predator = predator;
-        this.swimming = canSwim;
-    }
-    */
-
-//    public String getSpecies() {
-//        return species;
-//    }
-
-    /**
-     *
-     * @return true if the pet is a flying type, otherwise false. 
-     */
-    public boolean isFlying() {
-        return flying;
-    }
-
-    /**
-     *
-     * @return true if the pet is a swimming type, otherwise false.
-     */
-    public boolean isSwimming() {
-        return swimming;
-    }
-
-    /**
-     *
-     * @return true if the pet is a predator type, otherwise false.
-     */
-    public boolean isPredator() {
-        return predator;
     }
 
     /**

@@ -19,7 +19,7 @@
       <Label fx:id="roomItemLabel" focusTraversable="false" layoutX="43.0" layoutY="14.0" text="Room items" textFill="WHITE" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="14.0" />
       <Button fx:id="combineButton" focusTraversable="false" layoutX="479.0" layoutY="129.0" mnemonicParsing="false" onAction="#combineButtonAction" prefHeight="25.0" prefWidth="64.0" text="Combine" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="129.0" />
       <Button fx:id="helpButton" focusTraversable="false" layoutX="459.0" layoutY="245.0" mnemonicParsing="false" onAction="#helpButtonAction" text="Help" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="245.0" />
-      <Button fx:id="saveButton" focusTraversable="false" layoutX="531.0" layoutY="293.0" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" AnchorPane.bottomAnchor="56.0" AnchorPane.rightAnchor="26.0" />
+      <Button fx:id="saveButton" focusTraversable="false" layoutX="531.0" layoutY="293.0" mnemonicParsing="false" onAction="#saveButtonAction" text="Save and quit" AnchorPane.bottomAnchor="56.0" AnchorPane.rightAnchor="26.0" />
       <AnchorPane fx:id="map" layoutX="174.0" layoutY="16.0" maxHeight="500.0" maxWidth="500.0" prefHeight="250.0" prefWidth="250.0" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="16.0">
          <children>
             <AnchorPane fx:id="characters" maxHeight="500.0" maxWidth="500.0" prefHeight="250.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

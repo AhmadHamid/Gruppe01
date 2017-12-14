@@ -30,10 +30,17 @@ public class SaveAndLoad {
     
     private Game game;
     
+    /**
+     * Constructor for SaveAndLoad
+     * @param game the current game object
+     */
     public SaveAndLoad(Game game){
         this.game = game;
     }
     
+    /**
+     * Method used to save the  progression of a game to a file
+     */
     public void save() {
         
         String timerString = Integer.toString(game.getGameTime());
@@ -96,6 +103,9 @@ public class SaveAndLoad {
         
     }
     
+    /**
+     * Method used to load game progression from a file
+     */
     public void load() {
         try {
             BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
@@ -106,8 +116,7 @@ public class SaveAndLoad {
             if (game.getPetRoom().equals(game.getPlayerRoom())) {
                 game.pet.startFollow();
             }
-
-            //System.out.println(loadArray[0] + " " + loadArray[1] + " " + loadArray[2] + " " + loadArray[4]);
+            
             game.setPlayerRoom(loadArray[0]);
             game.setPetRoom(loadArray[1]);
             game.setEvilNPCRoom(loadArray[2]);
@@ -124,7 +133,7 @@ public class SaveAndLoad {
             loadArray[8] = loadArray[8].replace("[", "");
             loadArray[8] = loadArray[8].replace("]", "");
             if (!loadArray[8].isEmpty()) {
-                //String[] loadPickedItems = loadArray[6].split(", ");
+                
                 ArrayList<String> loadPickedItems = new ArrayList<String>(Arrays.asList(loadArray[8].split(", ")));
             
                 game.setPickedItems(loadPickedItems);

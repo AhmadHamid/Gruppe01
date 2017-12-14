@@ -65,7 +65,6 @@ public class Room
      * @param item
      */
     public void addItem(String item) {
-        //roomItems.put(ItemEnum.valueOf(item.getItemName()), item);
         roomItemsArray.add(item);
     }
     
@@ -75,18 +74,7 @@ public class Room
     public void itemClear() {
         roomItems.clear();
     }
-    
-//    Return list of items in room - HER ER POBLEMER. VISER KUN DET FØRSTE. 
 
-    /**
-     *
-     */
-    public void getRoomItemsList() {
-      for (ItemEnum item : roomItems.keySet()) {
-            System.out.printf("%s ", roomItems.get(item).getItemName());
-        }
-    }
-    
     /**
      *
      * @param roomItems
@@ -173,4 +161,3 @@ public class Room
         return roomItemsArray;
     }
 }
-

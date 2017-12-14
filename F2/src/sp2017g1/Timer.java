@@ -11,19 +11,33 @@ public class Timer extends Thread {
    
     private int i;
     
+    /**
+     * Method used to add time to the timer
+     */
     public void addTime() {
         i += 25;
     }
     
+    /**
+     * 
+     * @return time left 
+     */
     public int getTime() {
         return i;
     }
     
+    /**
+     * Used to change how much time that is left
+     * @param i time left
+     */
     public void setTime(int i) {
         this.i = i;
     }
        
-        @Override
+    /**
+     * Timer that is running for 10 minutes
+     */
+    @Override
     public void run() {
         try {
             for(i = 600; i>=0;i--){
