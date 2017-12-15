@@ -160,16 +160,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private AnchorPane characters;
     
-<<<<<<< HEAD
-    /**
-     * 
-     * @param url
-     * @param rb 
-     */
-=======
     Alert saveAlert = new Alert(AlertType.INFORMATION);
-    
->>>>>>> 4da4248a06ca097430abf6e345f259184b947c77
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(this);
@@ -214,7 +206,10 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         roomItemLoad();
         inventoryLoad();
     }
-    
+
+    /**
+     * method used to control visibility of the combine button
+     */
     private void visableCombine() {
         if (game.getCurrentRoom() == game.shed) {
             combineButton.setDisable(false);
@@ -378,7 +373,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
 
     /**
-     * makes so only scene 1 bottoms are visible
+     * makes so only scene 1 buttons are visible
      */
     private void scene1(){
         storyField.setVisible(false);
@@ -400,7 +395,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
     
     /**
-     * makes so only scene 2 bottoms are visible
+     * makes so only scene 2 buttons are visible
      */
     private void scene2(){
         title.setVisible(false);
@@ -428,7 +423,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
     
     /**
-     * makes so only scene 3 bottoms are visible
+     * makes so only scene 3 buttons are visible
      */
     private void scene3() {
         storyField.setVisible(false);
@@ -452,7 +447,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     }
 
     /**
-     * shows the game score
+     * displays the game score
      */
     private void scoreLoad() {
         String score = game.calculateScore();
@@ -482,6 +477,9 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         saveAlert();
     }
     
+    /**
+     * 
+     */
     private void saveAlert() {
         saveAlert.setTitle("Game saved");
         saveAlert.setHeaderText(null);

@@ -33,12 +33,12 @@ public class Person extends NPC {
     }
 
     /**
-     * 
-     * @param command
-     * @param k
-     * @param h
-     * @param inv
-     * @return 
+     * Neighbour interaction
+     * @param command 
+     * @param k key item
+     * @param h hammer item
+     * @param inv players inventory
+     * @return neighbour dialog
      */
     public String interactExtended(Command command, Item k, Item h, HashMap<ItemEnum, Item> inv) {
         if (interactCount == 0) {
@@ -67,8 +67,8 @@ public class Person extends NPC {
     
     /**
      * 
-     * @param item
-     * @param inv
+     * @param item hammer item
+     * @param inv players inventory
      * @return 
      */
     public boolean getItemH(Item item, HashMap<ItemEnum, Item> inv) {
@@ -82,8 +82,8 @@ public class Person extends NPC {
     
     /**
      * 
-     * @param item
-     * @param inv 
+     * @param item key item
+     * @param inv player inventory
      */
     public void getItemK(Item item, HashMap<ItemEnum, Item> inv) {
         inv.put(ItemEnum.key, item);

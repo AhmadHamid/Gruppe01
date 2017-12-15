@@ -35,8 +35,8 @@ public class TreeStump extends NPC {
     
     /**
      * 
-     * @param item
-     * @param inv 
+     * @param item ladder item
+     * @param inv player inventory
      */
     public void getItemLadder(Item item, HashMap<ItemEnum, Item> inv) {
         inv.put(ItemEnum.ladder, item);
@@ -44,8 +44,8 @@ public class TreeStump extends NPC {
     
     /**
      * 
-     * @param item
-     * @param inv 
+     * @param item lumber item
+     * @param inv player inventory
      */
     public void getItemLumber(Item item, HashMap<ItemEnum, Item> inv) {
         inv.put(ItemEnum.lumber, item);
@@ -53,14 +53,14 @@ public class TreeStump extends NPC {
     
     /**
      * 
-     * @param command
-     * @param iNails
-     * @param iHammer
-     * @param iWood
-     * @param iLumber
-     * @param iLadder
-     * @param inv
-     * @return 
+     * @param command 
+     * @param iNails nails item
+     * @param iHammer hammer item
+     * @param iWood wood item
+     * @param iLumber lumber item
+     * @param iLadder ladder item
+     * @param inv player inventory
+     * @return treestump dialog
      */
     public String interactExtendedStump(Command command, Item iNails, Item iHammer, Item iWood, Item iLumber, Item iLadder, HashMap<ItemEnum, Item> inv) {
         
