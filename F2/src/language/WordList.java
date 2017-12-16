@@ -13,7 +13,6 @@ import sp2017g1.*;
  * @author Student
  */
 public class WordList {
-//    Game game = new Game();
     
 //    class CommandWord
     public static final String GO = "go";
@@ -47,10 +46,16 @@ public class WordList {
     public static final String GO_WHERE = "Go where?";
     public static final String END_DESCRIPTION = "you win";
     public static final String GAME_SAVE = "Game Saved";
+    public static final String EVIL_STOLE_BEGIN = "EvilNPC stole your ";
+    public static final String EVIL_STOLE_END = " and ran away\n";
+    public static final String EVIL_RETURN = "EvilNPC returns your ";
+    public static final String EVIL_WANTS_RETURN_BEGIN = "EvilNPc wants to return your ";
+    public static final String EVIL_WANTS_RETURN_END = ", but your inventory is full.";
     
     
 //    progress message.
     public static final String NO_PET = "Go get your pet\n";
+    public static final String GET_PET = "I should get my pet before going home";
     public static final String AFTER_PET = "You have found your pet, go home";
     public static final String ASK_NEIGHBOR = "You gave your neighbour a spare key, go ask him if he still has it";
     public static final String FIND_SHOVEL = "Your neighbour lost his shovel on the mountain, you need to find it";
@@ -62,6 +67,7 @@ public class WordList {
 //    interact message.
     public static final String WRONG_INTERACT = "Can't interact";
     public static final String PET_TYPE = "pet";
+    public static final String NEIGHBOUR = "You see your neighbour in the room.";
     public static final String FOUND_PET = "You found your " + PET_TYPE + ". It will now follow you.";
     public static final String NEIGHBOUR_QUEST = "Neighbour: I do have your spare key, but I have buried it, "
                                                + "so it couldn't be stolen. To get it I'll need you to get my shovel. "
@@ -73,8 +79,14 @@ public class WordList {
     public static final String HOME_DOOR = "The door is locked. The wind most have slammed the door shut, so it locked itself. You need to get the key to open it.";
     public static final String STILL_NEED_PET = "Before I go home, I still need to find my pet.";
     public static final String MOUNTAIN_DOOR = "You can't climb the steep mountain, you need a ladder to get up.";
+    public static final String NO_DOOR = "There is no door!\n";
+    public static final String GOING_DOOR = "Going through door";
     
-    
+//        Inventory
+    public static final String ITEM_NOT_IN_ROOM = "That item is not in the room!";
+    public static final String INVENTORY_FULL = "Inventory is full";
+    public static final String IN_INVENTORY = "In your inventory is: ";
+    public static final String NO_ITEMS = "No items in the inventory";
     
     
 }

@@ -40,7 +40,6 @@ public class EvilNPC extends NPC {
      */
     @Override
     public void interact(Command command) {
-      System.out.println("EvilNPC returns your ");
     
     }
     

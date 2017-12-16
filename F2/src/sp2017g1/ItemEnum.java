@@ -10,7 +10,7 @@ package sp2017g1;
  * @author Student
  */
 public enum ItemEnum {
-    key("key"), hammer("hammer"), nails("nails"), axe("axe"), shovel("shovel"), lumber("lumber"), block("block"), ladder("ladder"), test("test"), test1("test1"), test2("test2"), test3("test3"), test4("test4"), unknown("unknown"), wood("wood"), stolenItem("stolenItem");
+    KEY("key"), HAMMER("hammer"), NAILS("nails"), AXE("axe"), SHOVEL("shovel"), LUMBER("lumber"), LADDER("ladder"), UNKNOWN("unknown"), WOOD("wood"), STOLENITEM("stolenItem");
     
     private String itemString;
 

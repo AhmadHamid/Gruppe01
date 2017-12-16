@@ -132,7 +132,7 @@ public class Item {
      * @return true if items name is unknown, otherwise false
      */
     public boolean isUnknown() {
-        return (itemName == ItemEnum.unknown);
+        return (itemName == ItemEnum.UNKNOWN);
     }
 
     /**
@@ -144,14 +144,6 @@ public class Item {
         }
 
     }
-    
-//    /**
-//     * 
-//     * @return string 
-//     */
-//    public String getAllItemLocations() {
-//        return "items";
-//    }
   
     /**
      * 

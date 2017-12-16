@@ -39,7 +39,7 @@ public class TreeStump extends NPC {
      * @param inv player inventory
      */
     public void getItemLadder(Item item, HashMap<ItemEnum, Item> inv) {
-        inv.put(ItemEnum.ladder, item);
+        inv.put(ItemEnum.LADDER, item);
     }
     
     /**
@@ -48,7 +48,7 @@ public class TreeStump extends NPC {
      * @param inv player inventory
      */
     public void getItemLumber(Item item, HashMap<ItemEnum, Item> inv) {
-        inv.put(ItemEnum.lumber, item);
+        inv.put(ItemEnum.LUMBER, item);
     }
     
     /**
@@ -66,14 +66,14 @@ public class TreeStump extends NPC {
         
         // Dialogue tree for creating lumber.
         if(interactCount == 0) {
-            if(!Game.getInventory().containsKey(ItemEnum.axe) || !Game.getInventory().containsKey(ItemEnum.wood)) {
+            if(!Game.getInventory().containsKey(ItemEnum.AXE) || !Game.getInventory().containsKey(ItemEnum.WOOD)) {
                 return "To refine wood into lumber, you need the following items: " + "\n" + Game.axe.getItemName() + "\t" + Game.wood.getItemName();
             }
             
-            else if (Game.getInventory().containsKey(ItemEnum.axe) && Game.getInventory().containsKey(ItemEnum.wood)) {
+            else if (Game.getInventory().containsKey(ItemEnum.AXE) && Game.getInventory().containsKey(ItemEnum.WOOD)) {
                 getItemLumber(iLumber, inv);
-                Game.getInventory().remove(ItemEnum.wood);
-                Game.getInventory().remove(ItemEnum.axe);
+                Game.getInventory().remove(ItemEnum.WOOD);
+                Game.getInventory().remove(ItemEnum.AXE);
                 interactCount = 1;
                 return "You have refined wood with the axe and created lumber." + "\n" + "Lumber has been added to your inventory.";
             }
@@ -82,15 +82,15 @@ public class TreeStump extends NPC {
         
         // Dialogue tree for creating ladder.
         else if (interactCount == 1) {
-            if(!Game.getInventory().containsKey(ItemEnum.lumber) || !Game.getInventory().containsKey(ItemEnum.nails) || !Game.getInventory().containsKey(ItemEnum.hammer)) {
+            if(!Game.getInventory().containsKey(ItemEnum.LUMBER) || !Game.getInventory().containsKey(ItemEnum.NAILS) || !Game.getInventory().containsKey(ItemEnum.HAMMER)) {
                 return "To assemble a ladder, you need the following items: " + "\n" + Game.hammer.getItemName() + "\t" + Game.nails.getItemName() + "\t" + Game.lumber.getItemName();
             }
             
-            else if(Game.getInventory().containsKey(ItemEnum.lumber) && Game.getInventory().containsKey(ItemEnum.nails) && Game.getInventory().containsKey(ItemEnum.hammer)) {
+            else if(Game.getInventory().containsKey(ItemEnum.LUMBER) && Game.getInventory().containsKey(ItemEnum.NAILS) && Game.getInventory().containsKey(ItemEnum.HAMMER)) {
                 getItemLadder(iLadder, inv);
-                Game.getInventory().remove(ItemEnum.lumber);
-                Game.getInventory().remove(ItemEnum.nails);
-                Game.getInventory().remove(ItemEnum.hammer);
+                Game.getInventory().remove(ItemEnum.LUMBER);
+                Game.getInventory().remove(ItemEnum.NAILS);
+                Game.getInventory().remove(ItemEnum.HAMMER);
                 return "You have used the hammer on the lumber and nails to assemble a ladder." + "\n" + "Ladder has been added to your inventory.";
             }
             return null;

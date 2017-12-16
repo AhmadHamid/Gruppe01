@@ -55,7 +55,7 @@ public class Game
     public void evilNPCEncounter(String item){
         inventory.remove(ItemEnum.valueOf(item));
         evilNPC.setStolenItem(item);
-        c.toStoryField("EvilNPC stole your " + evilNPC.getStolenItem() + " and ran away\n");
+        c.toStoryField(WordList.EVIL_STOLE_BEGIN + evilNPC.getStolenItem() + WordList.EVIL_STOLE_END);
     }
     
     /**
@@ -88,8 +88,8 @@ public class Game
         mountain = new Room("on a mountain cliff", "mountain");
         neighbourHouse = new Room("at your neighbours house", "neighbourHouse");
         
-        door = new Door("The door to your house", ItemEnum.key, "home");
-        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.ladder, "mountain");
+        door = new Door("The door to your house", ItemEnum.KEY, "home");
+        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.LADDER, "mountain");
    
         
         //Defines the exits of each room and where they lead.
@@ -133,16 +133,16 @@ public class Game
     private void createItems() {
         
         // Found items, worth 15 points.
-        axe = new Item(ItemEnum.axe, shed, 15);
-        shovel = new Item(ItemEnum.shovel, mountain, 25);
-        nails = new Item(ItemEnum.nails, bridge, 15);
-        wood = new Item(ItemEnum.wood, waterfall, 15);
+        axe = new Item(ItemEnum.AXE, shed, 15);
+        shovel = new Item(ItemEnum.SHOVEL, mountain, 25);
+        nails = new Item(ItemEnum.NAILS, bridge, 15);
+        wood = new Item(ItemEnum.WOOD, waterfall, 15);
         
         // Made items and quest rewards, worth 40 points.
-        key = new Item(ItemEnum.key, 40);
-        hammer = new Item(ItemEnum.hammer, 40);
-        lumber = new Item(ItemEnum.lumber, 40);
-        ladder = new Item(ItemEnum.ladder, 40);
+        key = new Item(ItemEnum.KEY, 40);
+        hammer = new Item(ItemEnum.HAMMER, 40);
+        lumber = new Item(ItemEnum.LUMBER, 40);
+        ladder = new Item(ItemEnum.LADDER, 40);
     }
     
     private static void createInventory() {
@@ -278,25 +278,25 @@ public class Game
         evilNPC.move();
         
         if (nextRoom == null && nextRoom1 == null) {
-            c.toStoryField("There is no door!\n");
+            c.toStoryField(WordList.NO_DOOR);
         }
         else if (nextRoom == null && nextRoom1.getLock() == true){
             if(nextRoom1.getName().equals("mountain")) {
-                if (inventory.containsKey(ItemEnum.ladder)) {
+                if (inventory.containsKey(ItemEnum.LADDER)) {
                     nextRoom1.setLock(false);
                     currentRoom = nextRoom1.getExit(direction);
                     pet.goPet(nextRoom1.getExit(direction));
-                    inventory.remove(ItemEnum.ladder);
+                    inventory.remove(ItemEnum.LADDER);
                 } else {
                     c.toStoryField(WordList.MOUNTAIN_DOOR + "\n");
                 }
             } else if (nextRoom1.getName().equals("home")) {
-                if (inventory.containsKey(ItemEnum.key) && pet.isFollow()) {
+                if (inventory.containsKey(ItemEnum.KEY) && pet.isFollow()) {
                     nextRoom1.setLock(false);
                     currentRoom = nextRoom1.getExit(direction);
                     pet.goPet(nextRoom1.getExit(direction));
-                    inventory.remove(ItemEnum.key);
-                } else if (inventory.containsKey(ItemEnum.key)) {
+                    inventory.remove(ItemEnum.KEY);
+                } else if (inventory.containsKey(ItemEnum.KEY)) {
                     c.toStoryField(WordList.STILL_NEED_PET);
                 } else {
                     c.toStoryField(WordList.HOME_DOOR + "\n");
@@ -304,7 +304,7 @@ public class Game
             }
             if (nextRoom1.getExit(direction).getRoomName() == "home"){
                 if(progress == 0){
-                    c.toStoryField("I should get my pet before going home");
+                    c.toStoryField(WordList.GET_PET);
                 } else{
                     setProgress(2);
                 }
@@ -316,17 +316,17 @@ public class Game
             if (currentRoom == home) {
                 c.toStoryField(WordList.END_DESCRIPTION);
             }
-            c.toStoryField("going through door");
+            c.toStoryField(WordList.GOING_DOOR);
         } else {
             currentRoom = nextRoom;
             pet.goPet(nextRoom);
 
             if (currentRoom == neighbour.getCurrentRoom()) {
-                c.toStoryField("You see your neightbour in the room.");
+                c.toStoryField(WordList.NEIGHBOUR);
                 command.setSecondWord("neighbour");
                 interact(command);
             } else if(currentRoom == treeStump.getCurrentRoom()) {
-                c.toStoryField("you see a treestump in the room.");
+                c.toStoryField(WordList.TREESTUMP);
             } else if (currentRoom == pet.getCurrentRoom() && !pet.isFollow()) {
                 c.toStoryField(WordList.FOUND_PET);
                 pet.startFollow();
@@ -377,11 +377,11 @@ public class Game
                 }
              else if (evilNPC.getStolenItem()!= null) {                   
                     if (inventory.size() < 3) {
-                        c.toStoryField("EvilNPC returns your " + evilNPC.getStolenItem());
+                        c.toStoryField(WordList.EVIL_RETURN + evilNPC.getStolenItem());
                         inventory.put(ItemEnum.valueOf(evilNPC.getStolenItem()), Item.getItem(ItemEnum.valueOf(evilNPC.getStolenItem())));
                         evilNPC.setStolenItem(null);
                     } else {
-                        c.toStoryField("EvilNPc wants to return your " + evilNPC.getStolenItem() + ", but your inventory is full.");
+                        c.toStoryField(WordList.EVIL_WANTS_RETURN_BEGIN + evilNPC.getStolenItem() + WordList.EVIL_WANTS_RETURN_END);
                     }
             } else  {
             }
@@ -416,7 +416,6 @@ public class Game
             return false;
         }
         else {
-        c.toStoryField("Thank you for playing.  Good bye.");
         System.exit(0);
             return true;
         }
@@ -455,9 +454,9 @@ public class Game
             c.toStoryField(inventory.get(ItemEnum.valueOf(command.getSecondWord())).getItemName() + " is added to the inventory");
 
         } else if(!currentRoom.getRoomItems().containsKey(inputItem)) {
-            c.toStoryField("That item is not in the room!");
+            c.toStoryField(WordList.ITEM_NOT_IN_ROOM);
         } else {
-            c.toStoryField("Inventory is full");
+            c.toStoryField(WordList.INVENTORY_FULL);
         }
         } catch (NullPointerException e) {
             c.toStoryField("Pick what item?");
@@ -505,12 +504,12 @@ public class Game
      */
     private void printInventory(Command command) {
         if(!inventory.isEmpty()) {
-            System.out.println("In your inventory is: ");
+            System.out.println(WordList.IN_INVENTORY);
             for (ItemEnum item : inventory.keySet()) {
                 System.out.printf("%s  ", inventory.get(item).getItemName());
             } System.out.println();
         } else {
-            System.out.println("No items in the inventory");
+            System.out.println(WordList.NO_ITEMS);
         }
     }
     
@@ -550,15 +549,15 @@ public class Game
                     c.toStoryField(neighbour.interactExtended(command, key, hammer, inventory));
                 
                 setProgress(3);
-                if(inventory.containsKey(ItemEnum.hammer)){
-                  } else if(inventory.containsKey(ItemEnum.key)){
+                if(inventory.containsKey(ItemEnum.HAMMER)){
+                  } else if(inventory.containsKey(ItemEnum.KEY)){
                   setProgress(6);
                   }
                 }
             } else if (inputCommand.equals("stump")){
                 if (currentRoom == treeStump.getCurrentRoom()) {
                 c.toStoryField(treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory));
-                    if(inventory.containsKey(ItemEnum.ladder)){
+                    if(inventory.containsKey(ItemEnum.LADDER)){
                     setProgress(4);
                     }
                 }
