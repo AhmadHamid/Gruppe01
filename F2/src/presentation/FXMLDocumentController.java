@@ -81,62 +81,62 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     @FXML
     private AnchorPane map;
     
-    Image titleImage = new Image("file:src/presentation/resources/runawayTitle.png", 575, 95, true, true);
+    Image titleImage = new Image("presentation/resources/runawayTitle.png", 575, 95, true, true);
     BackgroundImage titleTextImage = new BackgroundImage(titleImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background titleText = new Background(titleTextImage);
     
-    Image windowImage = new Image("file:src/presentation/resources/forest.jpg", 1920, 1080, true, true);
+    Image windowImage = new Image("presentation/resources/forest.jpg", 1920, 1080, true, true);
     BackgroundImage windowBackgroundImage = new BackgroundImage(windowImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background windowBackground = new Background(windowBackgroundImage);
     
-    Image roomGarden = new Image("file:src/presentation/resources/roomGarden.png", 250, 250, true, true);
+    Image roomGarden = new Image("presentation/resources/roomGarden.png", 250, 250, true, true);
     BackgroundImage imageGarden = new BackgroundImage(roomGarden, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapGarden = new Background(imageGarden);
     
-    Image roomShed = new Image("file:src/presentation/resources/roomShed.png", 250, 250, true, true);
+    Image roomShed = new Image("presentation/resources/roomShed.png", 250, 250, true, true);
     BackgroundImage imageShed = new BackgroundImage(roomShed, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapShed = new Background(imageShed);
     
-    Image roomMountainside = new Image("file:src/presentation/resources/roomMountainside.png", 250, 250, true, true);
+    Image roomMountainside = new Image("presentation/resources/roomMountainside.png", 250, 250, true, true);
     BackgroundImage imageMountainside = new BackgroundImage(roomMountainside, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapMountainside = new Background(imageMountainside);
     
-    Image roomMountain = new Image("file:src/presentation/resources/roomMountain.png", 250, 250, true, true);
+    Image roomMountain = new Image("presentation/resources/roomMountain.png", 250, 250, true, true);
     BackgroundImage imageMountain = new BackgroundImage(roomMountain, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapMountain = new Background(imageMountain);
     
-    Image roomForest = new Image("file:src/presentation/resources/roomForest.png", 250, 250, true, true);
+    Image roomForest = new Image("presentation/resources/roomForest.png", 250, 250, true, true);
     BackgroundImage imageForest = new BackgroundImage(roomForest, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapForest = new Background(imageForest);
     
-    Image roomBridge = new Image("file:src/presentation/resources/roomBridge.png", 250, 250, true, true);
+    Image roomBridge = new Image("presentation/resources/roomBridge.png", 250, 250, true, true);
     BackgroundImage imageBridge = new BackgroundImage(roomBridge, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapBridge = new Background(imageBridge);
     
-    Image roomNeighbourhouse = new Image("file:src/presentation/resources/roomNeighbourhouse.png", 250, 250, true, true);
+    Image roomNeighbourhouse = new Image("presentation/resources/roomNeighbourhouse.png", 250, 250, true, true);
     BackgroundImage imageNeighbourhouse = new BackgroundImage(roomNeighbourhouse, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapNeighbourhouse = new Background(imageNeighbourhouse);
     
-    Image roomRiver = new Image("file:src/presentation/resources/roomRiver.png", 250, 250, true, true);
+    Image roomRiver = new Image("presentation/resources/roomRiver.png", 250, 250, true, true);
     BackgroundImage imageRiver = new BackgroundImage(roomRiver, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapRiver = new Background(imageRiver);
     
-    Image roomWaterfall = new Image("file:src/presentation/resources/roomWaterfall.png", 250, 250, true, true);
+    Image roomWaterfall = new Image("presentation/resources/roomWaterfall.png", 250, 250, true, true);
     BackgroundImage imageWaterfall = new BackgroundImage(roomWaterfall, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background mapWaterfall = new Background(imageWaterfall);
     
-    Image imageCharacter = new Image("file:src/presentation/resources/player.png", 100, 100, true, true);
+    Image imageCharacter = new Image("presentation/resources/player.png", 100, 100, true, true);
     BackgroundImage backgroundImageCharacter = new BackgroundImage(imageCharacter, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
         BackgroundSize.DEFAULT);
     Background backgroundCharacter = new Background(backgroundImageCharacter);
@@ -224,7 +224,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
      */
     private void loadMap(String currentRoom) {
         
-        imageCharacter = new Image("file:src/presentation/resources/" + game.characters() + ".png", 100, 100, true, true);
+        imageCharacter = new Image("presentation/resources/" + game.characters() + ".png", 100, 100, true, true);
         backgroundImageCharacter = new BackgroundImage(imageCharacter, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
             BackgroundSize.DEFAULT);
         backgroundCharacter = new Background(backgroundImageCharacter);
@@ -502,7 +502,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         game.play();
         itemLoad();
         
-        imageCharacter = new Image("file:player.png", 100, 100, true, true);
+        imageCharacter = new Image("presentation/resources/player.png", 100, 100, true, true);
         backgroundImageCharacter = new BackgroundImage(imageCharacter, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
             BackgroundSize.DEFAULT);
         backgroundCharacter = new Background(backgroundImageCharacter);
