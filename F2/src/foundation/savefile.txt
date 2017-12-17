@@ -1,1 +1,1 @@
-garden;forest;waterfall;0;599;0;true;true;[];[];shed,null,null,bridge,mountain,null,null,waterfall;null;0
+garden;forest;waterfall;0;600;0;true;true;[];[];shed,null,null,bridge,mountain,null,null,waterfall;null;0

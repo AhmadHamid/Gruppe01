@@ -80,7 +80,7 @@ public class WordList {
     public static final String HOME_DOOR = "The door is locked. The wind most have slammed the door shut, so it locked itself. You need to get the key to open it.";
     public static final String STILL_NEED_PET = "Before I go home, I still need to find my pet.";
     public static final String MOUNTAIN_DOOR = "You can't climb the steep mountain, you need a ladder to get up.";
-    public static final String NO_DOOR = "There is no door!\n";
+    public static final String NO_DOOR = "I can't go this way.\n";
     public static final String GOING_DOOR = "Going through door";
     
 //        Inventory

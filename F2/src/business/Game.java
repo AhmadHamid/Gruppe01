@@ -172,7 +172,7 @@ public class Game
      *
      */
     public void play() 
-    {            
+    {
         printWelcome();
         time.start();
         time.setTime(600);
