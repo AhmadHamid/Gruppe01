@@ -149,7 +149,7 @@ public class SaveAndLoad {
             String[] loadItemLocations = loadArray[10].split(",");
                 for (int i = 0; i < 8; i++) {
                     String location = loadItemLocations[i]; 
-                    if(location != null)
+                    if(location != null) {
                         switch(i){
                             case 0:
                             game.loadItem("axe", loadItemLocations[i]);
@@ -183,10 +183,46 @@ public class SaveAndLoad {
                             game.loadItem("wood", loadItemLocations[i]);
                             game.setItemLocation(Game.wood, loadItemLocations[i]);
                             break;
-                        }
+                        } 
+                        
+                    } else {
+                        switch(i){
+                            case 0:
+                            game.loadItem("axe", null);
+                            game.setItemLocation(Game.axe, null);
+                            break;
+                            case 1:
+                            game.loadItem("key", null);
+                            game.setItemLocation(Game.key, null);
+                            break;
+                            case 2:
+                            game.loadItem("hammer", null);
+                            game.setItemLocation(Game.hammer, null);
+                            break;
+                            case 3:
+                            game.loadItem("nails", null);
+                            game.setItemLocation(Game.nails, null);
+                            break;
+                            case 4:
+                            game.loadItem("shovel", null);
+                            game.setItemLocation(Game.shovel, null);
+                            break;
+                            case 5:
+                            game.loadItem("lumber", null);
+                            game.setItemLocation(Game.lumber, null);
+                            break;
+                            case 6:
+                            game.loadItem("ladder", null);
+                            game.setItemLocation(Game.ladder, null);
+                            break;
+                            case 7:
+                            game.loadItem("wood", null);
+                            game.setItemLocation(Game.wood, null);
+                            break;
+                    }
                 }
             }
-            
+            }
             reader.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
