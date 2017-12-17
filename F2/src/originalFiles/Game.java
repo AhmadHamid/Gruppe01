@@ -996,4 +996,8 @@ public class Game
     public Room getCurrentRoom() {
         return currentRoom;
     }
+    
+    public boolean gameOver() {
+        return time.gameOver();
+    }
 }

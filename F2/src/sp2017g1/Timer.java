@@ -4,11 +4,13 @@ package sp2017g1;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import originalFiles.Game;
 
 
 public class Timer extends Thread {
    
     private int i;
+    private boolean gameOver = false;
     
     /**
      * Method used to add time to the timer
@@ -42,12 +44,20 @@ public class Timer extends Thread {
             /*for(i = 600; i>=0;i--){
                 Thread.sleep(1000);
             }*/
-            while (i>=0) {
+            while (i>0) {
                 Thread.sleep(1000);
                 i--;
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(Timer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public boolean gameOver() {
+        if (getTime() == 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 

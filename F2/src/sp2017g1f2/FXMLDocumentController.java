@@ -45,6 +45,7 @@ import sp2017g1.ItemEnum;
 public class FXMLDocumentController implements Initializable, WriteToStory {
     
     private static Game game;
+    private sp2017g1.Timer timer;
     
     @FXML
     private TextArea storyField;
@@ -267,6 +268,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         loadMap(game.getPlayerRoom());
         visableCombine();
+        gameOver();
     }
 
     @FXML
@@ -275,6 +277,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         loadMap(game.getPlayerRoom());
         visableCombine();
+        gameOver();
     }
 
     @FXML
@@ -288,6 +291,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         loadMap(game.getPlayerRoom());
         }
         visableCombine();
+        gameOver();
     }
 
     @FXML
@@ -296,6 +300,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         itemLoad();
         loadMap(game.getPlayerRoom());
         visableCombine();
+        gameOver();
     }
     
     /**
@@ -503,5 +508,12 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
             BackgroundSize.DEFAULT);
         backgroundCharacter = new Background(backgroundImageCharacter);
         characters.setBackground(backgroundCharacter);
+    }
+    
+    private void gameOver() {
+        if (game.gameOver()) {
+            scene3();
+            scoreLoad();
+        }
     }
 }
