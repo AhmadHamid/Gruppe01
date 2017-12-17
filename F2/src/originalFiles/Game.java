@@ -188,6 +188,7 @@ public class Game
         c.toStoryField(WordList.DESCRIPTION);
         c.toStoryField(WordList.GET_HELP);
         c.toStoryField("");
+        c.toStoryField(currentRoom.getLongDescription());
     }
 
     /**
@@ -317,9 +318,12 @@ public class Game
                 c.toStoryField(WordList.END_DESCRIPTION);
             }
             c.toStoryField(WordList.GOING_DOOR);
+            c.toStoryField(currentRoom.getLongDescription());
         } else {
             currentRoom = nextRoom;
             pet.goPet(nextRoom);
+            
+            c.toStoryField(currentRoom.getLongDescription());
 
             if (currentRoom == neighbour.getCurrentRoom()) {
                 c.toStoryField(WordList.NEIGHBOUR);
