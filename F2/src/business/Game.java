@@ -1,9 +1,9 @@
 package business;
 
+import presentation.WriteToStory;
+import business.language.WordList;
 import java.io.File;
 import java.util.*;
-import sp2017g1.*;
-import language.*;
 //import sp2017g1f2.*;
 
 /**

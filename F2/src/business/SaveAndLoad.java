@@ -62,7 +62,7 @@ public class SaveAndLoad {
         String stepsString = Integer.toString(game.getSteps());
         
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("savefile.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/foundation/savefile.txt"));
 
             writer.write(
                     currentRoomPlayer + ";" 
@@ -105,7 +105,7 @@ public class SaveAndLoad {
      */
     public void load() {
         try {
-            BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
+            BufferedReader reader = new BufferedReader (new FileReader ("src/foundation/savefile.txt"));
             
             String[] loadArray = reader.readLine().split(";");
             

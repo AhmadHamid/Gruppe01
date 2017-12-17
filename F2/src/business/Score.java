@@ -6,7 +6,6 @@
 package business;
 
 import business.Game;
-import language.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -52,7 +51,7 @@ public class Score {
         String scoreString = game.scoreString;
         
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("highscore.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/foundation/highscore.txt"));
             
             writer.write(scoreString);
             
@@ -70,7 +69,7 @@ public class Score {
      */
     public String Load() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("highscore.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("src/foundation/highscore.txt"));
             String loadData = reader.readLine();
             
             reader.close();

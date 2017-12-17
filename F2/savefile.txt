@@ -1,1 +1,0 @@
-bridge;forest;waterfall;0;607;0;true;true;[nails];[nails];shed,null,null,bridge,mountain,null,null,waterfall;null;5

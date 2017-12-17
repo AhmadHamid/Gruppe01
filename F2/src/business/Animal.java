@@ -5,9 +5,9 @@
  */
 package business;
 
+import business.language.WordList;
 import business.Room;
 import business.Command;
-import language.*;
 import java.awt.Robot;
 
 /**

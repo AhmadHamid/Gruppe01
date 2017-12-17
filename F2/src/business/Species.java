@@ -5,8 +5,6 @@
  */
 package business;
 
-import sp2017g1.*;
-
 /**
  *
  * @author Kasper

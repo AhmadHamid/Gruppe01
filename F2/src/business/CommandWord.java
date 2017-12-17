@@ -1,6 +1,6 @@
 package business;
 
-import language.*;
+import business.language.WordList;
 
 /**
  * @author Michael Kolling and David J. Barnes

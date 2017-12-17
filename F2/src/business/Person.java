@@ -8,7 +8,7 @@ import business.Room;
 import business.Game;
 import business.Command;
 import java.util.*;
-import language.WordList;
+import business.language.WordList;
 /**
  *
  * @author Student
