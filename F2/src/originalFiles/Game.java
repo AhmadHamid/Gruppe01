@@ -817,8 +817,9 @@ public class Game
      *
      */
     public void load(){
-        saveAndLoad.load();
         time.start();
+        saveAndLoad.load();
+
     }
     
     /**
