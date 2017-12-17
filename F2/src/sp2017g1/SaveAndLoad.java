@@ -5,8 +5,6 @@
  */
 package sp2017g1;
 
-import originalFiles.*;
-import language.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,7 +17,6 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import originalFiles.Game;
-import originalFiles.Room;
 
 
 /**
@@ -110,8 +107,7 @@ public class SaveAndLoad {
         try {
             BufferedReader reader = new BufferedReader (new FileReader ("savefile.txt"));
             
-            String loadData = reader.readLine();
-            String[] loadArray = loadData.split(";");
+            String[] loadArray = reader.readLine().split(";");
             
             if (game.getPetRoom().equals(game.getPlayerRoom())) {
                 game.pet.startFollow();

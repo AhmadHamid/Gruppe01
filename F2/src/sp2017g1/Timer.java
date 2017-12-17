@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 
 public class Timer extends Thread {
-
    
     private int i;
     
@@ -40,12 +39,13 @@ public class Timer extends Thread {
     @Override
     public void run() {
         try {
-            for(i = 600; i>=0;i--){
-                
-                
+            /*for(i = 600; i>=0;i--){
                 Thread.sleep(1000);
+            }*/
+            while (i>=0) {
+                Thread.sleep(1000);
+                i--;
             }
-            //call quit
         } catch (InterruptedException ex) {
             Logger.getLogger(Timer.class.getName()).log(Level.SEVERE, null, ex);
         }

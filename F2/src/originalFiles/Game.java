@@ -175,6 +175,7 @@ public class Game
     {            
         printWelcome();
         time.start();
+        time.setTime(600);
         boolean finished = false;
     }
     
@@ -812,6 +813,7 @@ public class Game
      */
     public void load(){
         saveAndLoad.load();
+        time.start();
     }
     
     /**
