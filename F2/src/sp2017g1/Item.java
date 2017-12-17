@@ -126,24 +126,6 @@ public class Item {
     public static HashMap<ItemEnum, Item> getAllItems() {
         return allItems;
     }
-    
-    /**
-     * 
-     * @return true if items name is unknown, otherwise false
-     */
-    public boolean isUnknown() {
-        return (itemName == ItemEnum.unknown);
-    }
-
-    /**
-     * 
-     */
-    public static void enumAllItems() {
-        for (ItemEnum itemName : allItems.keySet()) {
-            System.out.println(itemName.toString());
-        }
-
-    }
   
     /**
      * 

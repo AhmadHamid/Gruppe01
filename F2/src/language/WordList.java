@@ -6,7 +6,6 @@
 package language;
 
 import originalFiles.*;
-import sp2017g1.*;
 
 /**
  *
