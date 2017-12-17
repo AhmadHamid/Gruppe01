@@ -51,6 +51,7 @@ public class WordList {
     public static final String EVIL_RETURN_END = " from the thief";
     public static final String EVIL_WANTS_RETURN_BEGIN = "You attempt to take back your ";
     public static final String EVIL_WANTS_RETURN_END = " from the thief, but your inventory is full.";
+    public static final String EVIL_NO_ITEM = "A thief tries to steal from you, but your inventory is empty.";
     
     
 //    progress message.

@@ -379,7 +379,7 @@ public class Game
 
                 }
                 else if (inventory.isEmpty() && evilNPC.getStolenItem()== null){
-                    
+                 c.toStoryField(WordList.EVIL_NO_ITEM);
                 }
              else if (evilNPC.getStolenItem()!= null) {                   
                     if (inventory.size() < 3) {
