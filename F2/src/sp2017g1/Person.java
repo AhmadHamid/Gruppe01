@@ -49,17 +49,17 @@ public class Person extends NPC {
         } else if (interactCount == 1) {
             if (getItemH(h, inv)) {
                 interactCount++;
-                return ItemEnum.HAMMER.toString() + " is added to the inventory"; 
+                return ItemEnum.hammer.toString() + " is added to the inventory"; 
             } else {
                 return "Inventory full";
             }
         } else if (interactCount == 2) {
-            if (!Game.getInventory().containsKey(ItemEnum.SHOVEL)) {
+            if (!Game.getInventory().containsKey(ItemEnum.shovel)) {
                 return "You have the hammer"  + "\n" + "Go find the shovel!";
             } else {
                 getItemK(k, inv);
-                Game.getInventory().remove(ItemEnum.SHOVEL);
-                return "Here is the key!" + "\n" + ItemEnum.KEY.toString() +  " is added to the inventory";
+                Game.getInventory().remove(ItemEnum.shovel);
+                return "Here is the key!" + "\n" + ItemEnum.key.toString() +  " is added to the inventory";
             }
         } 
         return null;
@@ -73,7 +73,7 @@ public class Person extends NPC {
      */
     public boolean getItemH(Item item, HashMap<ItemEnum, Item> inv) {
         if (inv.size() < 3) {
-            inv.put(ItemEnum.HAMMER, item);
+            inv.put(ItemEnum.hammer, item);
             return true;
         } else {
             return false;
@@ -86,7 +86,7 @@ public class Person extends NPC {
      * @param inv player inventory
      */
     public void getItemK(Item item, HashMap<ItemEnum, Item> inv) {
-        inv.put(ItemEnum.KEY, item);
+        inv.put(ItemEnum.key, item);
     }
 
     /**

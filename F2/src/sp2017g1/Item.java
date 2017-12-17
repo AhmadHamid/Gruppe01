@@ -132,7 +132,7 @@ public class Item {
      * @return true if items name is unknown, otherwise false
      */
     public boolean isUnknown() {
-        return (itemName == ItemEnum.UNKNOWN);
+        return (itemName == ItemEnum.unknown);
     }
 
     /**

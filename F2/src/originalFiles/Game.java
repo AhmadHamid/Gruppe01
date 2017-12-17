@@ -88,8 +88,8 @@ public class Game
         mountain = new Room("on a mountain cliff", "mountain");
         neighbourHouse = new Room("at your neighbours house", "neighbourHouse");
         
-        door = new Door("The door to your house", ItemEnum.KEY, "home");
-        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.LADDER, "mountain");
+        door = new Door("The door to your house", ItemEnum.key, "home");
+        ladderDoor = new Door("ladder to the top of the mountain", ItemEnum.ladder, "mountain");
    
         
         //Defines the exits of each room and where they lead.
@@ -133,16 +133,16 @@ public class Game
     private void createItems() {
         
         // Found items, worth 15 points.
-        axe = new Item(ItemEnum.AXE, shed, 15);
-        shovel = new Item(ItemEnum.SHOVEL, mountain, 25);
-        nails = new Item(ItemEnum.NAILS, bridge, 15);
-        wood = new Item(ItemEnum.WOOD, waterfall, 15);
+        axe = new Item(ItemEnum.axe, shed, 15);
+        shovel = new Item(ItemEnum.shovel, mountain, 25);
+        nails = new Item(ItemEnum.nails, bridge, 15);
+        wood = new Item(ItemEnum.wood, waterfall, 15);
         
         // Made items and quest rewards, worth 40 points.
-        key = new Item(ItemEnum.KEY, 40);
-        hammer = new Item(ItemEnum.HAMMER, 40);
-        lumber = new Item(ItemEnum.LUMBER, 40);
-        ladder = new Item(ItemEnum.LADDER, 40);
+        key = new Item(ItemEnum.key, 40);
+        hammer = new Item(ItemEnum.hammer, 40);
+        lumber = new Item(ItemEnum.lumber, 40);
+        ladder = new Item(ItemEnum.ladder, 40);
     }
     
     private static void createInventory() {
@@ -282,21 +282,21 @@ public class Game
         }
         else if (nextRoom == null && nextRoom1.getLock() == true){
             if(nextRoom1.getName().equals("mountain")) {
-                if (inventory.containsKey(ItemEnum.LADDER)) {
+                if (inventory.containsKey(ItemEnum.ladder)) {
                     nextRoom1.setLock(false);
                     currentRoom = nextRoom1.getExit(direction);
                     pet.goPet(nextRoom1.getExit(direction));
-                    inventory.remove(ItemEnum.LADDER);
+                    inventory.remove(ItemEnum.ladder);
                 } else {
                     c.toStoryField(WordList.MOUNTAIN_DOOR + "\n");
                 }
             } else if (nextRoom1.getName().equals("home")) {
-                if (inventory.containsKey(ItemEnum.KEY) && pet.isFollow()) {
+                if (inventory.containsKey(ItemEnum.key) && pet.isFollow()) {
                     nextRoom1.setLock(false);
                     currentRoom = nextRoom1.getExit(direction);
                     pet.goPet(nextRoom1.getExit(direction));
-                    inventory.remove(ItemEnum.KEY);
-                } else if (inventory.containsKey(ItemEnum.KEY)) {
+                    inventory.remove(ItemEnum.key);
+                } else if (inventory.containsKey(ItemEnum.key)) {
                     c.toStoryField(WordList.STILL_NEED_PET);
                 } else {
                     c.toStoryField(WordList.HOME_DOOR + "\n");
@@ -549,15 +549,15 @@ public class Game
                     c.toStoryField(neighbour.interactExtended(command, key, hammer, inventory));
                 
                 setProgress(3);
-                if(inventory.containsKey(ItemEnum.HAMMER)){
-                  } else if(inventory.containsKey(ItemEnum.KEY)){
+                if(inventory.containsKey(ItemEnum.hammer)){
+                  } else if(inventory.containsKey(ItemEnum.key)){
                   setProgress(6);
                   }
                 }
             } else if (inputCommand.equals("stump")){
                 if (currentRoom == treeStump.getCurrentRoom()) {
                 c.toStoryField(treeStump.interactExtendedStump(command, nails, hammer, wood, lumber, ladder, inventory));
-                    if(inventory.containsKey(ItemEnum.LADDER)){
+                    if(inventory.containsKey(ItemEnum.ladder)){
                     setProgress(4);
                     }
                 }
