@@ -33,8 +33,8 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import sp2017g1.WriteToStory;
-import originalFiles.Game;
-import sp2017g1.ItemEnum;
+import business.Game;
+import business.ItemEnum;
 
 
 
@@ -45,7 +45,7 @@ import sp2017g1.ItemEnum;
 public class FXMLDocumentController implements Initializable, WriteToStory {
     
     private static Game game;
-    private sp2017g1.Timer timer;
+    private business.Timer timer;
     
     @FXML
     private TextArea storyField;

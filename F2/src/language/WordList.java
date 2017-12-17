@@ -5,7 +5,7 @@
  */
 package language;
 
-import originalFiles.*;
+import business.CommandWord;
 
 /**
  *
