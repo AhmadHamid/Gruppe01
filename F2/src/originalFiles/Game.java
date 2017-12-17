@@ -317,12 +317,13 @@ public class Game
             if (currentRoom == home) {
                 c.toStoryField(WordList.END_DESCRIPTION);
             }
+            c.toStoryField("");
             c.toStoryField(WordList.GOING_DOOR);
             c.toStoryField(currentRoom.getLongDescription());
         } else {
             currentRoom = nextRoom;
             pet.goPet(nextRoom);
-            
+            c.toStoryField("");
             c.toStoryField(currentRoom.getLongDescription());
 
             if (currentRoom == neighbour.getCurrentRoom()) {
