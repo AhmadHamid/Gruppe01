@@ -30,26 +30,27 @@ public class WordList {
     
 //    class Game.
     public static final String WELCOME = "";
-    public static final String DESCRIPTION = "As you are cooking a delicous meal, "
+    public static final String DESCRIPTION = "As you are cooking a delicous meal "
                                            + "in your cozy cottage, your trusty "
                                            + "pet companion runs out of the door, "
                                            + "and into the woods you quickly run after it, to get it back\n" 
-                                           + "You need to go find your pet and get back before you dinner gets burnt (10 minutes)";
+                                           + "You need to go find your pet and get back before your dinner gets burnt (10 minutes)";
     public static final String GET_HELP = "When you have found your " + WordList.PET_TYPE + "you can press '" + CommandWord.HELP + "' to get hints from your pet about what to do.";
-    public static final String ITEMS_IN_ROOM = "These items is in the room: ";
+    public static final String ITEMS_IN_ROOM = "These items are in the room: ";
     public static final String DONT_KNOW_WHAT_YOU_MEAN = "I don't know what you mean...";
-    public static final String PRINT_HELP = "Get the house key to go home before your dinner is burned\n"
+    public static final String PRINT_HELP = "Get the house key to go home before your dinner gets burnt\n"
                                             + "For hints interact with your pet \n"
                                             + "\n"
                                              + "Your command words are:";
     public static final String GO_WHERE = "Go where?";
     public static final String END_DESCRIPTION = "you win";
     public static final String GAME_SAVE = "Game Saved";
-    public static final String EVIL_STOLE_BEGIN = "EvilNPC stole your ";
+    public static final String EVIL_STOLE_BEGIN = "A thief stole your ";
     public static final String EVIL_STOLE_END = " and ran away\n";
-    public static final String EVIL_RETURN = "EvilNPC returns your ";
-    public static final String EVIL_WANTS_RETURN_BEGIN = "EvilNPc wants to return your ";
-    public static final String EVIL_WANTS_RETURN_END = ", but your inventory is full.";
+    public static final String EVIL_RETURN = "You take back your ";
+    public static final String EVIL_RETURN_END = " from the thief";
+    public static final String EVIL_WANTS_RETURN_BEGIN = "You attempt to take back your ";
+    public static final String EVIL_WANTS_RETURN_END = " from the thief, but your inventory is full.";
     
     
 //    progress message.
@@ -67,10 +68,10 @@ public class WordList {
     public static final String WRONG_INTERACT = "Can't interact";
     public static final String PET_TYPE = "pet";
     public static final String NEIGHBOUR = "You see your neighbour in the room.";
-    public static final String FOUND_PET = "You found your " + PET_TYPE + ". It will now follow you.";
-    public static final String NEIGHBOUR_QUEST = "Neighbour: I do have your spare key, but I have buried it, "
+    public static final String FOUND_PET = "You have found your " + PET_TYPE + ". It will now follow you.";
+    public static final String NEIGHBOUR_QUEST = "Neighbour: Welcome! I do have your spare key, but I have buried it, "
                                                + "so it couldn't be stolen. To get it I'll need you to get my shovel. "
-                                               + "Last time place I saw my shovel was the mountain. "
+                                               + "Last time I saw my shovel was on the mountain. "
                                                + "You can come again later and borrow my hammer if needed";
     public static final String TREESTUMP = "You see a treestump in the room. Maybe it could be used as a crafting table";
     

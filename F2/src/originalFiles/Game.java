@@ -383,7 +383,7 @@ public class Game
                 }
              else if (evilNPC.getStolenItem()!= null) {                   
                     if (inventory.size() < 3) {
-                        c.toStoryField(WordList.EVIL_RETURN + evilNPC.getStolenItem());
+                        c.toStoryField(WordList.EVIL_RETURN + evilNPC.getStolenItem() + WordList.EVIL_RETURN_END);
                         inventory.put(ItemEnum.valueOf(evilNPC.getStolenItem()), Item.getItem(ItemEnum.valueOf(evilNPC.getStolenItem())));
                         evilNPC.setStolenItem(null);
                     } else {
