@@ -843,7 +843,7 @@ public class Game
      * @return
      */
     public String highScoreLoad() {
-        if(new File("highscore.txt").exists()){
+        if(new File("src/foundation/highscore.txt").exists()){
             return score.Load();
         } else {
             return "0";

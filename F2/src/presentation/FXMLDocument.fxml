@@ -28,7 +28,7 @@
       <Button fx:id="northButton" layoutX="44.0" layoutY="262.0" mnemonicParsing="false" onAction="#northButtonAction" text="North" textAlignment="CENTER" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="44.0" />
       <Button fx:id="southButton" layoutX="44.0" layoutY="325.0" mnemonicParsing="false" onAction="#southButtonAction" text="South" textAlignment="CENTER" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="44.0" />
       <Button fx:id="westButton" layoutX="19.0" layoutY="293.0" mnemonicParsing="false" onAction="#westButtonAction" prefWidth="48.0" text="West" textAlignment="CENTER" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="19.0" />
-      <AnchorPane fx:id="scene1" layoutY="259.0" prefHeight="25.0" prefWidth="154.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0">
+      <AnchorPane fx:id="scene1" layoutY="259.0" prefHeight="111.0" prefWidth="367.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0">
          <children>
             <Button fx:id="playButton" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#playButtonAction" text="Play" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="14.0" />
             <Button fx:id="loadButton" focusTraversable="false" layoutX="15.0" layoutY="39.0" mnemonicParsing="false" onAction="#loadButtonAction" prefHeight="25.0" prefWidth="77.0" snapToPixel="false" text="Load game" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="15.0" />
@@ -55,5 +55,7 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="title" prefHeight="262.0" prefWidth="598.0" AnchorPane.bottomAnchor="112.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="startHighscore" layoutX="502.0" layoutY="329.0" text="0000" textFill="WHITE" />
+      <Label fx:id="startHighscoreLabel" layoutX="487.0" layoutY="308.0" text="Highscore:" textFill="WHITE" />
    </children>
 </AnchorPane>

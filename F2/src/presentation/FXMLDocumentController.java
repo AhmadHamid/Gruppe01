@@ -161,6 +161,10 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
     private AnchorPane characters;
     
     Alert saveAlert = new Alert(AlertType.INFORMATION);
+    @FXML
+    private Label startHighscore;
+    @FXML
+    private Label startHighscoreLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -176,6 +180,7 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         characters.setBackground(backgroundCharacter);
         //mapImage.setImage(roomGarden);
         title.setBackground(titleText);
+        startHighscore.setText(game.highScoreLoad());
         //game.play();
     }
 
@@ -406,6 +411,8 @@ public class FXMLDocumentController implements Initializable, WriteToStory {
         playButton.setVisible(false);
         loadButton.setVisible(false);
         quitButton.setVisible(false); // Needs to stay visible at all times, due to the game not closing properly if pressing the red X button in the top right corner (Windows), unless alternative is available.
+        startHighscore.setVisible(false);
+        startHighscoreLabel.setVisible(false);
         storyField.setVisible(true);
         pickButton.setVisible(true);
         dropButton.setVisible(true);
