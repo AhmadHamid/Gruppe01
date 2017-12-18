@@ -818,6 +818,7 @@ public class Game
      */
     public void load(){
         time.start();
+        time.setTime(600);
         saveAndLoad.load();
 
     }
